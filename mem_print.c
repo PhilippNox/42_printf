@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 21:50:20 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/08 22:47:16 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/08 22:58:42 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int main( ) {
 
 	data.i = 16448; // ""@@" // 0100'0000 0100'0000
 	data.f = -169952862;
-	data.i = 1073741824 + 64;
+	data.i = 1073741824 + 4194304 + 16384;
+	data.i = 1073741824 + 16384 + 64;
 
 	int idx = -1;
 	int byte = -1;
@@ -81,7 +82,7 @@ int main( ) {
 
 	printf( "Integer view\n%d\n\n", data.i);
 	printf( "String view\n%s\n\n", data.str);
-	printf( "Float view\n%f\n\n", data.f);
+	printf( "Float view\n%.100f\n\n", data.f);
 
 	return (0);
 }
