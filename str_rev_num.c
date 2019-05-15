@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 02:33:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/15 04:07:36 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/15 04:14:11 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,41 +68,25 @@ void	print_t_str_human(t_str *input)
 	ft_putchar('\n');
 }
 
-void	power2_job(t_str *input, int idx, int add_val)
-{
-	int val;
-
-	if (!input->num[idx] && !add_val)
-		return ;
-	if (!input->num[idx])
-	{
-		input->num[idx] = add_val + 48;
-		input->exp += 1;
-		return ;
-	}
-	val = (input->num[idx] - 48)* 2 + add_val;
-	input->num[idx] = (val % 10) + 48;
-	power2_job(input, idx + 1, val / 10);
-}
-
-void	power5_job(t_str *input, int idx, int add_val)
+void	power_job(t_str *input, int idx, int add_val, int base)
 {
 	int val;
 
 	if (!input->num[idx] && !add_val)
 	{
-		input->exp -= 1;
+		if (base == 5)
+			input->exp -= 1;
 		return ;
 	}
 	if (!input->num[idx])
 	{
 		input->num[idx] = add_val + 48;
-		input->exp -= 1;
+		input->exp += (base == 5) ? -1 : 1;
 		return ;
 	}
-	val = (input->num[idx] - 48)* 5 + add_val;
+	val = (input->num[idx] - 48)* base + add_val;
 	input->num[idx] = (val % 10) + 48;
-	power5_job(input, idx + 1, val / 10);
+	power_job(input, idx + 1, val / 10, base);
 }
 
 void	power2(t_str *input, int pwr)
@@ -114,16 +98,8 @@ void	power2(t_str *input, int pwr)
 		input->exp = 0;
 		return ;
 	}
-	if (pwr > 0)
-	{
-		power2(input, pwr - 1);
-		power2_job(input, 0, 0);
-	}
-	else
-	{
-		power2(input, pwr + 1);
-		power5_job(input, 0, 0);
-	}
+	power2(input, (pwr > 0) ? pwr - 1 : pwr + 1);
+	power_job(input, 0, 0, (pwr > 0) ? 2 : 5);
 }
 
 int		main(void)
@@ -134,8 +110,8 @@ int		main(void)
 	//power2(&test, 0); print_t_str(&test);
 	//power2(&test, 1); print_t_str(&test);
 
-	//power2(&test, 308); print_t_str(&test); print_t_str_human(&test);
-
+	power2(&test, 308); print_t_str(&test); print_t_str_human(&test);
+	ft_putchar('\n');
 	power2(&test, -308); print_t_str(&test); print_t_str_human(&test);
 
 	return (0);
