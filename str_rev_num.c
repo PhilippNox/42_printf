@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 02:33:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/17 21:57:59 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/17 22:10:47 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -296,6 +296,16 @@ int		main(void)
 	ft_putstr("\n\n");
 	init_t_str(&a); a.num[0] = '4'; a.num[1] = '6'; a.idx_cur = 2; a.exp = 3;
 	init_t_str(&b); b.num[0] = '5'; b.num[1] = '2'; b.num[2] = '6'; b.num[3] = '0'; b.num[4] = '8'; b.num[5] = '2'; b.num[6] = '1'; b.idx_cur = 7; b.exp = 2;
+
+	print_t_str(&a); print_t_str_human(&a); ft_putchar('\n');
+	print_t_str(&b); print_t_str_human(&b); ft_putchar('\n');
+	ft_putstr("\n====\n");
+	sum_t_str(&c, &a, &b); print_t_str(&c); print_t_str_human(&c); ft_putchar('\n');
+
+
+	ft_putstr("\n\n");
+	init_t_str(&a); a.num[0] = '4'; a.num[1] = '9'; a.idx_cur = 2; a.exp = 3;
+	init_t_str(&b); b.num[0] = '5'; b.num[1] = '2'; b.num[2] = '6'; b.num[3] = '0'; b.num[4] = '8'; b.num[5] = '2'; b.num[6] = '6'; b.idx_cur = 7; b.exp = 2;
 
 	print_t_str(&a); print_t_str_human(&a); ft_putchar('\n');
 	print_t_str(&b); print_t_str_human(&b); ft_putchar('\n');
