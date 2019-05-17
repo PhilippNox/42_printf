@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 02:41:09 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/15 02:43:41 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/17 14:23:45 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,12 @@ void		ft_putnbr(int n)
 		ft_putnbr_rec(n, '\0');
 	else
 		ft_putchar('0');
+}
+
+void	ft_putstr(char const *s)
+{
+	if (!s || !*s)
+		return ;
+	ft_putchar(*s);
+	ft_putstr(s + 1);
 }
