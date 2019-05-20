@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 02:33:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/20 13:19:02 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/20 16:00:45 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	print_t_str_human(t_str *input)
 	idx--;
 	exp_show = input->exp;
 	if (input->exp < 0)
-		exp_show = (input->idx_cur + input->exp < 0) ? input->exp + idx : -1;
+		exp_show = input->exp + idx;
 	ft_putchar(input->num[idx]);
 	ft_putchar('.');
 	while (--idx > -1)
@@ -257,6 +257,8 @@ void	sum_job(t_str *vals[3], int end_a, int start_b, int dist_max)
 	int idx;
 	int val;
 	int add_val;
+	int a;
+	int b;
 
 	printf("end_a = %d\t start_b = %d\t dist_max = %d\t result->exp = %d\n", end_a, start_b, dist_max, vals[0]->exp);
 
@@ -272,14 +274,17 @@ void	sum_job(t_str *vals[3], int end_a, int start_b, int dist_max)
 		}
 		else
 		{
-			if (idx < vals[1]->idx_cur)
-				val = vals[1]->num[idx] + vals[2]->num[idx - start_b] - 48 * 2 + add_val;
-			else
-				val = vals[2]->num[idx - start_b] - 48 + add_val;
+			a = (idx < vals[1]->idx_cur) ? vals[1]->num[idx] : '0';
+			b = (idx - start_b < vals[2]->idx_cur) ? vals[2]->num[idx - start_b] : '0';
+			val = a + b - 48 * 2 + add_val;
 			vals[0]->num[vals[0]->idx_cur++] = val % 10 + 48;
 			printf(" result = %d\t a=%c\t b=%c", val % 10, vals[1]->num[idx], vals[2]->num[idx - start_b]);
 			if (val % 10 == 0 && vals[0]->idx_cur == 1)
+			{
 				vals[0]->idx_cur--;
+				if (vals[0]->exp < 0)
+					vals[0]->exp++;
+			}
 			add_val = val / 10;
 			printf(" add_val = %d\t", val / 10);
 		}
@@ -290,7 +295,10 @@ void	sum_job(t_str *vals[3], int end_a, int start_b, int dist_max)
 	{
 		printf("idx = %d\t", idx); printf("add_val_last = %d\n", add_val);
 		vals[0]->num[vals[0]->idx_cur++] = add_val + 48;
-		vals[0]->exp++;
+		if (vals[0]->exp >= 0)
+			vals[0]->exp++;
+		else
+			vals[0]->exp = 0;
 	}
 }
 
@@ -301,15 +309,16 @@ void	sum_t_str(t_str *result, t_str *a, t_str *b)
 	t_str *vals[3];
 
 	init_t_str(result);
+	vals[0] = result;
+	vals[1] = a;
+	vals[2] = b;
+
 	exp_max = a->exp;
 	if (exp_max < b->exp)
 		exp_max = b->exp;
 
 	result->exp = exp_max;
 
-	vals[0] = result;
-	vals[1] = a;
-	vals[2] = b;
 	dist_max = exp_max -a->exp + a->idx_cur;
 	//printf("exp_max = %d \t -a->exp = -%d\t a->idx_cur = %d\t dist_max = %d\n", exp_max, a->exp, a->idx_cur, dist_max);
 	if (-a->exp + a->idx_cur < -b->exp + b->idx_cur)
@@ -320,7 +329,30 @@ void	sum_t_str(t_str *result, t_str *a, t_str *b)
 		vals[2] = a;
 	}
 	sum_job(vals, dist_max - vals[1]->exp, dist_max - vals[2]->idx_cur, dist_max);
+}
 
+void	sum_t_str_neg(t_str *result, t_str *a, t_str *b)
+{
+	int dist_max;
+	int exp_max;
+	t_str *vals[3];
+
+	init_t_str(result);
+	vals[0] = result;
+	vals[1] = a;
+	vals[2] = b;
+
+	exp_max = a->exp;
+	if (exp_max > b->exp)
+	{
+		exp_max = b->exp;
+		vals[1] = b;
+		vals[2] = a;
+	}
+	result->exp = exp_max;
+	dist_max = -exp_max;
+
+	sum_job(vals, dist_max-vals[1]->idx_cur, dist_max + vals[2]->exp, dist_max);
 }
 
 int		main(void)
@@ -385,14 +417,22 @@ int		main(void)
 	power2(&a, -3); print_t_str(&a); print_t_str_human(&a); ft_putchar('\n');
 	power2(&b, -4); print_t_str(&b); print_t_str_human(&b); ft_putchar('\n');
 	ft_putstr("\n====\n");
-	sum_t_str(&c, &a, &b); print_t_str(&c); print_t_str_human(&c); ft_putchar('\n');
+	sum_t_str_neg(&c, &a, &b); print_t_str(&c); print_t_str_human(&c); ft_putchar('\n');
 
 	ft_putstr("\n\n");
-	init_t_str(&a); a.num[0] = '5'; a.num[1] = '7'; a.num[2] = '8'; a.num[3] = '1'; a.idx_cur = 4; a.exp = -3;
+	init_t_str(&a); a.num[0] = '5'; a.num[1] = '7'; a.num[2] = '8'; a.num[3] = '1'; a.idx_cur = 4; a.exp = -4;
 	print_t_str(&a); print_t_str_human(&a); ft_putchar('\n');
 	power2(&b, -4); print_t_str(&b); print_t_str_human(&b); ft_putchar('\n');
 	ft_putstr("\n====\n");
-	sum_t_str(&c, &a, &b); print_t_str(&c); print_t_str_human(&c); ft_putchar('\n');
+	sum_t_str_neg(&c, &a, &b); print_t_str(&c); print_t_str_human(&c); ft_putchar('\n');
+
+	ft_putstr("\n\n");
+	init_t_str(&a); a.num[0] = '9'; a.idx_cur = 1; a.exp = -1;
+	print_t_str(&a); print_t_str_human(&a); ft_putchar('\n');
+	init_t_str(&b); b.num[0] = '2'; b.idx_cur = 1; b.exp = -1;
+	print_t_str(&b); print_t_str_human(&b); ft_putchar('\n');
+	ft_putstr("\n====\n");
+	sum_t_str_neg(&c, &a, &b); print_t_str(&c); print_t_str_human(&c); ft_putchar('\n');
 
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 21:50:20 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/15 02:34:47 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/20 18:29:22 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,7 @@
 
 // https://www.h-schmidt.net/FloatConverter/IEEE754.html
 
-#include <stdio.h>
-#include <string.h>
-#define STOP_SHORT -32768
-#define LEN_STR_NUM 400
-
-union Data {
-	int i;
-	char str[4];
-	float f;
-};
+#include "printf.h"
 
 typedef	struct		s_str_num
 {
@@ -185,7 +176,7 @@ void	print_arr(short *list, int size)
 	printf("]");
 }
 
-
+/*
 int		main(void)
 {
 	union Data data;
@@ -208,3 +199,4 @@ int		main(void)
 
 	return (0);
 }
+*/
