@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 02:41:09 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/17 14:23:45 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/21 15:04:49 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,18 @@ void	ft_putstr(char const *s)
 		return ;
 	ft_putchar(*s);
 	ft_putstr(s + 1);
+}
+
+void	print_arr(short *list, int size)
+{
+	int idx;
+
+	idx = -1;
+	ft_putstr("[ ");
+	while (++idx < size)
+	{
+		ft_putnbr(list[idx]);
+		ft_putstr(", ");
+	}
+	ft_putstr("]");
 }

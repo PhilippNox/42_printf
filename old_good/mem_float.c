@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 21:50:20 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/20 18:29:22 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/21 14:45:09 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,17 +163,6 @@ void	get_degrees(union Data data, int exp_val, short *list, int size)
 			//printf("pos=%d\tdeg=%d\n", idx, exp_val - idx);
 		}
 	}
-}
-
-void	print_arr(short *list, int size)
-{
-	int idx;
-
-	idx = -1;
-	printf("[ ");
-	while (++idx < size)
-		printf("%d, ", list[idx]);
-	printf("]");
 }
 
 /*
