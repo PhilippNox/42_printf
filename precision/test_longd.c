@@ -6,14 +6,16 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 20:09:06 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/24 20:41:10 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/25 01:00:01 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "longd.h"
 #include <stdio.h>
 #include <float.h>
-// clear && gcc -Wall -Wextra -Werror ft_put.c t_longd.c mat_precision.c test_longd.c && ./a.out
+
+// cd /Users/wgorold/d04_printf_gitlab/longd
+// clear && gcc -Wall -Wextra -Werror ft_put.c 1_mat_precision_1.c 2_mat_precision_2.c test_longd.c && ./a.out
 
 void test_power2form_pos()
 {
@@ -119,7 +121,7 @@ void test_max_float_longdouble()
 	printf("\nLDBL_MAX = %.999999Lg\n", LDBL_MAX);
 }
 
-void test_longdouble(long double input)
+void test_longdouble_old(long double input)
 {
 	t_longd tmp;
 	short	power_tab[FRAC_FLOAT];
@@ -132,14 +134,72 @@ void test_longdouble(long double input)
 
 	show_float(tmp);
 
-	set_power_tab(power_tab, tmp.t_parts.frac, (short)tmp.t_parts.exp - 16383);
+	set_power_tab(power_tab, tmp.t_parts_ld.frac, (short)tmp.t_parts_ld.exp - 16383, 0x4000000000000000);
 
 	get_fractionnaire(&frc, power_tab);
 	get_entiere(&ent, power_tab);
-	get_final(&ent, &frc, tmp.t_parts.sign);
+	set_sign(&ent, tmp.t_parts_ld.sign);
+	get_final(&ent, &frc);
 	ft_putstr("\n\nfinal_= ");
 	print_t_str_f_human(&ent);
 	printf("\ninput = %.999999Lg\n", input);
+}
+
+void test_longdouble(long double input)
+{
+	t_str_f output;
+
+	get_precision_longd(&output, input);
+	ft_putstr("\n\nfinal_= ");
+	print_t_str_f_human(&output);
+	printf("\ninput = %.999999Lg\n", input);
+}
+
+void test_precision_max()
+{
+	t_str_f output;
+
+	get_precision_longd(&output, LDBL_MAX);
+	ft_putstr("\n\nfinal_= ");
+	print_t_str_f_human(&output);
+	printf("\ninput = %.9999Lg\n", LDBL_MAX);
+
+	get_precision_d(&output, DBL_MAX);
+	ft_putstr("\n\nfinal_= ");
+	print_t_str_f_human(&output);
+	printf("\ninput = %.310f\n", DBL_MAX);
+
+	get_precision_f(&output, FLT_MAX);
+	ft_putstr("\n\nfinal_= ");
+	print_t_str_f_human(&output);
+	printf("\ninput = %.50f\n", FLT_MAX);
+}
+
+void test_precision()
+{
+	t_str_f output;
+	long double ld;
+	double d;
+	float f;
+
+	ld = LDBL_MIN;
+	d = 2.2134;
+	f = 2.2134;
+
+	get_precision_longd(&output, ld);
+	ft_putstr("\n\nfinal_= ");
+	print_t_str_f_human(&output);
+	printf("\ninput = %.999999Lg\n", ld);
+
+	get_precision_d(&output, d);
+	ft_putstr("\n\nfinal_= ");
+	print_t_str_f_human(&output);
+	printf("\ninput = %.310f\n", d);
+
+	get_precision_f(&output, f);
+	ft_putstr("\n\nfinal_= ");
+	print_t_str_f_human(&output);
+	printf("\ninput = %.100f\n", f);
 }
 
 int	main()
@@ -151,5 +211,6 @@ int	main()
 	//test_my_max_longdouble();
 	//test_longdouble(LDBL_MAX);
 	//test_longdouble(LDBL_MIN);
-	test_longdouble(2.235);
+	//test_longdouble(2.235);
+	test_precision();
 }

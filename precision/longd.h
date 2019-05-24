@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/24 19:59:51 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/25 01:00:51 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,30 @@
 
 typedef union u_longd {
 	long double	ld;
-	struct s_parts {
+	struct s_parts_ld {
 		unsigned long	frac : 63;
 		unsigned long	exp : 15;
 		unsigned long	sign : 1;
-	} t_parts;
+	} t_parts_ld;
 } t_longd;
+
+typedef union u_d {
+	double	d;
+	struct s_parts_d {
+		unsigned long	frac : 52;
+		unsigned long	exp : 11;
+		unsigned long	sign : 1;
+	} t_parts_d;
+} t_d;
+
+typedef union u_f {
+	float	f;
+	struct s_parts_f {
+		unsigned int	frac : 23;
+		unsigned int	exp : 8;
+		unsigned int	sign : 1;
+	} t_parts_f;
+} t_f;
 
 typedef	struct		s_str_f
 {
@@ -59,11 +77,13 @@ void	sum_t_str_f(t_str_f *result, t_str_f *a, t_str_f *b);
 void	set_sign(t_str_f *result, unsigned int sign);
 
 void	show_float(t_longd input);
-void	set_power_tab(short	power_tab[FRAC_FLOAT], unsigned long vals, short exp);
+void	set_power_tab(short	power_tab[FRAC_FLOAT], unsigned long vals, short exp, unsigned long mask);
 void	debug_print(t_str_f	*add, int power, int curr);
 void	debug_print_final(t_str_f	*final);
 void	get_fractionnaire(t_str_f *frc, short	power_tab[FRAC_FLOAT]);
 void	get_entiere(t_str_f *ent, short	power_tab[FRAC_FLOAT]);
-void	get_final(t_str_f *ent, t_str_f *frc, unsigned int sign);
-
+void	get_final(t_str_f *ent, t_str_f *frc);
+void	get_precision_longd(t_str_f *output, long double input);
+void	get_precision_d(t_str_f *output, double input);
+void	get_precision_f(t_str_f *output, float input);
 #endif

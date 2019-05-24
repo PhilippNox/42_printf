@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mat_precision.c                                    :+:      :+:    :+:   */
+/*   2_mat_precision_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 13:45:06 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/24 20:30:22 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/25 00:55:36 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,18 @@ void	show_float(t_longd input)
 {
 	ft_putstr("t_longd:\n{");
 	ft_putstr("\n\t sign: ");
-	ft_putnbr(input.t_parts.sign);
+	ft_putnbr(input.t_parts_ld.sign);
 	ft_putstr("\n\t exp : ");
-	ft_putnbr(input.t_parts.exp);
+	ft_putnbr(input.t_parts_ld.exp);
 	ft_putstr("\n\t frac: ");
-	ft_putunbr(input.t_parts.frac);
+	ft_putunbr(input.t_parts_ld.frac);
 	ft_putstr("\n}\n");
 }
 
-void	set_power_tab(short	power_tab[FRAC_FLOAT], unsigned long vals, short exp)
+void	set_power_tab(short	power_tab[FRAC_FLOAT], unsigned long vals, short exp, unsigned long mask)
 {
 	int idx;
-	unsigned long mask;
 
-	mask = 0x4000000000000000;
 	idx = 0;
 	power_tab[idx] = exp;
 	while (++idx < FRAC_FLOAT)
@@ -111,13 +109,66 @@ void	get_entiere(t_str_f *ent, short	power_tab[FRAC_FLOAT])
 		debug_print_final(ent);
 }
 
-void	get_final(t_str_f *ent, t_str_f *frc, unsigned int sign)
+void	get_final(t_str_f *ent, t_str_f *frc)
 {
 	t_str_f tmp;
 
 	tmp = *ent;
 	sum_t_str_f(ent, &tmp, frc);
-	set_sign(ent, sign);
 	if (DEBUG_FLOAT_CREATION)
 		debug_print_final(ent);
+}
+
+void get_precision_longd(t_str_f *output, long double input)
+{
+	t_longd tmp;
+	short	power_tab[FRAC_FLOAT];
+	t_str_f frc;
+
+	init_t_str_f(output);
+	init_t_str_f(&frc);
+	tmp.ld = input;
+
+	//show_float(tmp);
+	set_power_tab(power_tab, tmp.t_parts_ld.frac, (short)tmp.t_parts_ld.exp - 16383, 0x4000000000000000);
+	get_fractionnaire(&frc, power_tab);
+	get_entiere(output, power_tab);
+	set_sign(output, tmp.t_parts_ld.sign);
+	get_final(output, &frc);
+}
+
+void get_precision_d(t_str_f *output, double input)
+{
+	t_d tmp;
+	short	power_tab[FRAC_FLOAT];
+	t_str_f frc;
+
+	init_t_str_f(output);
+	init_t_str_f(&frc);
+	tmp.d = input;
+
+	//show_float(tmp);
+	set_power_tab(power_tab, tmp.t_parts_d.frac, (short)tmp.t_parts_d.exp - 1023, 0x0008000000000000);
+	get_fractionnaire(&frc, power_tab);
+	get_entiere(output, power_tab);
+	set_sign(output, tmp.t_parts_d.sign);
+	get_final(output, &frc);
+}
+
+void get_precision_f(t_str_f *output, float input)
+{
+	t_f tmp;
+	short	power_tab[FRAC_FLOAT];
+	t_str_f frc;
+
+	init_t_str_f(output);
+	init_t_str_f(&frc);
+	tmp.f = input;
+
+	//show_float(tmp);
+	set_power_tab(power_tab, tmp.t_parts_f.frac, (short)tmp.t_parts_f.exp - 127, 0x0000000000400000);
+	get_fractionnaire(&frc, power_tab);
+	get_entiere(output, power_tab);
+	set_sign(output, tmp.t_parts_f.sign);
+	get_final(output, &frc);
 }

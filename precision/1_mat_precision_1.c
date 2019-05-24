@@ -1,16 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_longd.c                                          :+:      :+:    :+:   */
+/*   1_mat_precision_1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:45:12 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/24 20:21:56 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/24 21:40:41 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// clear && gcc -Wall -Wextra -Werror ft_put.c mem_float.c str_rev_parts.c && ./a.out
 
 #include "longd.h"
 
@@ -123,30 +121,6 @@ void	power_neg(t_str_f * input)
 		ft_putnbr(input->idx_ent);
 		ft_putstr("\n");
 	}
-}
-
-void	power2(t_str_f *input, int pwr)
-{
-	if (pwr == 0 || pwr == -1)
-	{
-		init_t_str_f(input);
-		if (pwr == 0)
-		{
-			input->ent[0] = '1';
-			input->idx_ent = 1;
-		}
-		if (pwr == -1)
-		{
-			input->frc[0] = '5';
-			input->idx_frc = 1;
-		}
-		return ;
-	}
-	power2(input, (pwr > 0) ? pwr - 1 : pwr + 1);
-	if (pwr > 0)
-		power_pos(input);
-	else
-		power_neg(input);
 }
 
 void	power2form(t_str_f *input, int pwr, int curr)
