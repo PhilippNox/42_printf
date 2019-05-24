@@ -6,12 +6,12 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 20:09:06 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/21 20:14:58 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/23 17:41:09 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-
+#include <stdio.h>
 // clear && gcc -Wall -Wextra -Werror ft_put.c t_str_f.c float.c test_float.c && ./a.out
 
 int	main()
@@ -32,7 +32,7 @@ int	main()
 	input.f = 12359.015625;
 	input.f = -6.550091E37;
 	input.f = -3.1568031E38;
-	//input.f = -2.1810147E-38;
+	input.f = -2.1810147E-38;
 
 	show_float(input);
 
@@ -41,6 +41,7 @@ int	main()
 	get_fractionnaire(&frc, power_tab);
 	get_entiere(&ent, power_tab);
 	get_final(&ent, &frc, input.t_parts.sign);
-	ft_putstr("\n\nfinal= ");
+	ft_putstr("\n\nfinal_=  ");
 	print_t_str_f_human(&ent);
+	printf("\nprintf= %.999f\n", input.f);
 }

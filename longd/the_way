@@ -1,0 +1,11 @@
+1.	long double
+2. 	u_longd
+		{
+			t_parts.frac : 63;
+			t_parts.exp  : 15;
+			t_parts.sign : 1;
+		}
+3.	value_for_exp
+		mask_for_frac
+		exp_tab
+4.

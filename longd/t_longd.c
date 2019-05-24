@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_str_f.c                                          :+:      :+:    :+:   */
+/*   t_longd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:45:12 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/23 17:18:31 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/24 20:21:56 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // clear && gcc -Wall -Wextra -Werror ft_put.c mem_float.c str_rev_parts.c && ./a.out
 
-#include "printf.h"
+#include "longd.h"
 
 void	init_t_str_f(t_str_f *input)
 {
@@ -20,11 +20,10 @@ void	init_t_str_f(t_str_f *input)
 
 	input->sign = '+';
 	idx = -1;
-	while (++idx < LEN_STR_NUM)
-	{
+	while (++idx < LEN_STR_ENT)
 		input->ent[idx] = '\0';
+	while (++idx < LEN_STR_FRC)
 		input->frc[idx] = '\0';
-	}
 	input->idx_ent = 0;
 	input->idx_frc = 0;
 }
@@ -34,12 +33,16 @@ void	print_t_str_f(t_str_f *input)
 	int idx;
 
 	idx = -1;
-	ft_putstr("entiere: ");
-	while (++idx < LEN_STR_NUM && input->ent[idx])
+	ft_putstr("idx_ent: ");
+	ft_putunbr(input->idx_ent);
+	ft_putstr(" entiere: ");
+	while (++idx < LEN_STR_ENT && input->ent[idx])
 		ft_putchar(input->ent[idx]);
 	idx = -1;
-	ft_putstr("\nfractio: ");
-	while (++idx < LEN_STR_NUM && input->frc[idx])
+	ft_putstr("\nidx_frc: ");
+	ft_putunbr(input->idx_frc);
+	ft_putstr(" fractio: ");
+	while (++idx < LEN_STR_FRC && input->frc[idx])
 		ft_putchar(input->frc[idx]);
 	ft_putstr("\n");
 }
@@ -83,6 +86,11 @@ void	power_pos(t_str_f *input)
 		print_t_str_f_human(input);
 		ft_putstr("\n");
 	}
+	if (DEBUG_POWER_IDX)
+	{
+		ft_putnbr(input->idx_ent);
+		ft_putstr("\n");
+	}
 }
 
 void	power_neg(t_str_f * input)
@@ -108,6 +116,11 @@ void	power_neg(t_str_f * input)
 	{
 		ft_putstr(" -> ");
 		print_t_str_f_human(input);
+		ft_putstr("\n");
+	}
+	if (DEBUG_POWER_IDX)
+	{
+		ft_putnbr(input->idx_ent);
 		ft_putstr("\n");
 	}
 }
@@ -138,21 +151,33 @@ void	power2(t_str_f *input, int pwr)
 
 void	power2form(t_str_f *input, int pwr, int curr)
 {
-	if (curr != 0 && pwr - curr == 0)
-		return;
-	if (curr < 0)
+	int idx;
+
+	if (pwr == 0 || (pwr > 0 && curr == 0))
 	{
-		power2form(input, pwr + 1, curr);
-		power_neg(input);
-		return ;
+		init_t_str_f(input);
+		input->ent[0] = '1';
+		input->idx_ent = 1;
 	}
-	else if (curr > 0)
+	if (pwr == -1 || (pwr < 0 && curr == 0))
 	{
-		power2form(input, pwr - 1, curr);
-		power_pos(input);
-		return ;
+		init_t_str_f(input);
+		input->frc[0] = '5';
+		input->idx_frc = 1;
 	}
-	power2(input, pwr);
+	idx = -1;
+	if (pwr > 0)
+	{
+		while (++idx + curr < pwr)
+			power_pos(input);
+	}
+	else
+	{
+		if (curr == 0)
+			idx = 0;
+		while (++idx + pwr < curr)
+			power_neg(input);
+	}
 }
 
 void	set_sign(t_str_f *result, unsigned int sign)
