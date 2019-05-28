@@ -6,11 +6,11 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 02:41:09 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/23 18:20:13 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/29 01:46:33 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "longd.h"
 
 void	ft_putchar(char c)
 {
