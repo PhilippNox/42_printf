@@ -6,14 +6,15 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 22:39:08 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/29 01:48:15 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/29 02:03:09 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// cd /Users/wgorold/d04_printf_gitlab/precision
-// clear && gcc -Wall -Wextra -Werror test_pututf8.c ft_put.c && time ./a.out
+// cd /Users/wgorold/d04_printf_gitlab/utf8
+// clear && gcc -Wall -Wextra -Werror test_pututf8.c && time ./a.out
 
-#include "longd.h"
+# include <unistd.h>
+# include <stdio.h>
 
 void show_bytes(unsigned int c)
 {
@@ -74,7 +75,6 @@ int	ft_putstrutf8(char const *s)
 	return (printed);
 }
 
-#include <stdio.h>
 int main() {
 	char *str;
 	int num;
@@ -83,12 +83,7 @@ int main() {
 	//str = "Зы";
 	//str = "abc";
 	num = ft_putstrutf8(str);
-	write(1, "\n", 1);
-	ft_putnbr(num);
-	write(1, "\n", 1);
+	printf("\nnum= %d\n", num);
 	num = ft_putcharnew('\n');
-	write(1, "\n", 1);
-	ft_putnbr(num);
-	write(1, "\n", 1);
-	//printf("num= %d\n", num);
+	printf("\nnum= %d\n", num);
 }

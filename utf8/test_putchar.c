@@ -6,14 +6,14 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 22:39:08 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/29 00:40:11 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/29 02:01:40 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// cd /Users/wgorold/d04_printf_gitlab/precision
+// cd /Users/wgorold/d04_printf_gitlab/utf8
 // clear && gcc -Wall -Wextra -Werror test_putchar.c && time ./a.out
 
-#include "longd.h"
+# include <unistd.h>
 
 void show_bytes(unsigned int c)
 {
