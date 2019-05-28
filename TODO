@@ -1,0 +1,45 @@
+%
+// https://en.wikipedia.org/wiki/Printf_format_string
+// %[флаги][ширина][.точность][размер]тип
+
+main
+{
+	c
+	s
+	p
+
+	d
+	i
+	o
+	u
+	x
+	X
+
+	f
+}
+
+flags
+{
+	l
+	ll
+	h
+	hh
+}
+
+flags
+{
+	#
+	0
+	-
+	+
+}
+
+field
+{
+	minimum field-width
+}
+
+precision
+{
+	precision
+}
