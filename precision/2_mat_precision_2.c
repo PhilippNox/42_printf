@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 13:45:06 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/28 19:58:00 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/28 20:40:14 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	get_fractionnaire(t_str_f *frc, short	power_tab[FRAC_FLOAT])
 	t_str_f tmp;
 	t_str_f add;
 
-	init_t_str_f_frc(frc);
 	idx = -1;
 	curr = 0;
 	while (++idx < FRAC_FLOAT)
@@ -77,7 +76,9 @@ void	get_fractionnaire(t_str_f *frc, short	power_tab[FRAC_FLOAT])
 
 		power2form(&add, power_tab[idx], curr);
 		tmp = *frc;
+		debug_print(&add, power_tab[idx], curr);
 		sum_t_str_f_frc(frc, &tmp, &add);
+		debug_print(frc, power_tab[idx], curr);
 		if (DEBUG_FLOAT_CREATION)
 			debug_print(&add, power_tab[idx], curr);
 		curr = power_tab[idx];
@@ -93,7 +94,6 @@ void	get_entiere(t_str_f *ent, short	power_tab[FRAC_FLOAT])
 	t_str_f tmp;
 	t_str_f add;
 
-	init_t_str_f_ent(ent);
 	idx = FRAC_FLOAT;
 	curr = 0;
 	while (--idx > -1)
@@ -113,6 +113,7 @@ void	get_entiere(t_str_f *ent, short	power_tab[FRAC_FLOAT])
 
 void	mat_for_precision(t_str_f *output, short	power_tab[FRAC_FLOAT], unsigned int sign)
 {
+	init_t_str_f(output);
 	get_fractionnaire(output, power_tab);
 	get_entiere(output, power_tab);
 	set_sign(output, sign);

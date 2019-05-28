@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/28 20:21:47 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/28 20:36:08 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define LEN_STR_ENT 5000
 # define STOP_SHORT 30000
 # define FRAC_FLOAT 63 + 1
-# define DEBUG_POWER 1
+# define DEBUG_POWER 0
 # define DEBUG_FLOAT_CREATION 0
 # define DEBUG_EXP_TAB 1
 
