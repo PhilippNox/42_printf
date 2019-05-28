@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/28 22:42:50 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/29 01:51:30 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ typedef	struct		s_str_f
 	char	sign;
 } t_str_f;
 
-void	ft_putchar(char c);
+int		ft_putchar(int c);
 void	ft_putnbr(int n);
-void	ft_putstr(char const *s);
+int		ft_putstr(char const *s);
 void	print_arr(short *list, int size);
 void	ft_putunbr(unsigned long n);
 

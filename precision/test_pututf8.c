@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 22:39:08 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/29 01:44:31 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/29 01:48:15 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void show_bytes(unsigned int c)
 	write(1, "_\n", 2);
 }
 
-int	ft_pututf8(char const *s)
+int	ft_pututf8_(char const *s)
 {
 	int idx;
 
@@ -53,7 +53,7 @@ int	ft_pututf8(char const *s)
 int	ft_putcharnew(int c)
 {
 	show_bytes(c);
-	return (ft_pututf8((char *)&c));
+	return (ft_pututf8_((char *)&c));
 }
 
 int	ft_putstrutf8(char const *s)
@@ -68,7 +68,7 @@ int	ft_putstrutf8(char const *s)
 	idx = 0;
 	while (*(s + idx))
 	{
-		idx += ft_pututf8(s + idx);
+		idx += ft_pututf8_(s + idx);
 		printed++;
 	}
 	return (printed);

@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 13:45:06 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/28 20:40:14 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/29 01:58:13 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,9 @@ void	get_fractionnaire(t_str_f *frc, short	power_tab[FRAC_FLOAT])
 	{
 		if (power_tab[idx] == STOP_SHORT || power_tab[idx] >= 0)
 			continue;
-
 		power2form(&add, power_tab[idx], curr);
 		tmp = *frc;
-		debug_print(&add, power_tab[idx], curr);
 		sum_t_str_f_frc(frc, &tmp, &add);
-		debug_print(frc, power_tab[idx], curr);
 		if (DEBUG_FLOAT_CREATION)
 			debug_print(&add, power_tab[idx], curr);
 		curr = power_tab[idx];

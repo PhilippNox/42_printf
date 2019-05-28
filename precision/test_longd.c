@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 20:09:06 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/28 20:48:06 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/29 02:00:01 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,17 +198,17 @@ void test_precision_min()
 	get_precision_longd(&output, LDBL_MIN);
 	ft_putstr("\n\nfinal_= ");
 	print_t_str_f_human(&output);
-	printf("\ninput = %.9999Lg\n", LDBL_MIN);
+	printf("\ninput = %.99999Lg\n", LDBL_MIN);
 
 	get_precision_d(&output, DBL_MIN);
 	ft_putstr("\n\nfinal_= ");
 	print_t_str_f_human(&output);
-	printf("\ninput = %.310g\n", DBL_MIN);
+	printf("\ninput = %.99999g\n", DBL_MIN);
 
 	get_precision_f(&output, FLT_MIN);
 	ft_putstr("\n\nfinal_= ");
 	print_t_str_f_human(&output);
-	printf("\ninput = %.50g\n", FLT_MIN);
+	printf("\ninput = %.99999g\n", FLT_MIN);
 }
 
 void test_precision()
