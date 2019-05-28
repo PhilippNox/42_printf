@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:45:12 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/28 17:56:43 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/28 19:23:26 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,11 @@ void	print_t_str_f_human(t_str_f *input)
 		ft_putchar(input->ent[idx]);
 	ft_putchar('.');
 	idx = input->exp_frc + 1;
-	while (--idx != input->idx_frc)
+	while (--idx > input->idx_frc)
 		ft_putchar('0');
 	while (--idx > -1)
 		ft_putchar(input->frc[idx]);
+	ft_putstr("\n");
 }
 
 void	power_pos(t_str_f *input)
@@ -220,9 +221,9 @@ void	sum_t_str_f_frc(t_str_f *result, t_str_f *a, t_str_f *b)
 	}
 
 	shift = start->exp_frc - add->exp_frc;
-	idx = -1;
+	idx = 0;
 	add_val = 0;
-	while (++idx < start->idx_frc || idx - shift < add->idx_frc)
+	while (start->frc[idx] || add->frc[idx - shift])
 	{
 		if (idx - shift < 0)
 		{
@@ -240,6 +241,7 @@ void	sum_t_str_f_frc(t_str_f *result, t_str_f *a, t_str_f *b)
 			result->frc[result->idx_frc++] = (val % 10) + 48;
 			add_val = val / 10;
 		}
+		++idx;
 	}
 	if (add_val)
 	{
@@ -266,9 +268,9 @@ void	sum_t_str_f_ent(t_str_f *result, t_str_f *a, t_str_f *b)
 		result->exp_ent = b->exp_ent;
 	}
 
-	idx = -1;
+	idx = 0;
 	add_val = 0;
-	while (start->ent[++idx] || add->ent[idx])
+	while (start->ent[idx] || add->ent[idx])
 	{
 		if (!add->ent[idx])
 			val = start->ent[idx] - 48 + add_val;
@@ -278,6 +280,7 @@ void	sum_t_str_f_ent(t_str_f *result, t_str_f *a, t_str_f *b)
 			val = start->ent[idx] + add->ent[idx] - 48 * 2 + add_val;
 		result->ent[result->idx_ent++] = (val % 10) + 48;
 		add_val = val / 10;
+		++idx;
 	}
 	if (add_val)
 	{

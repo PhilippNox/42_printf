@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 13:45:06 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/28 17:32:26 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/28 18:56:08 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	get_entiere(t_str_f *ent, short	power_tab[FRAC_FLOAT])
 	t_str_f tmp;
 	t_str_f add;
 
-	init_t_str_f_frc(ent);
+	init_t_str_f_ent(ent);
 	idx = FRAC_FLOAT;
 	curr = 0;
 	while (--idx > -1)
@@ -102,11 +102,11 @@ void	get_entiere(t_str_f *ent, short	power_tab[FRAC_FLOAT])
 			continue;
 		power2form(&add, power_tab[idx], curr);
 		tmp = *ent;
-		debug_print(ent, power_tab[idx], curr);
-		debug_print(&tmp, power_tab[idx], curr);
-		debug_print(&add, power_tab[idx], curr);
+		//debug_print(ent, power_tab[idx], curr);
+		//debug_print(&tmp, power_tab[idx], curr);
+		//debug_print(&add, power_tab[idx], curr);
 		sum_t_str_f_ent(ent, &tmp, &add);
-		debug_print(ent, power_tab[idx], curr);
+		//debug_print(ent, power_tab[idx], curr);
 		if (DEBUG_FLOAT_CREATION)
 			debug_print(&add, power_tab[idx], curr);
 		curr = power_tab[idx];
