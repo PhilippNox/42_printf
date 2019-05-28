@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/29 01:51:30 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/29 02:24:18 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <stdio.h>
 # include <string.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 typedef union u_longd {
 	long double	ld;
