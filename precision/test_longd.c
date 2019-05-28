@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 20:09:06 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/28 19:24:32 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/28 20:26:55 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,18 @@ void test_longdouble(long double input)
 	ft_putstr("\n\nfinal_= ");
 	print_t_str_f(&output);
 	print_t_str_f_human(&output);
-	printf("\ninput = %.15000Lg\n", input);
+	printf("\ninput = %.999999Lg\n", input);
+}
+
+void test_longdouble_f(long double input)
+{
+	t_str_f output;
+
+	get_precision_longd(&output, input);
+	ft_putstr("\n\nfinal_= ");
+	print_t_str_f(&output);
+	print_t_str_f_human(&output);
+	printf("\ninput = %.16500Lf\n", input);
 }
 
 void test_precision_max()
@@ -194,7 +205,7 @@ void test_precision()
 	get_precision_longd(&output, ld);
 	ft_putstr("\n\nfinal_= ");
 	print_t_str_f_human(&output);
-	printf("\ninput = %.15000Lf\n", ld);
+	printf("\ninput = %.16500Lf\n", ld);
 
 	get_precision_d(&output, d);
 	ft_putstr("\n\nfinal_= ");
@@ -216,7 +227,12 @@ int	main()
 	//test_my_max_longdouble();
 	//test_precision_max();
 	//test_longdouble(LDBL_MAX);
-	test_longdouble(LDBL_MIN);
+	//test_longdouble(LDBL_MIN);
+	test_longdouble_f(0.0009765625);
+	test_longdouble_f(0.0009765625);
+	//test_longdouble_f(LDBL_MIN);
+	//test_longdouble_f(LDBL_MIN);
+	//test_longdouble(0.05);
 	//test_longdouble(0.0029296875L);
 	//test_longdouble(2.253);
 	//test_precision();

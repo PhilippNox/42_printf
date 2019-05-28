@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 13:45:06 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/28 18:56:08 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/28 19:58:00 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,7 @@ void	get_entiere(t_str_f *ent, short	power_tab[FRAC_FLOAT])
 			continue;
 		power2form(&add, power_tab[idx], curr);
 		tmp = *ent;
-		//debug_print(ent, power_tab[idx], curr);
-		//debug_print(&tmp, power_tab[idx], curr);
-		//debug_print(&add, power_tab[idx], curr);
 		sum_t_str_f_ent(ent, &tmp, &add);
-		//debug_print(ent, power_tab[idx], curr);
 		if (DEBUG_FLOAT_CREATION)
 			debug_print(&add, power_tab[idx], curr);
 		curr = power_tab[idx];
@@ -115,18 +111,21 @@ void	get_entiere(t_str_f *ent, short	power_tab[FRAC_FLOAT])
 		debug_print_final(ent);
 }
 
+void	mat_for_precision(t_str_f *output, short	power_tab[FRAC_FLOAT], unsigned int sign)
+{
+	get_fractionnaire(output, power_tab);
+	get_entiere(output, power_tab);
+	set_sign(output, sign);
+}
+
 void get_precision_longd(t_str_f *output, long double input)
 {
 	t_longd tmp;
 	short	power_tab[FRAC_FLOAT];
 
 	tmp.ld = input;
-
-	//show_float(tmp);
 	set_power_tab(power_tab, tmp.t_parts_ld.frac, (short)tmp.t_parts_ld.exp - 16383, 0x4000000000000000);
-	get_fractionnaire(output, power_tab);
-	get_entiere(output, power_tab);
-	set_sign(output, tmp.t_parts_ld.sign);
+	mat_for_precision(output, power_tab, tmp.t_parts_ld.sign);
 }
 
 void get_precision_d(t_str_f *output, double input)
@@ -134,14 +133,9 @@ void get_precision_d(t_str_f *output, double input)
 	t_d tmp;
 	short	power_tab[FRAC_FLOAT];
 
-	init_t_str_f(output);
 	tmp.d = input;
-
-	//show_float(tmp);
 	set_power_tab(power_tab, tmp.t_parts_d.frac, (short)tmp.t_parts_d.exp - 1023, 0x0008000000000000);
-	get_fractionnaire(output, power_tab);
-	get_entiere(output, power_tab);
-	set_sign(output, tmp.t_parts_d.sign);
+	mat_for_precision(output, power_tab, tmp.t_parts_d.sign);
 }
 
 void get_precision_f(t_str_f *output, float input)
@@ -149,12 +143,7 @@ void get_precision_f(t_str_f *output, float input)
 	t_f tmp;
 	short	power_tab[FRAC_FLOAT];
 
-	init_t_str_f(output);
 	tmp.f = input;
-
-	//show_float(tmp);
 	set_power_tab(power_tab, tmp.t_parts_f.frac, (short)tmp.t_parts_f.exp - 127, 0x0000000000400000);
-	get_fractionnaire(output, power_tab);
-	get_entiere(output, power_tab);
-	set_sign(output, tmp.t_parts_f.sign);
+	mat_for_precision(output, power_tab, tmp.t_parts_f.sign);
 }
