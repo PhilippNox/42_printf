@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/29 20:14:49 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/30 00:01:18 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	init_task(t_task *input)
 	input->plus = 0;
 	input->space = 0;
 	input->hash = 0;
-	input->zero = 0;
+	input->zero = ' ';
 
 	input->width = 0;
 	input->precision = 0;
@@ -63,7 +63,7 @@ void	print_task(t_task *input)
 	if (input->hash)
 		ft_putstr("✅");
 	ft_putstr("\n\tinput->zero=      ");
-	if (input->zero)
+	if (input->zero != ' ')
 		ft_putstr("✅");
 	ft_putstr("\n\n\tinput->width=     ");
 	ft_putnbr(input->width);
@@ -74,6 +74,45 @@ void	print_task(t_task *input)
 	ft_putstr("\n\tinput->type=      ");
 	ft_putchar(input->type);
 	ft_putstr("\n");
+}
+
+void	fill(char fill, unsigned long len)
+{
+	int idx;
+
+	idx = -1;
+	while (++idx < len)
+		ft_putchar(fill);
+}
+
+int	make_c(t_task *input, va_list *ap)
+{
+	char c;
+
+	c = va_arg(*ap, int);
+	if (input->width == 0)
+	{
+		ft_putchar(c);
+		return (1);
+	}
+	if (input->minus)
+	{
+		ft_putchar(c);
+		fill(' ', input->width - 1);
+	}
+	else
+	{
+		fill(input->zero, input->width - 1);
+		ft_putchar(c);
+	}
+	return (input->width) ? input->width : 1;
+}
+
+int	make_task(t_task *input, va_list *ap)
+{
+	if (input->type == 'c')
+		return make_c(input, ap);
+	return (0);
 }
 
 int	isOneOf(char target, char * str)
@@ -106,7 +145,7 @@ int	set_task(t_task *input, char *start, va_list *ap)
 	if (*start == '#')
 		input->hash = 1;
 	if (*start == '0')
-		input->zero = 1;
+		input->zero = '0';
 	if (*start == '.')
 	{
 		if (*(start + 1) == '*')
@@ -154,10 +193,41 @@ int	ft_printf(const char *format, ...)
 		}
 		init_task(&task);
 		idx += set_task(&task, (char *)format + idx + 1, &ap) + 1;
-		print_task(&task);
+		//print_task(&task);
+		total += make_task(&task, &ap);
 	}
 	va_end(ap);
 	return (total);
+}
+
+void test_c()
+{
+	char *str;
+
+	ft_putstr("\n");
+	str = " 🦑 [%+#- 0*.78Lc]ok👈\n";
+	ft_putnbr(ft_printf(str, 10, 'A'));
+	ft_putchar('\n');
+	ft_putnbr(printf(str, 10, 'A'));
+	ft_putstr("\n\n\n");
+
+	str = " 🦑 [%+# 0*.78Lc]ok👈\n";
+	ft_putnbr(ft_printf(str, 10, 'A'));
+	ft_putchar('\n');
+	ft_putnbr(printf(str, 10, 'A'));
+	ft_putstr("\n\n\n");
+
+	str = " 🦑 [%+# *.78Lc]ok👈\n";
+	ft_putnbr(ft_printf(str, 10, 'A'));
+	ft_putchar('\n');
+	ft_putnbr(printf(str, 10, 'A'));
+	ft_putstr("\n\n\n");
+
+	str = " 🦑 [%+# *.78Lc]ok👈\n";
+	ft_putnbr(ft_printf(str, 0, 'A'));
+	ft_putchar('\n');
+	ft_putnbr(printf(str, 0, 'A'));
+	ft_putstr("\n\n\n");
 }
 
 int main ()
@@ -168,6 +238,8 @@ int main ()
 	//ft_putnbr(ft_printf("11 🦑 [%+#- 0*.78d]ok👈\n", 10));
 	//ft_putnbr(ft_printf("11 🦑 [%+#- 0*.*d]ok👈\n", 10, 42));
 	//ft_putnbr(ft_printf("11 🦑 [%+#- 0*.78hhd]ok👈\n", 10));
-	ft_putnbr(ft_printf("11 🦑 [%+#- 0*.78Lg]ok👈\n", 10));
+	//ft_putnbr(ft_printf("11 🦑 [%+#- 0*.78Lg]ok👈\n", 10));
+	//ft_putnbr(ft_printf("11 🦑 [%+#- 0*.78Lc]ok👈\n", 10, 'A'));
+	test_c();
 	ft_putstr("\n");
 }
