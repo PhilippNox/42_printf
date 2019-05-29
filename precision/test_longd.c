@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 20:09:06 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/29 02:00:01 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/29 19:35:46 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,6 +238,23 @@ void test_precision()
 	printf("\ninput = %.100f\n", f);
 }
 
+void test_power_tab()
+{
+	short	power_tab[FRAC_FLOAT];
+	t_str_f out;
+
+	init_t_str_f(&out);
+
+	int_power_tab(power_tab);
+
+	power_tab[0] = -126;
+
+	get_fractionnaire(&out, power_tab);
+	get_entiere(&out, power_tab);
+	ft_putstr("\n\nfinal_= ");
+	print_t_str_f_human(&out);
+}
+
 int	main()
 {
 
@@ -250,9 +267,10 @@ int	main()
 	//test_longdouble(LDBL_MIN);
 	//test_longdouble_f(LDBL_MIN);
 	//test_longdouble_f(LDBL_MIN);
-	test_precision_min();
+	//test_precision_min();
 	//test_longdouble(0.05);
 	//test_longdouble(0.0029296875L);
 	//test_longdouble(2.253);
 	//test_precision();
+	test_power_tab();
 }

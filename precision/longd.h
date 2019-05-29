@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/29 02:24:18 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/29 19:08:29 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ typedef	struct		s_str_f
 	char	sign;
 } t_str_f;
 
+int		ft_atoi(const char *str, unsigned long *add_total);
+
+int		ft_pututf8(char const *s);
 int		ft_putchar(int c);
 void	ft_putnbr(int n);
 int		ft_putstr(char const *s);
@@ -83,6 +86,7 @@ void	sum_t_str_f_ent(t_str_f *result, t_str_f *a, t_str_f *b);
 void	set_sign(t_str_f *result, unsigned int sign);
 
 void	show_float(t_longd input);
+void	int_power_tab(short	power_tab[FRAC_FLOAT]);
 void	set_power_tab(short	power_tab[FRAC_FLOAT], unsigned long vals, short exp, unsigned long mask);
 void	debug_print(t_str_f	*add, int power, int curr);
 void	debug_print_final(t_str_f	*final);

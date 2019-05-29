@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 13:45:06 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/29 01:58:13 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/29 18:04:46 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@ void	show_float(t_longd input)
 	ft_putstr("\n\t frac: ");
 	ft_putunbr(input.t_parts_ld.frac);
 	ft_putstr("\n}\n");
+}
+
+void	int_power_tab(short	power_tab[FRAC_FLOAT])
+{
+	int idx;
+
+	idx = 0;
+	while (++idx < FRAC_FLOAT)
+		power_tab[idx] = STOP_SHORT;
 }
 
 void	set_power_tab(short	power_tab[FRAC_FLOAT], unsigned long vals, short exp, unsigned long mask)
