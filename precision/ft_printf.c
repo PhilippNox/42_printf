@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/30 13:48:16 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/30 14:22:41 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,19 @@
 
 // cd /Users/wgorold/d04_printf_gitlab/precision
 // clear && gcc -Wall -Wextra ft_atoi.c ft_put.c ft_printf.c && ./a.out
+// sh z_check.sh -d
+
+
 // man 3 stdarg
 // va_list ap, ap2;
+// https://ru.wikipedia.org/wiki/Printf
+// https://en.wikipedia.org/wiki/Printf_format_string
 
 // if (*start > 48 && *start < 58)
 	//int val = ft_atoi(start, &add_total); ft_putstr("\nval = "); ft_putnbr(val);ft_putstr("\nadd_total = "); ft_putnbr(add_total);ft_putstr("\n");
+
+
+// TODO pasring value .a -> 0
 
 typedef	struct	s_task
 {
@@ -78,7 +86,7 @@ void	print_task(t_task *input)
 	ft_putstr("\n");
 }
 
-void	fill(char fill, unsigned long len)
+void	fill(char fill, int len)
 {
 	int idx;
 
@@ -188,7 +196,7 @@ int	set_task(t_task *input, char *start, va_list *ap)
 int	ft_printf(const char *format, ...)
 {
 	va_list ap;
-	char *s;
+	//char *s;
 	int idx;
 	int total;
 	t_task task;
@@ -251,6 +259,148 @@ void test_c()
 	ft_putstr("ok_end");
 }
 
+void test_s(char with_ft)
+{
+	char *str;
+	char *test;
+
+	str = "test_s_0 ok [%s] T_T 123\n";
+	test = "abcdef";
+	if (with_ft)
+		ft_printf(str, test);
+	printf(str, test);
+
+	str = "test_s_1 ok [%.s] T_T 123\n";
+	test = "abcdef";
+	if (with_ft)
+		ft_printf(str, test);
+	printf(str, test);
+
+	str = "test_s_2 ok [%.-5s] T_T 123\n";
+	test = "abcdef";
+	if (with_ft)
+		ft_printf(str, test);
+	printf(str, test);
+
+	str = "test_s_3 ok [%.3s] T_T 123\n";
+	test = "abcdef";
+	if (with_ft)
+		ft_printf(str, test);
+	printf(str, test);
+
+	str = "test_s_4 ok [%6.3s] T_T 123\n";
+	test = "abcdef";
+	if (with_ft)
+		ft_printf(str, test);
+	printf(str, test);
+
+	str = "test_s_5 ok [%-6.3s] T_T 123\n";
+	test = "abcdef";
+	if (with_ft)
+		ft_printf(str, test);
+	printf(str, test);
+
+	str = "test_s_4 ok [%06.3s] T_T 123\n";
+	test = "abcdef";
+	if (with_ft)
+		ft_printf(str, test);
+	printf(str, test);
+
+	str = "test_s_4 ok [%-06.3s] T_T 123\n";
+	test = "abcdef";
+	if (with_ft)
+		ft_printf(str, test);
+	printf(str, test);
+
+	str = "test_s_4 ok [%#06.3s] T_T 123\n";
+	test = "abcdef";
+	if (with_ft)
+		ft_printf(str, test);
+	printf(str, test);
+
+	str = "test_s_4 ok [%*.*s] T_T 123\n";
+	test = "abcdef";
+	if (with_ft)
+		ft_printf(str, 3, 4, test);
+	printf(str, 3, 4, test);
+
+	str = "test_s_4 ok [%*.*s] T_T 123\n";
+	test = "abcdef";
+	if (with_ft)
+		ft_printf(str, 4, 3, test);
+	printf(str, 4, 3, test);
+
+	str = "test_s_4 ok [%*.*s] T_T 123\n";
+	test = "abcdef";
+	if (with_ft)
+		ft_printf(str, -4, 3, test);
+	printf(str, -4, 3, test);
+
+	str = "test_s_4 ok [%*.*s] T_T 123\n";
+	test = "abcdef";
+	if (with_ft)
+		ft_printf(str, 4, -3, test);
+	printf(str, 4, -3, test);
+
+	str = "test_s_4 ok [%*.s] T_T 123\n";
+	test = "abcdef";
+	if (with_ft)
+		ft_printf(str, 4, test);
+	printf(str, 4, test);
+
+	return ;
+	str = "test_s_0 ok [%+#- 0*.Ls] T_T 123\n";
+	test = "abcdef";
+	if (with_ft)
+		ft_printf(str, 10, test);
+	printf(str, 10, test);
+
+	str = "test_s_0 ok [%+#- 0*.78Ls] T_T 123\n";
+	test = "abcdef";
+	if (with_ft)
+		ft_printf(str, 10, test);
+	printf(str, 10, test);
+
+	str = "test_s_1 ok [%+# 0*.78Ls] T_T 123\n";
+	test = "abcdef";
+	if (with_ft)
+		ft_printf(str, 10, test);
+	printf(str, 10, test);
+
+	str = "test_s_2 ok [%+# *.78Ls] T_T 123\n";
+	test = "abcdef";
+	if (with_ft)
+		ft_printf(str, 10, test);
+	printf(str, 10, test);
+
+	str = "test_s_3 ok [%+# *.78Ls] T_T 123\n";
+	test = "abcdef";
+	if (with_ft)
+		ft_printf(str, 0, test);
+	printf(str, 0, test);
+
+	// ⚠️⚠️⚠️⚠️ minus is a flag !
+	str = "test_s_4 ok [%+# *.7Ls] T_T 123\n";
+	test = "abcdef";
+	if (with_ft)
+		ft_printf(str, -10, test);
+	printf(str, -10, test);
+
+	str = "test_s_5 ok [%+# *.7Ls] T_T 123\n";
+	test = "abcdef";
+	if (with_ft)
+		ft_printf(str, 2, test);
+	printf(str, 2, test);
+
+	// ⚠️⚠️⚠️⚠️ minus is a flag and so precision is a width
+	str = "test_s_6 ok [%+# *.-7Ls] T_T 123\n";
+	test = "abcdef";
+	if (with_ft)
+		ft_printf(str, 2, test);
+	printf(str, 2, test);
+	ft_putstr("ok_end");
+}
+
 int main ()
 {
 	//ft_putnbr(ft_printf("8 🦑 ok👈\n"));
@@ -261,6 +411,7 @@ int main ()
 	//ft_putnbr(ft_printf("11 🦑 [%+#- 0*.78hhd]ok👈\n", 10));
 	//ft_putnbr(ft_printf("11 🦑 [%+#- 0*.78Lg]ok👈\n", 10));
 	//ft_putnbr(ft_printf("11 🦑 [%+#- 0*.78Lc]ok👈\n", 10, 'A'));
-	test_c();
+	//test_c();
+	test_s(0);
 	ft_putstr("\n");
 }
