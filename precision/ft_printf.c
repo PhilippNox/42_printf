@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/30 13:39:40 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/30 13:47:34 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ int	set_task(t_task *input, char *start, va_list *ap)
 		add_total++;
 		if (input->precision < 0)
 		{
-			//input->width = -input->precision;
+			input->width = -input->precision;
 			input->minus = 1;
 			input->precision = 0;
 		}
