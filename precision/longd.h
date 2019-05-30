@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/29 19:08:29 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/30 15:46:10 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,29 @@ typedef	struct		s_str_f
 	char	sign;
 } t_str_f;
 
+typedef	struct	s_task
+{
+	char minus;
+	char plus;
+	char space;
+	char hash;
+	char zero;
+
+	int width;
+	int precision;
+	char length;
+	char type;
+} t_task;
+
+void	init_task(t_task *input);
+void	print_task(t_task *input);
+int		set_task(t_task *input, char *start, va_list *ap);
+int		make_task(t_task *input, va_list *ap);
+
 int		ft_atoi(const char *str, unsigned long *add_total);
+int		make_c(t_task *input, va_list *ap);
+void	fill(char fill, int len);
+int		isOneOf(char target, char * str);
 
 int		ft_pututf8(char const *s);
 int		ft_putchar(int c);
@@ -95,4 +117,6 @@ void	get_entiere(t_str_f *ent, short	power_tab[FRAC_FLOAT]);
 void	get_precision_longd(t_str_f *output, long double input);
 void	get_precision_d(t_str_f *output, double input);
 void	get_precision_f(t_str_f *output, float input);
+
+
 #endif

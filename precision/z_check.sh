@@ -12,7 +12,7 @@ while getopts 'd' flag; do
 	esac
 done
 
-gcc -Wall -Wextra ft_atoi.c ft_put.c ft_printf.c;
+gcc -Wall -Wextra ft_atoi.c ft_put.c ft_printf.c ft_make_c.c ft_printf_helper.c ft_printf_task.c ;
 ./a.out > z_result;
 csplit -s z_result /ok_end/;
 tail -n +2 xx01 > xx_origin;
@@ -21,10 +21,10 @@ diff xx00 xx_origin > xx_diff;
 diff xx00 xx_origin;
 tests_passed=$(head -1 xx_diff);
 
-if [[ -z $tests_passed ]]; then
+if [[ -z $tests_passed ]] && test -f "xx00"; then
 	echo "Test passed ! ✅  ✅  ✅"
 else
-	echo "Test NO ! ❌  ❌  ❌"
+	echo "Test NOT passed ! ❌  ❌  ❌"
 fi
 
 if [ "$d_flag" = "true" ]; then
