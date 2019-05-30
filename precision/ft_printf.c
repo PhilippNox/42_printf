@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/30 13:47:34 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/30 13:48:16 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,33 +219,33 @@ void test_c()
 {
 	char *str;
 
-	str = "test0 🦑 [%+#- 0*.78Lc]ok👈\n";
+	str = "test_c_0 🦑 [%+#- 0*.78Lc]ok👈\n";
 	ft_printf(str, 10, 'A');
 	printf(str, 10, 'A');
 
-	str = "test1 🦑 [%+# 0*.78Lc]ok👈\n";
+	str = "test_c_1 🦑 [%+# 0*.78Lc]ok👈\n";
 	ft_printf(str, 10, 'A');
 	printf(str, 10, 'A');
 
-	str = "test2 🦑 [%+# *.78Lc]ok👈\n";
+	str = "test_c_2 🦑 [%+# *.78Lc]ok👈\n";
 	ft_printf(str, 10, 'A');
 	printf(str, 10, 'A');
 
-	str = "test3 🦑 [%+# *.78Lc]ok👈\n";
+	str = "test_c_3 🦑 [%+# *.78Lc]ok👈\n";
 	ft_printf(str, 0, 'A');
 	printf(str, 0, 'A');
 
 	// ⚠️⚠️⚠️⚠️ minus is a flag !
-	str = "test4 🦑 [%+# *.7Lc]ok👈\n";
+	str = "test_c_4 🦑 [%+# *.7Lc]ok👈\n";
 	ft_printf(str, -10, 'A');
 	printf(str, -10, 'A');
 
-	str = "test5 🦑 [%+# *.7Lc]ok👈\n";
+	str = "test_c_5 🦑 [%+# *.7Lc]ok👈\n";
 	ft_printf(str, 2, 'A');
 	printf(str, 2, 'A');
 
 	// ⚠️⚠️⚠️⚠️ minus is a flag and so precision is a width
-	str = "test6 🦑 [%+# *.-7Lc]ok👈\n";
+	str = "test_c_6 🦑 [%+# *.-7Lc]ok👈\n";
 	ft_printf(str, 2, 'A');
 	printf(str, 2, 'A');
 	ft_putstr("ok_end");
