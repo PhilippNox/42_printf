@@ -1,48 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_helper.c                                 :+:      :+:    :+:   */
+/*   ft_make_s.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/30 15:38:52 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/30 16:33:38 by wgorold          ###   ########.fr       */
+/*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
+/*   Updated: 2019/05/30 16:43:17 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "longd.h"
 
-void	fill(char fill, int len)
+int	make_s(t_task *input, va_list *ap)
 {
-	int idx;
+	char *str;
+	int len;
 
-	idx = -1;
-	while (++idx < len)
-		ft_putchar(fill);
-}
+	str = va_arg(*ap, char *);
+	len = length_utf8(str);
+	if (input->precision != -1 && input->precision < len)
+		len = input->precision;
 
-int	isOneOf(char target, char * str)
-{
-	int idx;
-
-	idx = -1;
-	while (str[++idx])
-		if (str[idx] == target)
-			return (1);
-	return (0);
-}
-
-int	length_utf8(char *str)
-{
-	int idx;
-	int out;
-
-	idx = 0;
-	out = 0;
-	while (str[idx])
+	if (input->width > len)
 	{
-		idx += ft_utf8step(str);
-		out++;
+		if (input->minus)
+		{
+			ft_putstrn(str, len);
+			fill(' ', input->width - len);
+		}
 	}
-	return (out);
+	else
+	{
+		fill(input->zero, input->width - len);
+		ft_putstrn(str, len);
+	}
+	return (input->width > len) ? input->width : len;
 }

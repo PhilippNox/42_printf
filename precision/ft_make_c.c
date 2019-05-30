@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/30 15:37:17 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/30 16:35:28 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	make_c(t_task *input, va_list *ap)
 	char c;
 
 	c = va_arg(*ap, int);
-	if (input->width == 0)
+	if (input->width < 1)
 	{
 		ft_putchar(c);
 		return (1);

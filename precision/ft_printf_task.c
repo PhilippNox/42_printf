@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:42:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/30 15:44:14 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/30 17:16:30 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	init_task(t_task *input)
 
 void	print_task(t_task *input)
 {
-	ft_putstr("\tinput->minus=     ");
+	ft_putstr("\n\tinput->minus=     ");
 	if (input->minus)
 		ft_putstr("✅");
 	ft_putstr("\n\tinput->plus=      ");
@@ -115,5 +115,7 @@ int	make_task(t_task *input, va_list *ap)
 {
 	if (input->type == 'c')
 		return make_c(input, ap);
+	if (input->type == 's')
+		return make_s(input, ap);
 	return (0);
 }

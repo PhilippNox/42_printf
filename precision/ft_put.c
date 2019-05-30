@@ -6,11 +6,25 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 02:41:09 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/29 01:56:13 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/30 16:40:58 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "longd.h"
+
+int	ft_utf8step(char const *s)
+{
+	int idx;
+
+	idx = 1;
+	if ((*s & 0xC0) == 0xC0)
+		idx = 2;
+	if ((*s & 0xE0) == 0xE0)
+		idx = 3;
+	if ((*s & 0xF0) == 0xF0)
+		idx = 4;
+	return (idx);
+}
 
 int	ft_pututf8(char const *s)
 {
@@ -44,6 +58,24 @@ int	ft_putstr(char const *s)
 	printed = 0;
 	idx = 0;
 	while (*(s + idx))
+	{
+		idx += ft_pututf8(s + idx);
+		printed++;
+	}
+	return (printed);
+}
+
+int	ft_putstrn(char const *s, int len)
+{
+	int idx;
+	int printed;
+
+	if (!s)
+		return (0);
+
+	printed = 0;
+	idx = 0;
+	while (*(s + idx) && printed < len)
 	{
 		idx += ft_pututf8(s + idx);
 		printed++;

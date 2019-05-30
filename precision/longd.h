@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/30 15:46:10 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/30 16:41:16 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,15 +84,20 @@ void	print_task(t_task *input);
 int		set_task(t_task *input, char *start, va_list *ap);
 int		make_task(t_task *input, va_list *ap);
 
-int		ft_atoi(const char *str, unsigned long *add_total);
 int		make_c(t_task *input, va_list *ap);
+int		make_s(t_task *input, va_list *ap);
+
+int		ft_atoi(const char *str, unsigned long *add_total);
 void	fill(char fill, int len);
 int		isOneOf(char target, char * str);
+int		length_utf8(char *str);
 
+int		ft_utf8step(char const *s);
 int		ft_pututf8(char const *s);
 int		ft_putchar(int c);
 void	ft_putnbr(int n);
 int		ft_putstr(char const *s);
+int		ft_putstrn(char const *s, int len);
 void	print_arr(short *list, int size);
 void	ft_putunbr(unsigned long n);
 
