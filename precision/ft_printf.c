@@ -6,11 +6,13 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/30 00:01:18 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/30 13:39:40 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "longd.h"
+
+// cd /Users/wgorold/d04_printf_gitlab/precision && clear && gcc -Wall -Wextra ft_atoi.c ft_put.c ft_printf.c && ./a.out
 
 // cd /Users/wgorold/d04_printf_gitlab/precision
 // clear && gcc -Wall -Wextra ft_atoi.c ft_put.c ft_printf.c && ./a.out
@@ -28,8 +30,8 @@ typedef	struct	s_task
 	char hash;
 	char zero;
 
-	unsigned long width;
-	unsigned long precision;
+	int width;
+	int precision;
 	char length;
 	char type;
 } t_task;
@@ -138,27 +140,40 @@ int	set_task(t_task *input, char *start, va_list *ap)
 	}
 	if (*start == '-')
 		input->minus = 1;
-	if (*start == '+')
+	else if (*start == '+')
 		input->plus = 1;
-	if (*start == ' ')
+	else if (*start == ' ')
 		input->space = 1;
-	if (*start == '#')
+	else if (*start == '#')
 		input->hash = 1;
-	if (*start == '0')
+	else if (*start == '0')
 		input->zero = '0';
-	if (*start == '.')
+	else if (*start == '.')
 	{
 		if (*(start + 1) == '*')
 			input->precision = va_arg(*ap, unsigned long);
 		else
-			input->precision = (unsigned long)ft_atoi(start + 1, &add_total);
+			input->precision = ft_atoi(start + 1, &add_total);
 		add_total++;
+		if (input->precision < 0)
+		{
+			//input->width = -input->precision;
+			input->minus = 1;
+			input->precision = 0;
+		}
 	}
-	if (*start == '*')
+	else if (*start == '*')
+	{
 		input->width = va_arg(*ap, unsigned long);
-	if (*start > 48 && *start < 58)
-		input->width = (unsigned long)ft_atoi(start, &add_total);
-	if (*start == 'h' || *start == 'l' || *start == 'L')
+		if (input->width < 0)
+		{
+			input->width = -input->width;
+			input->minus = 1;
+		}
+	}
+	else if (*start > 48 && *start < 58)
+		input->width = ft_atoi(start, &add_total);
+	else if (*start == 'h' || *start == 'l' || *start == 'L')
 	{
 		if (*start == 'l' && *(start + 1) == 'l')
 			input->length = 'l' + add_total++;
@@ -204,30 +219,36 @@ void test_c()
 {
 	char *str;
 
-	ft_putstr("\n");
-	str = " 🦑 [%+#- 0*.78Lc]ok👈\n";
-	ft_putnbr(ft_printf(str, 10, 'A'));
-	ft_putchar('\n');
-	ft_putnbr(printf(str, 10, 'A'));
-	ft_putstr("\n\n\n");
+	str = "test0 🦑 [%+#- 0*.78Lc]ok👈\n";
+	ft_printf(str, 10, 'A');
+	printf(str, 10, 'A');
 
-	str = " 🦑 [%+# 0*.78Lc]ok👈\n";
-	ft_putnbr(ft_printf(str, 10, 'A'));
-	ft_putchar('\n');
-	ft_putnbr(printf(str, 10, 'A'));
-	ft_putstr("\n\n\n");
+	str = "test1 🦑 [%+# 0*.78Lc]ok👈\n";
+	ft_printf(str, 10, 'A');
+	printf(str, 10, 'A');
 
-	str = " 🦑 [%+# *.78Lc]ok👈\n";
-	ft_putnbr(ft_printf(str, 10, 'A'));
-	ft_putchar('\n');
-	ft_putnbr(printf(str, 10, 'A'));
-	ft_putstr("\n\n\n");
+	str = "test2 🦑 [%+# *.78Lc]ok👈\n";
+	ft_printf(str, 10, 'A');
+	printf(str, 10, 'A');
 
-	str = " 🦑 [%+# *.78Lc]ok👈\n";
-	ft_putnbr(ft_printf(str, 0, 'A'));
-	ft_putchar('\n');
-	ft_putnbr(printf(str, 0, 'A'));
-	ft_putstr("\n\n\n");
+	str = "test3 🦑 [%+# *.78Lc]ok👈\n";
+	ft_printf(str, 0, 'A');
+	printf(str, 0, 'A');
+
+	// ⚠️⚠️⚠️⚠️ minus is a flag !
+	str = "test4 🦑 [%+# *.7Lc]ok👈\n";
+	ft_printf(str, -10, 'A');
+	printf(str, -10, 'A');
+
+	str = "test5 🦑 [%+# *.7Lc]ok👈\n";
+	ft_printf(str, 2, 'A');
+	printf(str, 2, 'A');
+
+	// ⚠️⚠️⚠️⚠️ minus is a flag and so precision is a width
+	str = "test6 🦑 [%+# *.-7Lc]ok👈\n";
+	ft_printf(str, 2, 'A');
+	printf(str, 2, 'A');
+	ft_putstr("ok_end");
 }
 
 int main ()

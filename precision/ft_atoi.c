@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 23:01:05 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/29 19:22:59 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/30 12:38:08 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int			ft_atoi(const char *str, unsigned long *add_total)
 		out = ft_atoi_rec(work, 0, &tmp, &red_flag);
 	else
 		return (0);
-	*add_total = tmp + 1;
+	*add_total = (*work == '-') ? tmp + 2 : tmp + 1;
 	if (red_flag == 't')
 		return (*work == '-') ? 0 : -1;
 	return (*work == '-') ? (-(int)out) : ((int)out);
