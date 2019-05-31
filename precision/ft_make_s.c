@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/30 16:43:17 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/31 20:24:22 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,13 @@ int	make_s(t_task *input, va_list *ap)
 			ft_putstrn(str, len);
 			fill(' ', input->width - len);
 		}
+		else
+		{
+			fill(input->zero, input->width - len);
+			ft_putstrn(str, len);
+		}
 	}
 	else
-	{
-		fill(input->zero, input->width - len);
 		ft_putstrn(str, len);
-	}
 	return (input->width > len) ? input->width : len;
 }

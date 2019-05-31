@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:42:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/30 17:16:30 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/31 20:30:32 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	init_task(t_task *input)
 	input->hash = 0;
 	input->zero = ' ';
 
-	input->width = 0;
-	input->precision = 0;
+	input->width = -1;
+	input->precision = -1;
 	input->length = 'n';
 	input->type = 'n';
 }
@@ -56,7 +56,8 @@ void	print_task(t_task *input)
 
 int	set_task(t_task *input, char *start, va_list *ap)
 {
-	unsigned long add_total;
+	int add_total;
+	int val;
 
 	add_total = 1;
 	if (isOneOf(*start, "cspdiouxXgf%"))
@@ -77,25 +78,29 @@ int	set_task(t_task *input, char *start, va_list *ap)
 	else if (*start == '.')
 	{
 		if (*(start + 1) == '*')
-			input->precision = va_arg(*ap, unsigned long);
+			val = va_arg(*ap, int);
 		else
-			input->precision = ft_atoi(start + 1, &add_total);
+			val = ft_atoi(start + 1, &add_total);
 		add_total++;
-		if (input->precision < 0)
+		if (val < 0)
 		{
-			input->width = -input->precision;
+			input->width = -val;
 			input->minus = 1;
-			input->precision = 0;
+			input->precision = (*(start + 1) == '*') ? input->precision : 0; //test_s_12
 		}
+		else
+			input->precision = val;
 	}
 	else if (*start == '*')
 	{
-		input->width = va_arg(*ap, unsigned long);
-		if (input->width < 0)
+		val = va_arg(*ap, unsigned long);
+		if (val < 0)
 		{
-			input->width = -input->width;
+			input->width = -val;
 			input->minus = 1;
 		}
+		else
+			input->width = val;
 	}
 	else if (*start > 48 && *start < 58)
 		input->width = ft_atoi(start, &add_total);

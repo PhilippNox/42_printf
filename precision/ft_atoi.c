@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 23:01:05 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/30 12:38:08 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/05/31 17:05:06 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static long	ft_atoi_rec(const char *str, int count, long *order, char *red_flag)
 	return (out);
 }
 
-int			ft_atoi(const char *str, unsigned long *add_total)
+int			ft_atoi(const char *str, int *add_total)
 {
 	long tmp;
 	long out;
