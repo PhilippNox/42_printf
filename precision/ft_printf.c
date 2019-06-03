@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/03 14:49:18 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/03 17:06:14 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -280,42 +280,54 @@ void test_p(char with_ft)
 	if (with_ft)
 		ft_printf(str, nul);
 
+	test = "abc";
+	str = "test_p_4 ok [%20.3p] T_T 123\n";
+	printf(str, test);
+	if (with_ft)
+		ft_printf(str, test);
+
+	test = "abc";
+	str = "test_p_5 ok [%-20.3p] T_T 123\n";
+	printf(str, test);
+	if (with_ft)
+		ft_printf(str, test);
+
+	test = "abc";
+	str = "test_p_6 ok [%020.3p] T_T 123\n";
+	printf(str, test);
+	if (with_ft)
+		ft_printf(str, test);
+
+	test = "abc";
+	str = "test_p_7 ok [%0-20p] T_T 123\n";
+	printf(str, test);
+	if (with_ft)
+		ft_printf(str, test);
+
+	test = "abc";
+	str = "test_p_8 ok [%.3p] T_T 123\n";
+	printf(str, test);
+	if (with_ft)
+		ft_printf(str, test);
+
 	ft_putstr("ok_end");
 	return ;
-	str = "test_p_1 🦑 [%+# 0*.78Lc]ok👈\n";
-	printf(str, 10, 'A');
+	a = 20;
+	test = "test_p_9 len = %d\n";
+	str = "[%p]";
+	printf(test, printf(str, a));
 	if (with_ft)
-		ft_printf(str, 10, 'A');
+		printf(test, ft_printf(str, a));
 
-	str = "test_p_2 🦑 [%+# *.78Lc]ok👈\n";
-	printf(str, 10, 'A');
+	a = 20;
+	test = "test_p_10 len = %d\n";
+	str = "[%20p]";
+	printf(test, printf(str, a));
 	if (with_ft)
-		ft_printf(str, 10, 'A');
+		printf(test, ft_printf(str, a));
 
-	str = "test_p_3 🦑 [%+# *.78Lc]ok👈\n";
-	printf(str, 0, 'A');
-	if (with_ft)
-		ft_printf(str, 0, 'A');
-
-	// ⚠️⚠️⚠️⚠️ minus is a flag !
-	str = "test_p_4 🦑 [%+# *.7Lc]ok👈\n";
-	printf(str, -10, 'A');
-	if (with_ft)
-		ft_printf(str, -10, 'A');
-
-
-	str = "test_p_5 🦑 [%+# *.7Lc]ok👈\n";
-	printf(str, 2, 'A');
-	if (with_ft)
-		ft_printf(str, 2, 'A');
-
-
-	// ⚠️⚠️⚠️⚠️ minus is a flag and so precision is a width
-	str = "test_p_6 🦑 [%+# *.-7Lc]ok👈\n";
-	printf(str, 2, 'A');
-	if (with_ft)
-		ft_printf(str, 2, 'A');
 	ft_putstr("ok_end");
+	return ;
 }
 
 int main ()
