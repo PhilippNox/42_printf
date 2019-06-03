@@ -6,9 +6,12 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 02:41:09 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/30 16:40:58 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/03 14:42:11 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// cd /Users/wgorold/d04_printf_gitlab/precision
+// clear && gcc -Wall -Wextra ft_put.c  && ./a.out
 
 #include "longd.h"
 
@@ -129,3 +132,43 @@ void	print_arr(short *list, int size)
 	}
 	ft_putstr("]");
 }
+
+void	ft_baseitoa(char *out, unsigned long target, unsigned char base)
+{
+	char *code;
+	char rev_out[21];
+	unsigned long rest;
+	unsigned long idx;
+
+	if (base < 10)
+	{
+		out[0] = '0';
+		out[1] = '\0';
+		return ;
+	}
+	code = "0123456789abcdef";
+	idx = 0;
+	while ((rest = target / base) != 0)
+	{
+		rev_out[idx++] = code[target % base];
+		target = rest;
+	}
+	rev_out[idx++] = code[target % base];
+	rest = idx;
+	while (idx > 0)
+	{
+		out[rest - idx] = rev_out[idx - 1];
+		idx--;
+	}
+	out[rest] = '\0';
+}
+
+/*
+int main()
+{
+	char str[20];
+	ft_baseitoa(str, 1000, 16);
+	printf("%s\n", str);
+	return (1);
+}
+*/

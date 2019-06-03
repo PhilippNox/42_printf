@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/31 20:32:59 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/03 14:49:18 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // cd /Users/wgorold/d04_printf_gitlab/precision && clear && gcc -Wall -Wextra ft_atoi.c ft_put.c ft_printf.c && ./a.out
 
 // cd /Users/wgorold/d04_printf_gitlab/precision
-// clear && gcc -Wall -Wextra ft_atoi.c ft_put.c ft_printf.c ft_make_c.c ft_printf_helper.c ft_printf_task.c ft_make_s.c  && ./a.out
+// clear && gcc -Wall -Wextra ft_atoi.c ft_put.c ft_printf.c ft_make_c.c ft_printf_helper.c ft_printf_task.c ft_make_s.c ft_make_p.c  && ./a.out
 // sh z_check.sh -d
 
 
@@ -249,6 +249,75 @@ void test_s(char with_ft)
 	ft_putstr("ok_end");
 }
 
+void test_p(char with_ft)
+{
+	char *str;
+	char *test;
+	char *nul;
+	int a;
+
+	test = "abc";
+	str = "test_p_0 [%p] ok\n";
+	printf(str, test);
+	if (with_ft)
+		ft_printf(str, test);
+
+	test = "bc";
+	str = "test_p_1 [%p] ok\n";
+	printf(str, test);
+	if (with_ft)
+		ft_printf(str, test);
+
+	a = 20;
+	str = "test_p_2 [%p] ok\n";
+	printf(str, a);
+	if (with_ft)
+		ft_printf(str, a);
+
+	nul = NULL;
+	str = "test_p_3 [%p] ok\n";
+	printf(str, nul);
+	if (with_ft)
+		ft_printf(str, nul);
+
+	ft_putstr("ok_end");
+	return ;
+	str = "test_p_1 🦑 [%+# 0*.78Lc]ok👈\n";
+	printf(str, 10, 'A');
+	if (with_ft)
+		ft_printf(str, 10, 'A');
+
+	str = "test_p_2 🦑 [%+# *.78Lc]ok👈\n";
+	printf(str, 10, 'A');
+	if (with_ft)
+		ft_printf(str, 10, 'A');
+
+	str = "test_p_3 🦑 [%+# *.78Lc]ok👈\n";
+	printf(str, 0, 'A');
+	if (with_ft)
+		ft_printf(str, 0, 'A');
+
+	// ⚠️⚠️⚠️⚠️ minus is a flag !
+	str = "test_p_4 🦑 [%+# *.7Lc]ok👈\n";
+	printf(str, -10, 'A');
+	if (with_ft)
+		ft_printf(str, -10, 'A');
+
+
+	str = "test_p_5 🦑 [%+# *.7Lc]ok👈\n";
+	printf(str, 2, 'A');
+	if (with_ft)
+		ft_printf(str, 2, 'A');
+
+
+	// ⚠️⚠️⚠️⚠️ minus is a flag and so precision is a width
+	str = "test_p_6 🦑 [%+# *.-7Lc]ok👈\n";
+	printf(str, 2, 'A');
+	if (with_ft)
+		ft_printf(str, 2, 'A');
+	ft_putstr("ok_end");
+}
+
 int main ()
 {
 	//ft_putnbr(ft_printf("8 🦑 ok👈\n"));
@@ -260,6 +329,7 @@ int main ()
 	//ft_putnbr(ft_printf("11 🦑 [%+#- 0*.78Lg]ok👈\n", 10));
 	//ft_putnbr(ft_printf("11 🦑 [%+#- 0*.78Lc]ok👈\n", 10, 'A'));
 	//test_c();
-	test_s(1);
+	//test_s(1);
+	test_p(1);
 	ft_putstr("\n");
 }
