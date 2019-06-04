@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/04 19:29:24 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/04 19:33:33 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@ void	putsign(t_task *input, int target)
 		ft_putchar('-');
 }
 
+void	fillsign(t_task *input, int target, char c, int len)
+{
+	if (input->plus || input->space || target < 0)
+		fill(c, input->width - len - 1);
+	else
+		fill(c, input->width - len);
+}
+
 
 int	make_d(t_task *input, va_list *ap)
 {
@@ -47,17 +55,9 @@ int	make_d(t_task *input, va_list *ap)
 	{
 		if (input->minus)
 		{
-			if (input->plus && target >= 0)
-				ft_putchar('+');
-			else if (input->space && target >= 0)
-				ft_putchar(' ');
-			else if (target < 0)
-				ft_putchar('-');
+			putsign(input, target);
 			putpres(str, len, len_num);
-			if (input->plus || input->space || target < 0)
-				fill(' ', input->width - len - 1);
-			else
-				fill(' ', input->width - len);
+			fillsign(input, target, ' ', len);
 		}
 		else
 		{
@@ -65,57 +65,28 @@ int	make_d(t_task *input, va_list *ap)
 			{
 				if (input->precision == -1)
 				{
-					if (input->plus && target >= 0)
-						ft_putchar('+');
-					else if (input->space && target >= 0)
-						ft_putchar(' ');
-					else if (target < 0)
-						ft_putchar('-');
-					if (input->plus || input->space || target < 0)
-						fill('0', input->width - len - 1);
-					else
-						fill('0', input->width - len);
+					putsign(input, target);
+					fillsign(input, target, '0', len);
 					putpres(str, len, len_num);
 				}
 				else
 				{
-					if (input->plus || input->space || target < 0)
-						fill(' ', input->width - len - 1);
-					else
-						fill(' ', input->width - len);
-					if (input->plus && target >= 0)
-						ft_putchar('+');
-					else if (input->space && target >= 0)
-						ft_putchar(' ');
-					else if (target < 0)
-						ft_putchar('-');
+					fillsign(input, target, ' ', len);
+					putsign(input, target);
 					putpres(str, len, len_num);
 				}
 			}
 			else
 			{
-				if (input->plus || input->space || target < 0)
-					fill(' ', input->width - len - 1);
-				else
-					fill(' ', input->width - len);
-				if (input->plus && target >= 0)
-					ft_putchar('+');
-				else if (input->space && target >= 0)
-					ft_putchar(' ');
-				else if (target < 0)
-					ft_putchar('-');
+				fillsign(input, target, ' ', len);
+				putsign(input, target);
 				putpres(str, len, len_num);
 			}
 		}
 	}
 	else
 	{
-		if (input->plus && target >= 0)
-			ft_putchar('+');
-		else if (input->space && target >= 0)
-			ft_putchar(' ');
-		else if (target < 0)
-			ft_putchar('-');
+		putsign(input, target);
 		putpres(str, len, len_num);
 	}
 	if (input->plus || input->space || target < 0)
