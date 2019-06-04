@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/04 18:18:00 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/04 19:16:31 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1660,7 +1660,7 @@ void test_d(char with_ft, int test)
 	str = "test_s_126 ok [%#0 -+10d] T>T 123\n";
 	ft_printf(str, test);
 
-	ft_putstr("ok_end");
+	ft_putstr("ok_end\n");
 	}
 
 	str = "test_s_0 ok [%#0 -+10.4d] T>T 123\n";
@@ -2046,38 +2046,6 @@ void test_d(char with_ft, int test)
 
 }
 
-void test_d_my()
-{
-	char *str;
-	str = "test_d ok [% d]\n";
-	str = "test_d ok [%+ d]\n";
-	str = "test_d ok [%20 d]\n";
-	str = "test_d ok [%20 0 -+d]\n";
-	str = "test_d ok [%20 0 -d]\n";
-	str = "test_d ok [%20 d]\n";
-	str = "test_d ok [%20 +d]\n";
-	str = "test_d ok [%20 0+d]\n";
-	//str = "test_d ok [%20 0d]\n";
-	ft_printf(str, 123);
-	ft_printf(str, 2147483647);
-	ft_printf(str, 1);
-	ft_printf(str, 0);
-	ft_printf(str, -1);
-	ft_printf(str, -321);
-	ft_printf(str, -2147483647);
-	ft_printf(str, -2147483648);
-
-	printf(str, 123);
-	printf(str, 2147483647);
-	printf(str, 1);
-	printf(str, 0);
-	printf(str, -1);
-	printf(str, -321);
-	printf(str, -2147483647);
-	printf(str, -2147483648);
-	ft_putstr("\n");
-}
-
 void test_p(char with_ft)
 {
 	char *str;
@@ -2157,9 +2125,42 @@ void test_p(char with_ft)
 
 	ft_putstr("ok_end");
 	return ;
+}
 
+void test_d_my()
+{
+	char *str;
+	str = "test_d ok [% d]\n";
+	str = "test_d ok [%+ d]\n";
+	str = "test_d ok [%20 d]\n";
+	str = "test_d ok [%20 0 -+d]\n";
+	str = "test_d ok [%20 0 -d]\n";
+	str = "test_d ok [%20 d]\n";
+	str = "test_d ok [%20 +d]\n";
+	str = "test_d ok [%20 0+d]\n";
+	//str = "test_d ok [%.5 0+d]\n";
+	//str = "test_d ok [%.5 8d]\n";
+	//str = "test_d ok [%20 0d]\n";
+	ft_printf(str, 123);
+	ft_printf(str, 2147483647);
+	ft_printf(str, 1);
+	ft_printf(str, 0);
+	ft_printf(str, -1);
+	ft_printf(str, -321);
+	ft_printf(str, -2147483647);
+	ft_printf(str, -2147483648);
 
+	ft_printf("ft_printf\n=======\nprintf\n");
 
+	printf(str, 123);
+	printf(str, 2147483647);
+	printf(str, 1);
+	printf(str, 0);
+	printf(str, -1);
+	printf(str, -321);
+	printf(str, -2147483647);
+	printf(str, -2147483648);
+	ft_putstr("\n");
 }
 
 int main ()
@@ -2178,5 +2179,5 @@ int main ()
 	//test_p(1);
 	//test_d(0, 12356);
 	//test_d_my();
-	test_d(0, 123);
+	test_d(1, 123);
 }

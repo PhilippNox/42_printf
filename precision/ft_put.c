@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 02:41:09 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/04 17:40:03 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/04 19:04:13 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,8 +184,6 @@ void	ft_baseitoasign(char *out, long target, unsigned char base)
 		target = rest;
 	}
 	rev_out[idx++] = (target < 0) ? code[-(target % base)] : code[target % base];
-	if (target < 0)
-		rev_out[idx++] = '-';
 	rest = idx;
 	while (idx > 0)
 	{

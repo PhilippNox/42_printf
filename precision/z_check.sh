@@ -12,7 +12,7 @@ while getopts 'd' flag; do
 	esac
 done
 
-gcc -Wall -Wextra ft_atoi.c ft_put.c ft_printf.c ft_make_c.c ft_printf_helper.c ft_printf_task.c ft_make_p.c ft_make_s.c;
+gcc -Wall -Wextra ft_atoi.c ft_put.c ft_printf.c ft_make_c.c ft_printf_helper.c ft_printf_task.c ft_make_p.c ft_make_s.c ft_make_d.c;
 ./a.out > z_result;
 csplit -s z_result /ok_end/;
 tail -n +2 xx01 > xx_origin;
