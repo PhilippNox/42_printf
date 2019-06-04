@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 02:41:09 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/03 14:42:11 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/04 17:40:03 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,38 @@ void	ft_baseitoa(char *out, unsigned long target, unsigned char base)
 		target = rest;
 	}
 	rev_out[idx++] = code[target % base];
+	rest = idx;
+	while (idx > 0)
+	{
+		out[rest - idx] = rev_out[idx - 1];
+		idx--;
+	}
+	out[rest] = '\0';
+}
+
+void	ft_baseitoasign(char *out, long target, unsigned char base)
+{
+	char *code;
+	char rev_out[22];
+	long rest;
+	long idx;
+
+	if (base < 10)
+	{
+		out[0] = '0';
+		out[1] = '\0';
+		return ;
+	}
+	code = "0123456789abcdef";
+	idx = 0;
+	while ((rest = target / base) != 0)
+	{
+		rev_out[idx++] = (target < 0) ? code[-(target % base)] : code[target % base];
+		target = rest;
+	}
+	rev_out[idx++] = (target < 0) ? code[-(target % base)] : code[target % base];
+	if (target < 0)
+		rev_out[idx++] = '-';
 	rest = idx;
 	while (idx > 0)
 	{

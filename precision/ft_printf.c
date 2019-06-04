@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/04 16:10:58 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/04 18:18:00 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // cd /Users/wgorold/d04_printf_gitlab/precision && clear && gcc -Wall -Wextra ft_atoi.c ft_put.c ft_printf.c && ./a.out
 
 // cd /Users/wgorold/d04_printf_gitlab/precision
-// clear && gcc -Wall -Wextra ft_atoi.c ft_put.c ft_printf.c ft_make_c.c ft_printf_helper.c ft_printf_task.c ft_make_s.c ft_make_p.c  && ./a.out
+// clear && gcc -Wall -Wextra ft_atoi.c ft_put.c ft_printf.c ft_make_c.c ft_make_d.c ft_printf_helper.c ft_printf_task.c ft_make_s.c ft_make_p.c  && ./a.out
 // sh z_check.sh -d
 
 
@@ -1273,6 +1273,811 @@ void test_s2()
 
 }
 
+void test_d(char with_ft, int test)
+{
+	char *str;
+
+	if (with_ft)
+	{
+	str = "test_s_0 ok [%#0 -+10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_1 ok [%0 -+10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_2 ok [% -+10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_3 ok [%-+10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_4 ok [%+10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_5 ok [%10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_6 ok [%.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_7 ok [%10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_8 ok [%+.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_9 ok [%+d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_10 ok [%+10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_11 ok [%-10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_12 ok [%-.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_13 ok [%-d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_14 ok [%-10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_15 ok [%-+.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_16 ok [%-+d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_17 ok [%-+10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_18 ok [% +10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_19 ok [% 10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_20 ok [% .4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_21 ok [% d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_22 ok [% 10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_23 ok [% +.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_24 ok [% +d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_25 ok [% +10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_26 ok [% -10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_27 ok [% -.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_28 ok [% -d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_29 ok [% -10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_30 ok [% -+.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_31 ok [% -+d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_32 ok [% -+10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_33 ok [%0-+10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_34 ok [%0+10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_35 ok [%010.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_36 ok [%0.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_37 ok [%0d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_38 ok [%010d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_39 ok [%0+.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_40 ok [%0+d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_41 ok [%0+10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_42 ok [%0-10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_43 ok [%0-.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_44 ok [%0-d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_45 ok [%0-10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_46 ok [%0-+.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_47 ok [%0-+d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_48 ok [%0-+10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_49 ok [%0 +10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_50 ok [%0 10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_51 ok [%0 .4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_52 ok [%0 d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_53 ok [%0 10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_54 ok [%0 +.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_55 ok [%0 +d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_56 ok [%0 +10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_57 ok [%0 -10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_58 ok [%0 -.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_59 ok [%0 -d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_60 ok [%0 -10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_61 ok [%0 -+.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_62 ok [%0 -+d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_63 ok [%0 -+10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_64 ok [%# -+10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_65 ok [%#-+10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_66 ok [%#+10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_67 ok [%#10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_68 ok [%#.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_69 ok [%#d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_70 ok [%#10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_71 ok [%#+.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_72 ok [%#+d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_73 ok [%#+10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_74 ok [%#-10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_75 ok [%#-.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_76 ok [%#-d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_77 ok [%#-10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_78 ok [%#-+.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_79 ok [%#-+d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_80 ok [%#-+10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_81 ok [%# +10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_82 ok [%# 10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_83 ok [%# .4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_84 ok [%# d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_85 ok [%# 10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_86 ok [%# +.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_87 ok [%# +d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_88 ok [%# +10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_89 ok [%# -10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_90 ok [%# -.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_91 ok [%# -d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_92 ok [%# -10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_93 ok [%# -+.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_94 ok [%# -+d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_95 ok [%# -+10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_96 ok [%#0-+10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_97 ok [%#0+10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_98 ok [%#010.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_99 ok [%#0.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_100 ok [%#0d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_101 ok [%#010d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_102 ok [%#0+.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_103 ok [%#0+d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_104 ok [%#0+10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_105 ok [%#0-10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_106 ok [%#0-.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_107 ok [%#0-d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_108 ok [%#0-10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_109 ok [%#0-+.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_110 ok [%#0-+d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_111 ok [%#0-+10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_112 ok [%#0 +10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_113 ok [%#0 10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_114 ok [%#0 .4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_115 ok [%#0 d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_116 ok [%#0 10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_117 ok [%#0 +.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_118 ok [%#0 +d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_119 ok [%#0 +10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_120 ok [%#0 -10.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_121 ok [%#0 -.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_122 ok [%#0 -d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_123 ok [%#0 -10d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_124 ok [%#0 -+.4d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_125 ok [%#0 -+d] T>T 123\n";
+	ft_printf(str, test);
+
+	str = "test_s_126 ok [%#0 -+10d] T>T 123\n";
+	ft_printf(str, test);
+
+	ft_putstr("ok_end");
+	}
+
+	str = "test_s_0 ok [%#0 -+10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_1 ok [%0 -+10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_2 ok [% -+10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_3 ok [%-+10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_4 ok [%+10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_5 ok [%10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_6 ok [%.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_7 ok [%10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_8 ok [%+.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_9 ok [%+d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_10 ok [%+10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_11 ok [%-10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_12 ok [%-.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_13 ok [%-d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_14 ok [%-10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_15 ok [%-+.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_16 ok [%-+d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_17 ok [%-+10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_18 ok [% +10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_19 ok [% 10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_20 ok [% .4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_21 ok [% d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_22 ok [% 10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_23 ok [% +.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_24 ok [% +d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_25 ok [% +10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_26 ok [% -10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_27 ok [% -.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_28 ok [% -d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_29 ok [% -10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_30 ok [% -+.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_31 ok [% -+d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_32 ok [% -+10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_33 ok [%0-+10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_34 ok [%0+10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_35 ok [%010.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_36 ok [%0.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_37 ok [%0d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_38 ok [%010d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_39 ok [%0+.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_40 ok [%0+d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_41 ok [%0+10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_42 ok [%0-10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_43 ok [%0-.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_44 ok [%0-d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_45 ok [%0-10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_46 ok [%0-+.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_47 ok [%0-+d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_48 ok [%0-+10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_49 ok [%0 +10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_50 ok [%0 10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_51 ok [%0 .4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_52 ok [%0 d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_53 ok [%0 10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_54 ok [%0 +.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_55 ok [%0 +d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_56 ok [%0 +10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_57 ok [%0 -10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_58 ok [%0 -.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_59 ok [%0 -d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_60 ok [%0 -10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_61 ok [%0 -+.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_62 ok [%0 -+d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_63 ok [%0 -+10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_64 ok [%# -+10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_65 ok [%#-+10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_66 ok [%#+10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_67 ok [%#10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_68 ok [%#.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_69 ok [%#d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_70 ok [%#10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_71 ok [%#+.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_72 ok [%#+d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_73 ok [%#+10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_74 ok [%#-10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_75 ok [%#-.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_76 ok [%#-d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_77 ok [%#-10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_78 ok [%#-+.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_79 ok [%#-+d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_80 ok [%#-+10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_81 ok [%# +10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_82 ok [%# 10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_83 ok [%# .4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_84 ok [%# d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_85 ok [%# 10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_86 ok [%# +.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_87 ok [%# +d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_88 ok [%# +10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_89 ok [%# -10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_90 ok [%# -.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_91 ok [%# -d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_92 ok [%# -10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_93 ok [%# -+.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_94 ok [%# -+d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_95 ok [%# -+10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_96 ok [%#0-+10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_97 ok [%#0+10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_98 ok [%#010.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_99 ok [%#0.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_100 ok [%#0d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_101 ok [%#010d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_102 ok [%#0+.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_103 ok [%#0+d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_104 ok [%#0+10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_105 ok [%#0-10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_106 ok [%#0-.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_107 ok [%#0-d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_108 ok [%#0-10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_109 ok [%#0-+.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_110 ok [%#0-+d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_111 ok [%#0-+10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_112 ok [%#0 +10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_113 ok [%#0 10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_114 ok [%#0 .4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_115 ok [%#0 d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_116 ok [%#0 10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_117 ok [%#0 +.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_118 ok [%#0 +d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_119 ok [%#0 +10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_120 ok [%#0 -10.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_121 ok [%#0 -.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_122 ok [%#0 -d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_123 ok [%#0 -10d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_124 ok [%#0 -+.4d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_125 ok [%#0 -+d] T>T 123\n";
+	printf(str, test);
+
+	str = "test_s_126 ok [%#0 -+10d] T>T 123\n";
+	printf(str, test);
+
+}
+
+void test_d_my()
+{
+	char *str;
+	str = "test_d ok [% d]\n";
+	str = "test_d ok [%+ d]\n";
+	str = "test_d ok [%20 d]\n";
+	str = "test_d ok [%20 0 -+d]\n";
+	str = "test_d ok [%20 0 -d]\n";
+	str = "test_d ok [%20 d]\n";
+	str = "test_d ok [%20 +d]\n";
+	str = "test_d ok [%20 0+d]\n";
+	//str = "test_d ok [%20 0d]\n";
+	ft_printf(str, 123);
+	ft_printf(str, 2147483647);
+	ft_printf(str, 1);
+	ft_printf(str, 0);
+	ft_printf(str, -1);
+	ft_printf(str, -321);
+	ft_printf(str, -2147483647);
+	ft_printf(str, -2147483648);
+
+	printf(str, 123);
+	printf(str, 2147483647);
+	printf(str, 1);
+	printf(str, 0);
+	printf(str, -1);
+	printf(str, -321);
+	printf(str, -2147483647);
+	printf(str, -2147483648);
+	ft_putstr("\n");
+}
+
 void test_p(char with_ft)
 {
 	char *str;
@@ -1369,7 +2174,9 @@ int main ()
 	//ft_putnbr(ft_printf("11 🦑 [%+#- 0*.78Lc]ok👈\n", 10, 'A'));
 	//test_c();
 	//test_s(1);
-	test_s2();
+	//test_s2();
 	//test_p(1);
-	ft_putstr("\n");
+	//test_d(0, 12356);
+	//test_d_my();
+	test_d(0, 123);
 }
