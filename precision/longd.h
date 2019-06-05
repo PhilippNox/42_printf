@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/04 17:39:57 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/05 16:05:30 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ typedef	struct	s_task
 	char length;
 	char type;
 } t_task;
+
+int		ft_printf(const char *format, ...);
 
 void	init_task(t_task *input);
 void	print_task(t_task *input);

@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:42:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/04 17:17:06 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/05 14:46:11 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ int	make_task(t_task *input, va_list *ap)
 		return make_s(input, ap);
 	if (input->type == 'p')
 		return make_p(input, ap);
-	if (input->type == 'd')
+	if (input->type == 'd' || input->type == 'i')
 		return make_d(input, ap);
 	return (0);
 }

@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   test_run.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 16:22:57 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/05 16:14:38 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "longd.h"
+#include "tests.h"
 
 // cd /Users/wgorold/d04_printf_gitlab/precision && clear && gcc -Wall -Wextra ft_atoi.c ft_put.c ft_printf.c && ./a.out
 
 // cd /Users/wgorold/d04_printf_gitlab/precision
-// clear && gcc -Wall -Wextra ft_atoi.c ft_put.c ft_printf.c ft_make_c.c ft_make_d.c ft_printf_helper.c ft_printf_task.c ft_make_s.c ft_make_p.c  && ./a.out
+// clear && gcc -Wall -Wextra ft_atoi.c ft_put.c test_run.c ft_make_c.c ft_make_d.c ft_printf_helper.c ft_printf_task.c ft_make_s.c ft_make_p.c test_s_small.c test_s.c test_c_utf8.c test_d_small.c test_d.c test_p.c test_i.c && ./a.out
 // sh z_check.sh -d
 
 
@@ -28,34 +29,30 @@
 	//int val = ft_atoi(start, &add_total); ft_putstr("\nval = "); ft_putnbr(val);ft_putstr("\nadd_total = "); ft_putnbr(add_total);ft_putstr("\n");
 
 
-int	ft_printf(const char *format, ...)
-{
-	va_list ap;
-	//char *s;
-	int idx;
-	int total;
-	t_task task;
-	t_task *last;
+// TODO pasring value .a -> 0
 
-	if (!format)
-		return (0);
-	va_start(ap, format);
-	total = 0;
-	idx = 0;
-	while (*(format + idx))
+int main ()
+{
+
+	void (*tests2run[100]) (int (*fun)(const char *format, ...)) =
 	{
-		if (*(format + idx) != '%')
-		{
-			idx += ft_pututf8(format + idx);
-			total += 1;
-			continue;
-		}
-		init_task(&task);
-		idx += set_task(&task, (char *)format + idx + 1, &ap) + 1;
-		total += make_task(&task, &ap);
-		last = &task;
-	}
-	va_end(ap);
-	//print_task(last);
-	return (total);
+		//&test_d,
+		//&test_i,
+		//&test_d_small,
+		//&test_c_utf8,
+		//&test_p,
+		//&test_s,
+		&test_s_small,
+		NULL
+	};
+
+	int idx = -1;
+	while (tests2run[++idx])
+		tests2run[idx](&ft_printf);
+
+	ft_putstr("ok_end\n");
+
+	idx = -1;
+	while (tests2run[++idx])
+		tests2run[idx](&printf);
 }
