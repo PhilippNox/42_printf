@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 16:05:30 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/05 17:53:11 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ typedef	struct	s_task
 	int precision;
 	char length;
 	char type;
+
+	char *tmp;
 } t_task;
 
 int		ft_printf(const char *format, ...);
@@ -90,6 +92,7 @@ int		make_c(t_task *input, va_list *ap);
 int		make_s(t_task *input, va_list *ap);
 int		make_p(t_task *input, va_list *ap);
 int		make_d(t_task *input, va_list *ap);
+int		make_o(t_task *input, va_list *ap);
 
 int		ft_atoi(const char *str, int *add_total);
 void	fill(char fill, int len);

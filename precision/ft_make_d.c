@@ -6,19 +6,19 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/04 20:49:35 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/05 16:55:55 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "longd.h"
 
-void	putpreci(char *str, int len, int len_num)
+static void	putpreci(char *str, int len, int len_num)
 {
 	fill('0', len - len_num);
 	ft_putstr(str);
 }
 
-void	putsign(t_task *input, int target)
+static void	putsign(t_task *input, int target)
 {
 	if (input->plus && target >= 0)
 		ft_putchar('+');
@@ -28,7 +28,7 @@ void	putsign(t_task *input, int target)
 		ft_putchar('-');
 }
 
-void	fillsign(t_task *input, int target, char c, int len)
+static void	fillsign(t_task *input, int target, char c, int len)
 {
 	if (input->plus || input->space || target < 0)
 		fill(c, input->width - len - 1);
