@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/03 15:50:19 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/05 19:18:49 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	make_p(t_task *input, va_list *ap)
 
 	(void)input;
 	target = va_arg(*ap, unsigned long);
-	ft_baseitoa(str, target, 16);
+	ft_baseitoa(str, target, 16, 0);
 	len = length_utf8(str) + 2;
 
 	if (input->width > len)

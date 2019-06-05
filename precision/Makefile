@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/05 18:55:43 by wgorold          ###   ########.fr        #
+#    Updated: 2019/06/05 19:16:14 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,11 @@ CFLAGS= -c $(FLAGS)
 
 SRC=	1_mat_precision_1.o 2_mat_precision_2.o ft_atoi.o ft_make_c.o \
 			ft_make_d.o ft_make_p.o ft_make_s.o ft_printf.o ft_printf_helper.o \
-			ft_printf_task.o ft_put.o ft_make_o.o ft_make_u.o ft_make_x.o
+			ft_printf_task.o ft_put.o ft_make_o.o ft_make_u.o ft_make_x.o \
+			ft_make_xx.o
 
 TST=	test_c_utf8.o test_d.o test_d_small.o test_i.o \
-			test_p.o test_s.o test_s_small.o test_o.o test_u.o test_x.o
+			test_p.o test_s.o test_s_small.o test_o.o test_u.o test_x.o test_xx.o \
 
 all: $(NAME)
 
@@ -66,6 +67,8 @@ ft_make_u.o:
 	$(CC) $(CFLAGS) ft_make_u.c
 ft_make_x.o:
 	$(CC) $(CFLAGS) ft_make_x.c
+ft_make_xx.o:
+	$(CC) $(CFLAGS) ft_make_xx.c
 ft_printf.o:
 	$(CC) $(CFLAGS) ft_printf.c
 ft_printf_helper.o:
@@ -95,6 +98,8 @@ test_u.o:
 	$(CC) $(CFLAGS) test_u.c
 test_x.o:
 	$(CC) $(CFLAGS) test_x.c
+test_xx.o:
+	$(CC) $(CFLAGS) test_xx.c
 
 clean:
 	rm -f $(SRC) $(TST)

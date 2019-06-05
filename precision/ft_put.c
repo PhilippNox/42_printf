@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 02:41:09 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 16:53:44 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/05 19:19:31 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ void	print_arr(short *list, int size)
 	ft_putstr("]");
 }
 
-void	ft_baseitoa(char *out, unsigned long target, unsigned char base)
+void	ft_baseitoa(char *out, unsigned long target, unsigned char base, char big)
 {
 	char *code;
 	char rev_out[21];
@@ -147,6 +147,8 @@ void	ft_baseitoa(char *out, unsigned long target, unsigned char base)
 		return ;
 	}
 	code = "0123456789abcdef";
+	if (big)
+		code = "0123456789ABCDEF";
 	idx = 0;
 	while ((rest = target / base) != 0)
 	{
@@ -197,7 +199,7 @@ void	ft_baseitoasign(char *out, long target, unsigned char base)
 int main()
 {
 	char str[20];
-	ft_baseitoa(str, 1000, 16);
+	ft_baseitoa(str, 1000, 16, 0);
 	printf("%s\n", str);
 	return (1);
 }

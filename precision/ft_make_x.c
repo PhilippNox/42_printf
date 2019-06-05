@@ -6,13 +6,13 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 19:08:46 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/05 19:21:23 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "longd.h"
 
-static void	putpreci(t_task *input, unsigned int target, int len, int len_num)
+static void	putpreci(t_task *input, int len, int len_num)
 {
 	fill('0', len - len_num);
 	ft_putstr(input->tmp);
@@ -32,7 +32,7 @@ int	make_x(t_task *input, va_list *ap)
 	int len_num;
 
 	target = va_arg(*ap, int);
-	ft_baseitoa(str, (unsigned int)target, 16);
+	ft_baseitoa(str, (unsigned int)target, 16, 0);
 	input->tmp = str;
 
 	len_num = length_utf8(str);
@@ -45,7 +45,7 @@ int	make_x(t_task *input, va_list *ap)
 	if (input->minus)
 	{
 		puthash(input, (unsigned int)target);
-		putpreci(input, (unsigned int)target, len, len_num);
+		putpreci(input, len, len_num);
 		fill(' ', input->width - len);
 	}
 	else
@@ -60,7 +60,7 @@ int	make_x(t_task *input, va_list *ap)
 			fill(' ', input->width - len);
 			puthash(input, (unsigned int)target);
 		}
-		putpreci(input, (unsigned int)target, len, len_num);
+		putpreci(input, len, len_num);
 	}
 	return (input->width > len) ? input->width : len;
 }

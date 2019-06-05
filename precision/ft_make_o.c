@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 18:05:45 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/05 19:18:44 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	make_o(t_task *input, va_list *ap)
 	int len_num;
 
 	target = va_arg(*ap, int);
-	ft_baseitoa(str, (unsigned int)target, 8);
+	ft_baseitoa(str, (unsigned int)target, 8, 0);
 	input->tmp = str;
 
 	len_num = length_utf8(str);

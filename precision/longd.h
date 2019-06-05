@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 18:54:28 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/05 19:19:42 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int		make_d(t_task *input, va_list *ap);
 int		make_o(t_task *input, va_list *ap);
 int		make_u(t_task *input, va_list *ap);
 int		make_x(t_task *input, va_list *ap);
+int		make_X(t_task *input, va_list *ap);
 
 int		ft_atoi(const char *str, int *add_total);
 void	fill(char fill, int len);
@@ -109,7 +110,7 @@ int		ft_putstr(char const *s);
 int		ft_putstrn(char const *s, int len);
 void	print_arr(short *list, int size);
 void	ft_putunbr(unsigned long n);
-void	ft_baseitoa(char *out, unsigned long target, unsigned char base);
+void	ft_baseitoa(char *out, unsigned long target, unsigned char base, char big);
 void	ft_baseitoasign(char *out, long target, unsigned char base);
 
 void	init_t_str_f(t_str_f *input);
