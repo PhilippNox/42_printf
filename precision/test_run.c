@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 16:14:38 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/05 16:31:21 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ int main ()
 
 	void (*tests2run[100]) (int (*fun)(const char *format, ...)) =
 	{
-		//&test_d,
-		//&test_i,
-		//&test_d_small,
 		//&test_c_utf8,
-		//&test_p,
+		//&test_s_small,
 		//&test_s,
-		&test_s_small,
+		//&test_p,
+		//&test_d_small,
+		//&test_d,
+		&test_i,
 		NULL
 	};
 
@@ -50,7 +50,7 @@ int main ()
 	while (tests2run[++idx])
 		tests2run[idx](&ft_printf);
 
-	ft_putstr("ok_end\n");
+	ft_putstr("next_origin_printf\n");
 
 	idx = -1;
 	while (tests2run[++idx])

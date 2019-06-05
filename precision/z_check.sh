@@ -13,7 +13,7 @@ while getopts 'd' flag; do
 done
 
 ./run_test > z_result;
-csplit -s z_result /ok_end/;
+csplit -s z_result /next_origin_printf/;
 tail -n +2 xx01 > xx_origin_printf;
 rm xx01;
 diff xx00 xx_origin_printf > xx_diff;
