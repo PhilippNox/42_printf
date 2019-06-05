@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 19:52:09 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/05 20:08:14 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	fillsign(t_task *input, int target, char c, int len)
 
 int	make_d(t_task *input, va_list *ap)
 {
-	char str[21];
+	char str[65];
 	int target;
 	int len;
 	int len_num;

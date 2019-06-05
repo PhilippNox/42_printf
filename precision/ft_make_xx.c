@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 19:21:33 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/05 20:09:18 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	puthash(t_task *input, unsigned int target)
 
 int	make_X(t_task *input, va_list *ap)
 {
-	char str[21];
+	char str[65];
 	int target;
 	int len;
 	int len_num;

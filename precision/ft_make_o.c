@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 19:18:44 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/05 20:08:59 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	putpreci(t_task *input, unsigned int target, int len, int len_num)
 
 int	make_o(t_task *input, va_list *ap)
 {
-	char str[21];
+	char str[65];
 	int target;
 	int len;
 	int len_num;

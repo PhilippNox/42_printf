@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 19:18:49 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/05 20:09:04 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	make_p(t_task *input, va_list *ap)
 {
-	char str[21];
+	char str[65];
 	unsigned long target;
 	int len;
 
