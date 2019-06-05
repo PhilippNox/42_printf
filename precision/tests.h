@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 19:56:36 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/05 20:25:26 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ void	test_x(int (*fun)(const char *format, ...));
 void	test_X(int (*fun)(const char *format, ...));
 void	test_hhd(int (*fun)(const char *format, ...));
 void	test_hd(int (*fun)(const char *format, ...));
+void	test_ld(int (*fun)(const char *format, ...));
+void	test_lld(int (*fun)(const char *format, ...));
 
 #endif

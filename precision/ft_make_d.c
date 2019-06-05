@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 20:08:14 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/05 20:23:33 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	putpreci(char *str, int len, int len_num)
 	ft_putstr(str);
 }
 
-static void	putsign(t_task *input, int target)
+static void	putsign(t_task *input, long long target)
 {
 	if (input->plus && target >= 0)
 		ft_putchar('+');
@@ -28,7 +28,7 @@ static void	putsign(t_task *input, int target)
 		ft_putchar('-');
 }
 
-static void	fillsign(t_task *input, int target, char c, int len)
+static void	fillsign(t_task *input, long long target, char c, int len)
 {
 	if (input->plus || input->space || target < 0)
 		fill(c, input->width - len - 1);
@@ -40,7 +40,7 @@ static void	fillsign(t_task *input, int target, char c, int len)
 int	make_d(t_task *input, va_list *ap)
 {
 	char str[65];
-	int target;
+	long long target;
 	int len;
 	int len_num;
 
@@ -48,6 +48,10 @@ int	make_d(t_task *input, va_list *ap)
 		target = (char)va_arg(*ap, int);
 	else if (input->length == 'h')
 		target = (short)va_arg(*ap, int);
+	else if (input->length == 'l')
+		target = (long)va_arg(*ap, long);
+	else if (input->length == 'm')
+		target = (long long)va_arg(*ap, long long);
 	else
 		target = va_arg(*ap, int);
 	ft_baseitoasign(str, target, 10);
