@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 16:55:55 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/05 19:52:09 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,12 @@ int	make_d(t_task *input, va_list *ap)
 	int len;
 	int len_num;
 
-	target = va_arg(*ap, int);
+	if (input->length == 'i')
+		target = (char)va_arg(*ap, int);
+	else if (input->length == 'h')
+		target = (short)va_arg(*ap, int);
+	else
+		target = va_arg(*ap, int);
 	ft_baseitoasign(str, target, 10);
 
 	len_num = length_utf8(str);

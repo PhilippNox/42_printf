@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/05 19:16:14 by wgorold          ###   ########.fr        #
+#    Updated: 2019/06/05 20:01:49 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@
 #
 
 NAME=run_test
+
+LIBNAME=libftprintf.a
 
 CC=gcc
 
@@ -35,17 +37,22 @@ SRC=	1_mat_precision_1.o 2_mat_precision_2.o ft_atoi.o ft_make_c.o \
 
 TST=	test_c_utf8.o test_d.o test_d_small.o test_i.o \
 			test_p.o test_s.o test_s_small.o test_o.o test_u.o test_x.o test_xx.o \
+			test_hhd.o test_hd.o
 
-all: $(NAME)
+all: $(LIBNAME)
 
 tst: $(NAME) clean
 	sh ./z_check.sh
 
 tstc: $(NAME) clean
-	sh ./z_check.sh -d; rm -f $(NAME);
+	sh ./z_check.sh -d;
+	@rm -f $(NAME) $(LIBNAME);
+
+$(LIBNAME): $(SRC)
+	ar rc $(LIBNAME) $(SRC)
 
 $(NAME): $(SRC) $(TST)
-	$(CC) $(FLAGS) $(SRC) $(TST) test_run.c -o $(NAME)
+	@$(CC) $(FLAGS) $(SRC) $(TST) test_run.c -o $(NAME)
 
 1_mat_precision_1.o:
 	$(CC) $(CFLAGS) 1_mat_precision_1.c
@@ -100,11 +107,15 @@ test_x.o:
 	$(CC) $(CFLAGS) test_x.c
 test_xx.o:
 	$(CC) $(CFLAGS) test_xx.c
+test_hhd.o:
+	$(CC) $(CFLAGS) test_hhd.c
+test_hd.o:
+	$(CC) $(CFLAGS) test_hd.c
 
 clean:
-	rm -f $(SRC) $(TST)
+	@rm -f $(SRC) $(TST)
 
 fclean: clean
-	rm -f $(NAME);
+	@rm -f $(NAME) $(LIBNAME);
 
 re: fclean all

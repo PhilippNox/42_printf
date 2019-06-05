@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:42:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 19:15:24 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/05 19:35:52 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	set_task(t_task *input, char *start, va_list *ap)
 		if (*start == 'l' && *(start + 1) == 'l')
 			input->length = 'l' + add_total++;
 		else if (*start == 'h' && *(start + 1) == 'h')
-			input->length = 'l' + add_total++;
+			input->length = 'h' + add_total++;
 		else
 			input->length = *start;
 	}
