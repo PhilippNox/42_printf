@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/05 20:26:10 by wgorold          ###   ########.fr        #
+#    Updated: 2019/06/06 20:41:59 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,8 @@ SRC=	1_mat_precision_1.o 2_mat_precision_2.o ft_atoi.o ft_make_c.o \
 
 TST=	test_c_utf8.o test_d.o test_d_small.o test_i.o \
 			test_p.o test_s.o test_s_small.o test_o.o test_u.o test_x.o test_xx.o \
-			test_hhd.o test_hd.o test_ld.o test_lld.o
+			test_hhd.o test_hd.o test_ld.o test_lld.o \
+			test_hhi.o test_hi.o test_li.o test_lli.o
 
 all: $(LIBNAME)
 
@@ -115,6 +116,14 @@ test_ld.o:
 	$(CC) $(CFLAGS) test_ld.c
 test_lld.o:
 	$(CC) $(CFLAGS) test_lld.c
+test_hhi.o:
+	$(CC) $(CFLAGS) test_hhi.c
+test_hi.o:
+	$(CC) $(CFLAGS) test_hi.c
+test_li.o:
+	$(CC) $(CFLAGS) test_li.c
+test_lli.o:
+	$(CC) $(CFLAGS) test_lli.c
 
 clean:
 	@rm -f $(SRC) $(TST)
