@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/06 21:54:34 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/06 23:49:41 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define TESTS_H
 
 # include <string.h>
+# include <float.h>
 # include <stdio.h>
 
 void	test_c(int (*fun)(const char *format, ...));
@@ -53,6 +54,9 @@ void	test_hhxx(int (*fun)(const char *format, ...));
 void	test_hxx(int (*fun)(const char *format, ...));
 void	test_lxx(int (*fun)(const char *format, ...));
 void	test_llxx(int (*fun)(const char *format, ...));
+void	test_f(int (*fun)(const char *format, ...));
+void	test_fs(int (*fun)(const char *format, ...));
+void	test_fr(int (*fun)(const char *format, ...));
 
 
 #endif

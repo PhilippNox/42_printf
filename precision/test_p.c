@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 16:28:35 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/06 23:44:12 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ void test_p(int (*fun)(const char *format, ...))
 	test = "abc";
 	str = "test_p_8 ok [%.3p] T_T 123\n";
 	fun(str, test);
+
+	test = "abc";
+	str = "test_p_8 ok [%.3p] T_T 123\n";
+	fun(str, NULL);
 
 	a = 20;
 	test = "test_p_9 len = %d\n";

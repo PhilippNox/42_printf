@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:45:12 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/28 21:00:07 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/07 00:24:36 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	print_t_str_f(t_str_f *input)
 	ft_putstr("\n");
 }
 
-void	print_t_str_f_human(t_str_f *input)
+void	print_t_str_f_full(t_str_f *input)
 {
 	int idx;
 
@@ -89,6 +89,11 @@ void	print_t_str_f_human(t_str_f *input)
 		ft_putchar('0');
 	while (--idx > -1)
 		ft_putchar(input->frc[idx] + 48);
+}
+
+void	print_t_str_f_human(t_str_f *input)
+{
+	print_t_str_f_full(input);
 	ft_putstr("\n");
 }
 

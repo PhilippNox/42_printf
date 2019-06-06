@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/06 21:56:15 by wgorold          ###   ########.fr        #
+#    Updated: 2019/06/07 00:11:40 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ CFLAGS= -c $(FLAGS)
 
 SRC=	1_mat_precision_1.o 2_mat_precision_2.o ft_atoi.o ft_make_c.o \
 			ft_make_d.o ft_make_p.o ft_make_s.o ft_printf.o ft_printf_helper.o \
-			ft_printf_task.o ft_put.o ft_make_o.o ft_make_u.o ft_make_x.o
+			ft_printf_task.o ft_put.o ft_make_o.o ft_make_u.o ft_make_x.o \
+			ft_make_f.o
 
 TST=	test_c.o test_cp.o test_c_utf8.o test_d.o test_d_small.o test_i.o \
 			test_p.o test_s.o test_s_small.o test_o.o test_u.o test_x.o test_xx.o \
@@ -41,7 +42,8 @@ TST=	test_c.o test_cp.o test_c_utf8.o test_d.o test_d_small.o test_i.o \
 			test_hho.o test_ho.o test_lo.o test_llo.o \
 			test_hhu.o test_hu.o test_lu.o test_llu.o \
 			test_hhx.o test_hx.o test_lx.o test_llx.o \
-			test_hhxx.o test_hxx.o test_lxx.o test_llxx.o
+			test_hhxx.o test_hxx.o test_lxx.o test_llxx.o \
+			test_f.o test_fs.o test_fr.o
 
 all: $(LIBNAME)
 
@@ -78,6 +80,8 @@ ft_make_u.o:
 	$(CC) $(CFLAGS) ft_make_u.c
 ft_make_x.o:
 	$(CC) $(CFLAGS) ft_make_x.c
+ft_make_f.o:
+	$(CC) $(CFLAGS) ft_make_f.c
 ft_printf.o:
 	$(CC) $(CFLAGS) ft_printf.c
 ft_printf_helper.o:
@@ -161,6 +165,12 @@ test_lxx.o:
 	$(CC) $(CFLAGS) test_lxx.c
 test_llxx.o:
 	$(CC) $(CFLAGS) test_llxx.c
+test_f.o:
+	$(CC) $(CFLAGS) test_f.c
+test_fs.o:
+	$(CC) $(CFLAGS) test_fs.c
+test_fr.o:
+	$(CC) $(CFLAGS) test_fr.c
 
 
 clean:
