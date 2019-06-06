@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 20:09:11 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/06 21:07:22 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,21 @@ static void	putpreci(t_task *input, int len, int len_num)
 int	make_u(t_task *input, va_list *ap)
 {
 	char str[65];
-	int target;
+	unsigned long long target;
 	int len;
 	int len_num;
 
-	target = va_arg(*ap, int);
-	ft_baseitoa(str, (unsigned int)target, 10, 0);
+	if (input->length == 'i')
+		target = (unsigned char)va_arg(*ap, int);
+	else if (input->length == 'h')
+		target = (unsigned short)va_arg(*ap, int);
+	else if (input->length == 'l')
+		target = (unsigned long)va_arg(*ap, long);
+	else if (input->length == 'm')
+		target = (unsigned long long)va_arg(*ap, long long);
+	else
+		target = va_arg(*ap, int);
+	ft_baseitoa(str, target, 10, 0);
 	input->tmp = str;
 
 	len_num = length_utf8(str);
