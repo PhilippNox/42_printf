@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/06 21:32:18 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/06 21:54:34 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <string.h>
 # include <stdio.h>
 
+void	test_c(int (*fun)(const char *format, ...));
+void	test_cp(int (*fun)(const char *format, ...));
 void	test_c_utf8(int (*fun)(const char *format, ...));
 void	test_s_small(int (*fun)(const char *format, ...));
 void	test_s(int (*fun)(const char *format, ...));

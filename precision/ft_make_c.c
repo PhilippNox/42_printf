@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/31 16:48:38 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/06 21:47:47 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ int	make_c(t_task *input, va_list *ap)
 {
 	char c;
 
-	c = va_arg(*ap, int);
+	if (input->type == '%')
+		c = '%';
+	else
+		c = va_arg(*ap, int);
 	if (input->width < 2)
 	{
 		ft_putchar(c);

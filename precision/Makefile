@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/06 21:33:10 by wgorold          ###   ########.fr        #
+#    Updated: 2019/06/06 21:56:15 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ SRC=	1_mat_precision_1.o 2_mat_precision_2.o ft_atoi.o ft_make_c.o \
 			ft_make_d.o ft_make_p.o ft_make_s.o ft_printf.o ft_printf_helper.o \
 			ft_printf_task.o ft_put.o ft_make_o.o ft_make_u.o ft_make_x.o
 
-TST=	test_c_utf8.o test_d.o test_d_small.o test_i.o \
+TST=	test_c.o test_cp.o test_c_utf8.o test_d.o test_d_small.o test_i.o \
 			test_p.o test_s.o test_s_small.o test_o.o test_u.o test_x.o test_xx.o \
 			test_hhd.o test_hd.o test_ld.o test_lld.o \
 			test_hhi.o test_hi.o test_li.o test_lli.o \
@@ -87,6 +87,10 @@ ft_printf_task.o:
 ft_put.o:
 	$(CC) $(CFLAGS) ft_put.c
 
+test_c.o:
+	$(CC) $(CFLAGS) test_c.c
+test_cp.o:
+	$(CC) $(CFLAGS) test_cp.c
 test_c_utf8.o:
 	$(CC) $(CFLAGS) test_c_utf8.c
 test_d.o:

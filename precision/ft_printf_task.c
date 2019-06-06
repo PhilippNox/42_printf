@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:42:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/06 21:18:01 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/06 21:46:45 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int	set_task(t_task *input, char *start, va_list *ap)
 
 int	make_task(t_task *input, va_list *ap)
 {
-	if (input->type == 'c')
+	if (input->type == 'c' || input->type == '%')
 		return make_c(input, ap);
 	if (input->type == 's')
 		return make_s(input, ap);
