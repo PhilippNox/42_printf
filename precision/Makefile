@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/06 21:21:26 by wgorold          ###   ########.fr        #
+#    Updated: 2019/06/06 21:33:10 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,9 @@ TST=	test_c_utf8.o test_d.o test_d_small.o test_i.o \
 			test_hhd.o test_hd.o test_ld.o test_lld.o \
 			test_hhi.o test_hi.o test_li.o test_lli.o \
 			test_hho.o test_ho.o test_lo.o test_llo.o \
-			test_hhu.o test_hu.o test_lu.o test_llu.o
+			test_hhu.o test_hu.o test_lu.o test_llu.o \
+			test_hhx.o test_hx.o test_lx.o test_llx.o \
+			test_hhxx.o test_hxx.o test_lxx.o test_llxx.o
 
 all: $(LIBNAME)
 
@@ -139,6 +141,22 @@ test_lu.o:
 	$(CC) $(CFLAGS) test_lu.c
 test_llu.o:
 	$(CC) $(CFLAGS) test_llu.c
+test_hhx.o:
+	$(CC) $(CFLAGS) test_hhx.c
+test_hx.o:
+	$(CC) $(CFLAGS) test_hx.c
+test_lx.o:
+	$(CC) $(CFLAGS) test_lx.c
+test_llx.o:
+	$(CC) $(CFLAGS) test_llx.c
+test_hhxx.o:
+	$(CC) $(CFLAGS) test_hhxx.c
+test_hxx.o:
+	$(CC) $(CFLAGS) test_hxx.c
+test_lxx.o:
+	$(CC) $(CFLAGS) test_lxx.c
+test_llxx.o:
+	$(CC) $(CFLAGS) test_llxx.c
 
 
 clean:

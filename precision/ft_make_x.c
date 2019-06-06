@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/06 21:19:21 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/06 21:25:25 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	putpreci(t_task *input, int len, int len_num)
 	ft_putstr(input->tmp);
 }
 
-static void	puthash(t_task *input, unsigned int target)
+static void	puthash(t_task *input, unsigned long long target)
 {
 	if (target != 0 && input->hash)
 		(input->type == 'x') ? ft_putstr("0x") : ft_putstr("0X");
@@ -27,12 +27,21 @@ static void	puthash(t_task *input, unsigned int target)
 int	make_x(t_task *input, va_list *ap)
 {
 	char str[65];
-	int target;
+	unsigned long long target;
 	int len;
 	int len_num;
 
-	target = va_arg(*ap, int);
-	ft_baseitoa(str, (unsigned int)target, 16, (input->type == 'x') ? 0 : 1);
+	if (input->length == 'i')
+		target = (unsigned char)va_arg(*ap, int);
+	else if (input->length == 'h')
+		target = (unsigned short)va_arg(*ap, int);
+	else if (input->length == 'l')
+		target = (unsigned long)va_arg(*ap, long);
+	else if (input->length == 'm')
+		target = (unsigned long long)va_arg(*ap, long long);
+	else
+		target = va_arg(*ap, int);
+	ft_baseitoa(str, target, 16, (input->type == 'x') ? 0 : 1);
 	input->tmp = str;
 
 	len_num = length_utf8(str);
@@ -44,7 +53,7 @@ int	make_x(t_task *input, va_list *ap)
 	}
 	if (input->minus)
 	{
-		puthash(input, (unsigned int)target);
+		puthash(input, target);
 		putpreci(input, len, len_num);
 		fill(' ', input->width - len);
 	}
@@ -52,13 +61,13 @@ int	make_x(t_task *input, va_list *ap)
 	{
 		if (input->zero != ' ' && input->precision == -1)
 		{
-			puthash(input, (unsigned int)target);
+			puthash(input, target);
 			fill('0', input->width - len);
 		}
 		else
 		{
 			fill(' ', input->width - len);
-			puthash(input, (unsigned int)target);
+			puthash(input, target);
 		}
 		putpreci(input, len, len_num);
 	}
