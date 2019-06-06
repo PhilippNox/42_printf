@@ -6,13 +6,13 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 20:08:59 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/06 21:04:15 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "longd.h"
 
-static void	putpreci(t_task *input, unsigned int target, int len, int len_num)
+static void	putpreci(t_task *input, unsigned long long target, int len, int len_num)
 {
 	fill('0', len - len_num);
 	if (target != 0 && input->hash)
@@ -23,12 +23,21 @@ static void	putpreci(t_task *input, unsigned int target, int len, int len_num)
 int	make_o(t_task *input, va_list *ap)
 {
 	char str[65];
-	int target;
+	unsigned long long target;
 	int len;
 	int len_num;
 
-	target = va_arg(*ap, int);
-	ft_baseitoa(str, (unsigned int)target, 8, 0);
+	if (input->length == 'i')
+		target = (unsigned char)va_arg(*ap, int);
+	else if (input->length == 'h')
+		target = (unsigned short)va_arg(*ap, int);
+	else if (input->length == 'l')
+		target = (unsigned long)va_arg(*ap, long);
+	else if (input->length == 'm')
+		target = (unsigned long long)va_arg(*ap, long long);
+	else
+		target = va_arg(*ap, int);
+	ft_baseitoa(str, target, 8, 0);
 	input->tmp = str;
 
 	len_num = length_utf8(str);
@@ -38,7 +47,7 @@ int	make_o(t_task *input, va_list *ap)
 
 	if (input->minus)
 	{
-		putpreci(input, (unsigned int)target, len, len_num);
+		putpreci(input, target, len, len_num);
 		fill(' ', input->width - len);
 	}
 	else
@@ -47,7 +56,7 @@ int	make_o(t_task *input, va_list *ap)
 			fill(input->zero, input->width - len);
 		else
 			fill(' ', input->width - len);
-		putpreci(input, (unsigned int)target, len, len_num);
+		putpreci(input, target, len, len_num);
 	}
 	return (input->width > len) ? input->width : len;
 

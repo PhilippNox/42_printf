@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 02:41:09 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 20:10:42 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/06 20:48:07 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,8 +137,8 @@ void	ft_baseitoa(char *out, unsigned long long target, unsigned char base, char 
 {
 	char *code;
 	char rev_out[65];
-	unsigned long rest;
-	unsigned long idx;
+	unsigned long long rest;
+	unsigned long long idx;
 
 	if (base < 2)
 	{
@@ -169,8 +169,8 @@ void	ft_baseitoasign(char *out, long long target, unsigned char base)
 {
 	char *code;
 	char rev_out[65];
-	long rest;
-	long idx;
+	long long rest;
+	unsigned long long idx;
 
 	if (base < 2)
 	{
