@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 20:09:14 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/06 21:19:21 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	putpreci(t_task *input, int len, int len_num)
 static void	puthash(t_task *input, unsigned int target)
 {
 	if (target != 0 && input->hash)
-		ft_putstr("0x");
+		(input->type == 'x') ? ft_putstr("0x") : ft_putstr("0X");
 }
 
 int	make_x(t_task *input, va_list *ap)
@@ -32,7 +32,7 @@ int	make_x(t_task *input, va_list *ap)
 	int len_num;
 
 	target = va_arg(*ap, int);
-	ft_baseitoa(str, (unsigned int)target, 16, 0);
+	ft_baseitoa(str, (unsigned int)target, 16, (input->type == 'x') ? 0 : 1);
 	input->tmp = str;
 
 	len_num = length_utf8(str);
