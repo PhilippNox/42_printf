@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/07 17:02:13 by wgorold          ###   ########.fr        #
+#    Updated: 2019/06/07 20:16:30 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@
 #
 
 NAME=run_test
+
+RND=roundnig
 
 LIBNAME=libftprintf.a
 
@@ -59,11 +61,18 @@ run: $(NAME) clean
 	./run_test
 	@rm -f $(NAME) $(LIBNAME);
 
+rnd: $(RND) clean
+	./roundnig
+	@rm -f $(RND) $(LIBNAME);
+
 $(LIBNAME): $(SRC)
 	ar rc $(LIBNAME) $(SRC)
 
 $(NAME): $(SRC) $(TST)
 	@$(CC) $(FLAGS) $(SRC) $(TST) test_run.c -o $(NAME)
+
+$(RND): $(SRC) $(TST)
+	@$(CC) $(FLAGS) $(SRC) $(TST) test_run_rounding.c -o $(RND)
 
 1_mat_precision_1.o:
 	$(CC) $(CFLAGS) 1_mat_precision_1.c
