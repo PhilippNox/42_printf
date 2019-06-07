@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:45:12 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/07 17:23:54 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/07 19:36:55 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,30 +219,33 @@ void	sum_t_str_f_frc(t_str_f *result, t_str_f *a, t_str_f *b)
 	add_val = 0;
 	while (idx < start->exp_frc)
 	{
-		if (idx >= start->idx_frc && idx >= add->idx_frc && add_val == 0)
-			break;
 		if (idx - shift < 0)
 		{
 			//result->frc[result->idx_frc++] = start->frc[idx];
 			result->frc[result->idx_frc++] = (start->frc[idx] != -1) ? start->frc[idx] : 0;
+			//ft_putstr(">");ft_putchar(result->frc[result->idx_frc - 1] +48);ft_putstr("\n");
 		}
 		else if (idx >= start->idx_frc)
 		{
 			val = add->frc[idx - shift] + add_val ;
 			result->frc[result->idx_frc++] = (val % 10);
 			add_val = val / 10;
+			//ft_putstr(">");ft_putchar(result->frc[result->idx_frc - 1] +48);ft_putstr(" av= ");ft_putchar(add_val + 48);ft_putstr("\n");
 		}
 		else
 		{
-			val = start->frc[idx] + add->frc[idx - shift] + add_val ;
+			val = start->frc[idx] + add_val ;
+			val += (add->frc[idx - shift] != -1) ? add->frc[idx - shift] : 0;
 			result->frc[result->idx_frc++] = (val % 10);
 			add_val = val / 10;
+			//ft_putstr(">");ft_putchar(result->frc[result->idx_frc - 1] +48);ft_putstr(" av= ");ft_putchar(add_val + 48);ft_putstr("\n");
 		}
 		++idx;
 	}
 	if (add_val && result->idx_frc != result->exp_frc)
 	{
 		result->frc[result->idx_frc++] = add_val;
+		//ft_putstr(">");ft_putchar(result->frc[result->idx_frc - 1] +48);ft_putstr(" av= ");ft_putchar(add_val + 48);ft_putstr("\n");
 	}
 	else if (add_val)
 	{
