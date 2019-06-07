@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/07 20:16:30 by wgorold          ###   ########.fr        #
+#    Updated: 2019/06/07 22:54:04 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,7 @@ $(NAME): $(SRC) $(TST)
 	@$(CC) $(FLAGS) $(SRC) $(TST) test_run.c -o $(NAME)
 
 $(RND): $(SRC) $(TST)
-	@$(CC) $(FLAGS) $(SRC) $(TST) test_run_rounding.c -o $(RND)
+	@$(CC) $(FLAGS) $(SRC) $(TST) test_f_rounding.c -o $(RND)
 
 1_mat_precision_1.o:
 	$(CC) $(CFLAGS) 1_mat_precision_1.c
