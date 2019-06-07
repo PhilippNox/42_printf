@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/08 00:55:03 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/08 01:16:56 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,8 +156,8 @@ void test_f(int (*fun)(const char *format, ...))
 		NULL
 	};
 
-	float stop_num = -42;
-	float num[] = {
+	double stop_num = -42;
+	double num[] = {
 		FLT_MIN,
 		FLT_MAX,
 		FLT_EPSILON,

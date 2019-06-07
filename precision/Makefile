@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/07 22:54:04 by wgorold          ###   ########.fr        #
+#    Updated: 2019/06/08 01:23:48 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,8 @@
 NAME=run_test
 
 RND=roundnig
+
+RNDL=roundnig_long
 
 LIBNAME=libftprintf.a
 
@@ -46,7 +48,7 @@ TST=	test_c.o test_cp.o test_c_utf8.o test_d.o test_d_small.o test_i.o \
 			test_hhu.o test_hu.o test_lu.o test_llu.o \
 			test_hhx.o test_hx.o test_lx.o test_llx.o \
 			test_hhxx.o test_hxx.o test_lxx.o test_llxx.o \
-			test_f.o test_fs.o test_fr.o
+			test_f.o test_fs.o test_fr.o test_Lf.o
 
 all: $(LIBNAME)
 
@@ -65,6 +67,10 @@ rnd: $(RND) clean
 	./roundnig
 	@rm -f $(RND) $(LIBNAME);
 
+rndl: $(RNDL) clean
+	./roundnig_long
+	@rm -f $(RNDL) $(LIBNAME);
+
 $(LIBNAME): $(SRC)
 	ar rc $(LIBNAME) $(SRC)
 
@@ -73,6 +79,9 @@ $(NAME): $(SRC) $(TST)
 
 $(RND): $(SRC) $(TST)
 	@$(CC) $(FLAGS) $(SRC) $(TST) test_f_rounding.c -o $(RND)
+
+$(RNDL): $(SRC) $(TST)
+	@$(CC) $(FLAGS) $(SRC) $(TST) test_Lf_rounding.c -o $(RNDL)
 
 1_mat_precision_1.o:
 	$(CC) $(CFLAGS) 1_mat_precision_1.c
@@ -187,6 +196,8 @@ test_fs.o:
 	$(CC) $(CFLAGS) test_fs.c
 test_fr.o:
 	$(CC) $(CFLAGS) test_fr.c
+test_Lf.o:
+		$(CC) $(CFLAGS) test_Lf.c
 
 
 clean:
