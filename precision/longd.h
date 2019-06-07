@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/07 00:30:43 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/07 03:52:17 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define FRAC_FLOAT 63 + 1
 # define DEBUG_POWER 0
 # define DEBUG_FLOAT_CREATION 0
-# define DEBUG_EXP_TAB 1
+# define DEBUG_EXP_TAB 0
 
 # include <stdio.h>
 # include <string.h>
@@ -136,5 +136,8 @@ void	get_precision_longd(t_str_f *output, long double input);
 void	get_precision_d(t_str_f *output, double input);
 void	get_precision_f(t_str_f *output, float input);
 
+void	t_str_f_print_ent(t_str_f *input, char *out, int *idxo);
+void	t_str_f_print_full(t_str_f *input, char *out, int *idxo, int pos);
+void	t_str_f_round(t_str_f *input, unsigned int pos);
 
 #endif

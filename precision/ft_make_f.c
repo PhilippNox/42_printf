@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/07 00:31:47 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/07 03:55:35 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,23 @@
 int	make_f(t_task *input, va_list *ap)
 {
 	t_str_f target;
-	int len;
-	int len_num;
+	int idxo;
+	char out[LEN_STR_FRC];
+	int prc;
 
-	get_precision_f(&target, (float)va_arg(*ap, double));
-	//print_t_str_f_full(&target);
-	print_t_str_f(&target);
+	idxo = 0;
+	prc = input->precision;
+	if (input->length == 'L')
+		get_precision_longd(&target, va_arg(*ap, long double));
+	else
+		get_precision_d(&target, va_arg(*ap, double));
 
-	return (1);
+	//t_str_f_round(&target, (unsigned int)prc);
+	t_str_f_print_full(&target, out, &idxo, prc);
+	//while (prc-- > target.idx_frc)
+	//	out[idxo++] = '0';
+	write(1, out, idxo);
+
+
+	return (idxo);
 }

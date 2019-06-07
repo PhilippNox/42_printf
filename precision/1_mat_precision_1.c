@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:45:12 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/07 00:24:36 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/07 00:41:34 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,11 +217,12 @@ void	sum_t_str_f_frc(t_str_f *result, t_str_f *a, t_str_f *b)
 	shift = start->exp_frc - add->exp_frc;
 	idx = 0;
 	add_val = 0;
-	while (start->frc[idx] != -1 || add->frc[idx - shift] != -1)
+	while (idx - shift < add->idx_frc)
 	{
 		if (idx - shift < 0)
 		{
-			result->frc[result->idx_frc++] = start->frc[idx];
+			//result->frc[result->idx_frc++] = start->frc[idx];
+			result->frc[result->idx_frc++] = (start->frc[idx] != -1) ? start->frc[idx] : 0;
 		}
 		else if (idx >= start->idx_frc)
 		{

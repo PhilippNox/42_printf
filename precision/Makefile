@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/07 00:11:40 by wgorold          ###   ########.fr        #
+#    Updated: 2019/06/07 01:21:58 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ FLAGS= -Wall -Wextra
 
 CFLAGS= -c $(FLAGS)
 
-SRC=	1_mat_precision_1.o 2_mat_precision_2.o ft_atoi.o ft_make_c.o \
+SRC=	1_mat_precision_1.o 2_mat_precision_2.o 3_mat_precision_print.o \
+			ft_atoi.o ft_make_c.o \
 			ft_make_d.o ft_make_p.o ft_make_s.o ft_printf.o ft_printf_helper.o \
 			ft_printf_task.o ft_put.o ft_make_o.o ft_make_u.o ft_make_x.o \
 			ft_make_f.o
@@ -64,6 +65,8 @@ $(NAME): $(SRC) $(TST)
 	$(CC) $(CFLAGS) 1_mat_precision_1.c
 2_mat_precision_2.o:
 	$(CC) $(CFLAGS) 2_mat_precision_2.c
+3_mat_precision_print.o:
+	$(CC) $(CFLAGS) 3_mat_precision_print.c
 ft_atoi.o:
 	$(CC) $(CFLAGS) ft_atoi.c
 ft_make_c.o:
