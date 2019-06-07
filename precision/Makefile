@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/07 01:21:58 by wgorold          ###   ########.fr        #
+#    Updated: 2019/06/07 17:02:13 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,10 @@ tst: $(NAME) clean
 
 tstc: $(NAME) clean
 	sh ./z_check.sh -d;
+	@rm -f $(NAME) $(LIBNAME);
+
+run: $(NAME) clean
+	./run_test
 	@rm -f $(NAME) $(LIBNAME);
 
 $(LIBNAME): $(SRC)

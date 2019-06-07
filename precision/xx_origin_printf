@@ -1,20 +1,14 @@
-test_fr_2 ok [2.400000]				//	printf("test_fr_2 ok [%f]", 2.400000); // RUN THIS CODE FOR DEBUG
-test_fr_2 ok [2.490000]				//	printf("test_fr_2 ok [%f]", 2.490000); // RUN THIS CODE FOR DEBUG
-test_fr_2 ok [2.500000]				//	printf("test_fr_2 ok [%f]", 2.500000); // RUN THIS CODE FOR DEBUG
-test_fr_2 ok [2.510000]				//	printf("test_fr_2 ok [%f]", 2.510000); // RUN THIS CODE FOR DEBUG
-test_fr_2 ok [2.600000]				//	printf("test_fr_2 ok [%f]", 2.600000); // RUN THIS CODE FOR DEBUG
-test_fr_2 ok [3.400000]				//	printf("test_fr_2 ok [%f]", 3.400000); // RUN THIS CODE FOR DEBUG
-test_fr_2 ok [3.490000]				//	printf("test_fr_2 ok [%f]", 3.490000); // RUN THIS CODE FOR DEBUG
-test_fr_2 ok [3.500000]				//	printf("test_fr_2 ok [%f]", 3.500000); // RUN THIS CODE FOR DEBUG
-test_fr_2 ok [3.510000]				//	printf("test_fr_2 ok [%f]", 3.510000); // RUN THIS CODE FOR DEBUG
-test_fr_2 ok [3.600000]				//	printf("test_fr_2 ok [%f]", 3.600000); // RUN THIS CODE FOR DEBUG
-test_fr_3 ok [2]				//	printf("test_fr_3 ok [%.0f]", 2.400000); // RUN THIS CODE FOR DEBUG
-test_fr_3 ok [2]				//	printf("test_fr_3 ok [%.0f]", 2.490000); // RUN THIS CODE FOR DEBUG
-test_fr_3 ok [2]				//	printf("test_fr_3 ok [%.0f]", 2.500000); // RUN THIS CODE FOR DEBUG
-test_fr_3 ok [3]				//	printf("test_fr_3 ok [%.0f]", 2.510000); // RUN THIS CODE FOR DEBUG
-test_fr_3 ok [3]				//	printf("test_fr_3 ok [%.0f]", 2.600000); // RUN THIS CODE FOR DEBUG
-test_fr_3 ok [3]				//	printf("test_fr_3 ok [%.0f]", 3.400000); // RUN THIS CODE FOR DEBUG
-test_fr_3 ok [3]				//	printf("test_fr_3 ok [%.0f]", 3.490000); // RUN THIS CODE FOR DEBUG
-test_fr_3 ok [4]				//	printf("test_fr_3 ok [%.0f]", 3.500000); // RUN THIS CODE FOR DEBUG
-test_fr_3 ok [4]				//	printf("test_fr_3 ok [%.0f]", 3.510000); // RUN THIS CODE FOR DEBUG
-test_fr_3 ok [4]				//	printf("test_fr_3 ok [%.0f]", 3.600000); // RUN THIS CODE FOR DEBUG
+exp_ent: 
+idx_ent: 1
+entiere: 2
+,,,,
+exp_frc: 4
+idx_frc: 
+fractio: 
+exp_ent: 
+idx_ent: 1
+entiere: 2
+,,,,
+exp_frc: 4
+idx_frc: 
+fractio: 

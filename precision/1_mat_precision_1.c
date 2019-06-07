@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:45:12 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/07 00:41:34 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/07 17:23:54 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,8 +217,10 @@ void	sum_t_str_f_frc(t_str_f *result, t_str_f *a, t_str_f *b)
 	shift = start->exp_frc - add->exp_frc;
 	idx = 0;
 	add_val = 0;
-	while (idx - shift < add->idx_frc)
+	while (idx < start->exp_frc)
 	{
+		if (idx >= start->idx_frc && idx >= add->idx_frc && add_val == 0)
+			break;
 		if (idx - shift < 0)
 		{
 			//result->frc[result->idx_frc++] = start->frc[idx];
@@ -238,9 +240,20 @@ void	sum_t_str_f_frc(t_str_f *result, t_str_f *a, t_str_f *b)
 		}
 		++idx;
 	}
-	if (add_val)
+	if (add_val && result->idx_frc != result->exp_frc)
 	{
 		result->frc[result->idx_frc++] = add_val;
+	}
+	else if (add_val)
+	{
+		t_str_f tmp;
+		t_str_f one;
+
+		init_t_str_f_ent(&one);
+		power2form(&one, 0, 0);
+
+		tmp = *result;
+		sum_t_str_f_ent(result, &tmp, &one);
 	}
 }
 

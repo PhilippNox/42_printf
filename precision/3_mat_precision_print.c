@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 13:45:06 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/07 03:57:41 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/07 16:42:47 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,11 @@
 
 void	t_str_f_round(t_str_f *input, unsigned int pos)
 {
-	while (input->idx_frc < input->exp_frc)
-		input->frc[input->idx_frc++] = 0;
-	//ft_putchar('\n');print_t_str_f(input);ft_putchar('\n');
+	print_t_str_f(input);
+	if (input->exp_frc - 1 - pos < 0)
+		return ;
 
-	if (input->idx_frc - pos < 0)
-		return ;
-	else if ((input->idx_frc - pos > 0 && input->frc[pos] < 5) || (input->idx_frc - pos == 0 && input->frc[pos] > 5))
-	{
-		input->idx_frc = input->idx_frc - pos;
-		return;
-	}
-	else //if ((input->idx_frc - pos > 0 && input->frc[pos] > 5) || (input->idx_frc - pos == 0 && input->frc[pos] < 6))
-	{
-		return ;
-	}
+	return;
 }
 
 void	t_str_f_print_ent(t_str_f *input, char *out, int *idxo)
