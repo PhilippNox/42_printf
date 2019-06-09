@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_run.c                                         :+:      :+:    :+:   */
+/*   test_RUN.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/09 23:13:29 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/09 23:24:53 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,8 @@ int main ()
 		//&test_hhxx, &test_hxx, &test_lxx, &test_llxx,
 		//&test_f,
 		//&test_fs,
-		//&test_f,
-		//&test_Lf,
-		//&test_ff,
-		&test_Lff,
+		//&test_f, &test_Lf,
+		//&test_ff, &test_Lff,
 		NULL
 	};
 
@@ -58,9 +56,13 @@ int main ()
 	while (tests2run[++idx])
 		tests2run[idx](&ft_printf);
 
-	ft_putstr("next_origin_printf\n");
+	if (idx == 0)
+		puts("no_tests");
+	puts("next_origin_printf");
 
 	idx = -1;
 	while (tests2run[++idx])
 		tests2run[idx](&printf);
+	if (idx == 0)
+		puts("no_tests");
 }
