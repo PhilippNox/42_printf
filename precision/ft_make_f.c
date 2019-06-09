@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/09 22:36:16 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/09 23:12:48 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,13 @@ static void	putdouble(t_task *input, t_str_f *target)
 {
 	if (target->idx_ent && target->ent[0] > 9)
 	{
-		if (target->ent[0] == 'i')
+		if (target->ent[0] == 'i' && input->type == 'F')
+			ft_putstr("INF");
+		else if (target->ent[0] == 'i')
 			ft_putstr("inf");
-		if (target->ent[0] == 'n')
+		else if (target->ent[0] == 'n' && input->type == 'F')
+				ft_putstr("NAN");
+		else if (target->ent[0] == 'n')
 			ft_putstr("nan");
 		return ;
 	}

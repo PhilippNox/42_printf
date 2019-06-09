@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/08 01:23:48 by wgorold          ###   ########.fr        #
+#    Updated: 2019/06/09 23:02:17 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ TST=	test_c.o test_cp.o test_c_utf8.o test_d.o test_d_small.o test_i.o \
 			test_hhu.o test_hu.o test_lu.o test_llu.o \
 			test_hhx.o test_hx.o test_lx.o test_llx.o \
 			test_hhxx.o test_hxx.o test_lxx.o test_llxx.o \
-			test_f.o test_fs.o test_fr.o test_Lf.o
+			test_f.o test_fs.o test_fr.o test_Lf.o test_ff.o test_Lff.o
 
 all: $(LIBNAME)
 
@@ -198,6 +198,10 @@ test_fr.o:
 	$(CC) $(CFLAGS) test_fr.c
 test_Lf.o:
 		$(CC) $(CFLAGS) test_Lf.c
+test_ff.o:
+	$(CC) $(CFLAGS) test_ff.c
+test_Lff.o:
+	$(CC) $(CFLAGS) test_Lff.c
 
 
 clean:
