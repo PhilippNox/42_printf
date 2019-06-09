@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/08 01:16:59 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/09 22:40:29 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int main ()
 		//&test_hhxx, &test_hxx, &test_lxx, &test_llxx,
 		//&test_f,
 		//&test_fs,
-		&test_f,
+		//&test_f,
 		&test_Lf,
 		NULL
 	};

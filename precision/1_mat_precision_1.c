@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:45:12 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/07 21:01:04 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/09 21:29:40 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	init_t_str_f(t_str_f *input)
 	input->idx_frc = 0;
 	input->exp_ent = 0;
 	input->exp_frc = 0;
+	input->sign = '+';
 }
 
 void	init_t_str_f_frc(t_str_f *input)

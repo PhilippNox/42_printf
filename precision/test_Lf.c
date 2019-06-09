@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/08 01:19:05 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/09 22:42:08 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,8 @@ void test_Lf(int (*fun)(const char *format, ...))
 		FLT_MIN,
 		FLT_MAX,
 		FLT_EPSILON,
-		//0,
+		0,
+		-0,
 		1,
 		-1,
 		2,
@@ -172,6 +173,9 @@ void test_Lf(int (*fun)(const char *format, ...))
 		3.03125,
 		4.09375,
 		4.00001,
+		1.0 / 0.0,
+		-1.0 / 0.0,
+		0.0 / 0.0,
 		stop_num
 	};
 
