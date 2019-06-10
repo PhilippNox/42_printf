@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 02:18:06 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 02:28:48 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@ int main ()
 	void (*tests2run[100]) (int (*fun)(const char *format, ...)) =
 	{
 		//&test_c, &test_cp,
-		//&test_c_utf8, &test_s_small, &test_s, &test_p, &test_d_small, &test_d, &test_i, &test_o, &test_u,
+		//&test_c_utf8, &test_s_small, &test_s, &test_p, &test_d_small, &test_d, &test_i,
 		//&test_s,
 		//&test_o,
-		&test_d,
+		&test_u,
+		//&test_d,
 		//&test_x, &test_X,
 		//&test_hhd, &test_hd, &test_ld, &test_lld,
 		//&test_hhi, &test_hi, &test_li, &test_lli,

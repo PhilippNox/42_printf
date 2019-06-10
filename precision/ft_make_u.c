@@ -6,16 +6,17 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/06 21:41:47 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 02:30:25 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "longd.h"
 
-static void	putpreci(t_task *input, int len, int len_num)
+static void	putpreci(t_task *input, int len, int len_num, unsigned long long target)
 {
 	fill('0', len - len_num);
-	ft_putstr(input->tmp);
+	if (input->precision != 0 || target != 0)
+		ft_putstr(input->tmp);
 }
 
 int	make_u(t_task *input, va_list *ap)
@@ -40,10 +41,11 @@ int	make_u(t_task *input, va_list *ap)
 
 	len_num = length_utf8(str);
 	len = (input->precision > len_num) ? input->precision : len_num;
-
+	if (input->precision == 0 && target == 0)
+		len = 0;
 	if (input->minus)
 	{
-		putpreci(input, len, len_num);
+		putpreci(input, len, len_num, target);
 		fill(' ', input->width - len);
 	}
 	else
@@ -52,7 +54,7 @@ int	make_u(t_task *input, va_list *ap)
 			fill(input->zero, input->width - len);
 		else
 			fill(' ', input->width - len);
-		putpreci(input, len, len_num);
+		putpreci(input, len, len_num, target);
 	}
 	return (input->width > len) ? input->width : len;
 
