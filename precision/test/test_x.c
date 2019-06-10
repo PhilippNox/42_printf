@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 18:52:17 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 01:37:47 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,9 @@ void test_x(int (*fun)(const char *format, ...))
 		"test_x_124 ok [%#0 -+.4x]",
 		"test_x_125 ok [%#0 -+x]",
 		"test_x_126 ok [%#0 -+10x]",
+		"test_x_127 %#.0x",
+		"test_x_128 %#.x",
+		"test_x_129 %#x",
 		NULL
 	};
 

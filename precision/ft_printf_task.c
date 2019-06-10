@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:42:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/09 23:11:17 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 01:31:17 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,14 @@ int	set_task(t_task *input, char *start, va_list *ap)
 	{
 		if (*(start + 1) == '*')
 			val = va_arg(*ap, int);
-		else
+		else if (*(start + 1) == '-' || (*(start + 1) == '+')
+				|| (*(start + 1) > 47 && *(start + 1) < 58))
 			val = ft_atoi(start + 1, &add_total);
+		else
+		{
+			val = 0;
+			add_total--;
+		}
 		add_total++;
 		if (val < 0)
 		{
