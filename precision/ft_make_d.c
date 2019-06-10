@@ -6,16 +6,17 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 20:23:33 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 02:20:31 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "longd.h"
 
-static void	putpreci(char *str, int len, int len_num)
+static void	putpreci(t_task *input, int len, int len_num, long long target)
 {
 	fill('0', len - len_num);
-	ft_putstr(str);
+	if (input->precision != 0 || target != 0)
+		ft_putstr(input->tmp);
 }
 
 static void	putsign(t_task *input, long long target)
@@ -55,14 +56,16 @@ int	make_d(t_task *input, va_list *ap)
 	else
 		target = va_arg(*ap, int);
 	ft_baseitoasign(str, target, 10);
+	input->tmp = str;
 
 	len_num = length_utf8(str);
 	len = (input->precision > len_num) ? input->precision : len_num;
-
+	if (input->precision == 0 && target == 0)
+		len = 0;
 	if (input->minus)
 	{
 		putsign(input, target);
-		putpreci(str, len, len_num);
+		putpreci(input, len, len_num, target);
 		fillsign(input, target, ' ', len);
 	}
 	else
@@ -71,13 +74,13 @@ int	make_d(t_task *input, va_list *ap)
 		{
 			putsign(input, target);
 			fillsign(input, target, '0', len);
-			putpreci(str, len, len_num);
+			putpreci(input, len, len_num, target);
 		}
 		else
 		{
 			fillsign(input, target, ' ', len);
 			putsign(input, target);
-			putpreci(str, len, len_num);
+			putpreci(input, len, len_num, target);
 		}
 	}
 	if (input->plus || input->space || target < 0)

@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 00:26:54 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 02:12:48 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 02:26:56 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void test(int (*fun)(const char *format, ...))
 	//fun("ooo %.o %.0o", 0, 0);
 	//fun("test_x_127 %#.0o", 0);
 	//fun("test_x_130 %.0o", 0);
+	//fun("@moulitest: %.d %.0d", 0, 0);
+	fun("%.u, %.0u", 0, 0);
 }
 
 
