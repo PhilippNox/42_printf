@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/10 23:51:36 by wgorold          ###   ########.fr        #
+#    Updated: 2019/06/11 00:32:12 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,13 @@
 # 	| tr '\n' ' '
 #
 
-NAME=run_test
+TSTNAME=run_test
 
 RND=roundnig
 
 RNDL=roundnig_long
 
-LIBNAME=libftprintf.a
+NAME=libftprintf.a
 
 CC=gcc
 
@@ -58,24 +58,31 @@ PATH_TST= $(patsubst %.o, $(PATH_S)%.o, $(TST))
 
 # https://www.gnu.org/software/make/manual/html_node/Text-Functions.html
 
-all: $(LIBNAME)
+all: $(NAME)
 
-tst: $(NAME)
+ok: $(PATH_SRC) $(PATH_TST) ./test_my/ok_test.c
+	@$(CC) $(FLAGS) $(PATH_SRC) $(PATH_TST) ./test_my/ok_test.c -o ok -I./ -I./test
+
+okc: ok
+	./ok
+	@rm -f ok
+
+tst: $(TSTNAME)
 	sh ./z_check.sh
 
-tstc: $(NAME) clean
+tstc: $(TSTNAME) clean
 	sh ./z_check.sh -d;
-	@rm -f $(NAME) $(LIBNAME);
+	@rm -f $(TSTNAME) $(NAME);
 
-run: $(NAME)
+run: $(TSTNAME)
 	./run_test
-	@rm -f $(NAME) $(LIBNAME);
+	@rm -f $(TSTNAME) $(NAME);
 
-$(LIBNAME): $(SRC)
-	ar rc $(LIBNAME) $(PATH_SRC)
+$(NAME): $(PATH_SRC)
+	ar rc $(NAME) $(PATH_SRC)
 
-$(NAME): $(PATH_SRC) $(PATH_TST) $(PATH_T)main_test.c
-	@$(CC) $(FLAGS) $(PATH_SRC) $(PATH_TST) $(PATH_T)main_test.c -o $(NAME) -I./
+$(TSTNAME): $(PATH_SRC) $(PATH_TST) $(PATH_T)main_test.c
+	@$(CC) $(FLAGS) $(PATH_SRC) $(PATH_TST) $(PATH_T)main_test.c -o $(TSTNAME) -I./
 
 
 $(PATH_S)1_mat_precision_1.o: 1_mat_precision_1.c
@@ -206,6 +213,6 @@ clean:
 	@rm -f $(PATH_SRC) $(PATH_TST)
 
 fclean: clean
-	@rm -f $(NAME) $(LIBNAME);
+	@rm -f $(TSTNAME) $(NAME);
 
 re: fclean all

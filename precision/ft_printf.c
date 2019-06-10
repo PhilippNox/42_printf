@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 16:22:57 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 00:55:51 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,12 @@ int	ft_printf(const char *format, ...)
 		}
 		init_task(&task);
 		idx += set_task(&task, (char *)format + idx + 1, &ap) + 1;
+		ft_putnbr(idx);
 		total += make_task(&task, &ap);
 		last = &task;
 	}
 	va_end(ap);
-	//print_task(last);
+	if (SHOW_LAST_TASK)
+		print_task(last);
 	return (total);
 }

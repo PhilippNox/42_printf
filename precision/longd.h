@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/09 22:26:18 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 01:10:40 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define DEBUG_EXP_TAB 0
 # define DEBUG_FRC_ADD 0
 # define DEBUG_ROUNDING 0
+# define SHOW_LAST_TASK 0
 
 # include <stdio.h>
 # include <string.h>
