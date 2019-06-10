@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/09 22:32:20 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/10 23:59:21 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ void test_f(int (*fun)(const char *format, ...))
 		"test_fr_5 ok [%.2f]",
 		"test_fr_6 ok [%.1f]",
 		"test_fr_7 ok [%.0f]",
+		"test_fr_8 ok [%.150f]",
 		NULL
 	};
 
