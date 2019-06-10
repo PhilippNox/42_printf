@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/06 21:44:11 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 02:08:16 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ static void	putpreci(t_task *input, unsigned long long target, int len, int len_
 	fill('0', len - len_num);
 	if (target != 0 && input->hash)
 		ft_putchar('0');
-	ft_putstr(input->tmp);
+	if (input->precision != 0 || target != 0)
+		ft_putstr(input->tmp);
+	else if (input->hash)
+		ft_putchar('0');
 }
 
 int	make_o(t_task *input, va_list *ap)
@@ -44,7 +47,12 @@ int	make_o(t_task *input, va_list *ap)
 	if (target != 0 && input->hash)
 		len_num++;
 	len = (input->precision > len_num) ? input->precision : len_num;
-
+	if (input->precision == 0 && target == 0)
+	{
+		len = 0;
+		if (input->hash)
+			len = 1;
+	}
 	if (input->minus)
 	{
 		putpreci(input, target, len, len_num);

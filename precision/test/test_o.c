@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 17:11:33 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 02:06:05 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,12 @@ void test_o(int (*fun)(const char *format, ...))
 		"test_o_124 ok [%#0 -+.4o]",
 		"test_o_125 ok [%#0 -+o]",
 		"test_o_126 ok [%#0 -+10o]",
+		"test_x_127 %#.0o",
+		"test_x_128 %#.o",
+		"test_x_129 %#o",
+		"test_x_130 %.0o",
+		"test_x_131 %.o",
+		"test_x_132 %o",
 		NULL
 	};
 
