@@ -6,14 +6,15 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/09 23:02:17 by wgorold          ###   ########.fr        #
+#    Updated: 2019/06/10 23:14:17 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #
 # How 2 make this Makefile
-# 	find . -maxdepth 1 -name '*.c' | sed "s/\.\///" | sed "s/\.c//" \
-# 	| while read x ; do echo "$x.o:\n\t\$(CC) \$(CFLAGS) $x.c" ; done
+# 	find . -maxdepth 1 -name '*.c' | sed "s/\.\///" | sed "s/\.c//" | while read x ; do echo "$x.o: $x.c\n\t\$(CC) \$(CFLAGS) $x.c \$(FLAG_PATH_OBJ)" ; done
+#
+# 	find . -maxdepth 1 -name '*.c' | sed "s/\.\///" | sed "s/\.c//" | while read x ; do echo "$x.o: \$(PATH_T)$x.c\n\t\$(CC) \$(CFLAGS) \$(PATH_T)$x.c \$(FLAG_PATH_OBJ)" ; done
 #
 # 	find . -maxdepth 1 -name '*.c' | sed "s/\.\///" | sed "s/\.c/\.o/" \
 # 	| tr '\n' ' '
@@ -39,6 +40,9 @@ SRC=	1_mat_precision_1.o 2_mat_precision_2.o 3_mat_precision_print.o \
 			ft_make_d.o ft_make_p.o ft_make_s.o ft_printf.o ft_printf_helper.o \
 			ft_printf_task.o ft_put.o ft_make_o.o ft_make_u.o ft_make_x.o \
 			ft_make_f.o
+PATH_S=./obj/
+PATH_SRC= $(patsubst %.o, $(PATH_S)%.o, $(SRC))
+FLAG_PATH_OBJ= -o $(PATH_S)$@
 
 TST=	test_c.o test_cp.o test_c_utf8.o test_d.o test_d_small.o test_i.o \
 			test_p.o test_s.o test_s_small.o test_o.o test_u.o test_x.o test_xx.o \
@@ -49,10 +53,14 @@ TST=	test_c.o test_cp.o test_c_utf8.o test_d.o test_d_small.o test_i.o \
 			test_hhx.o test_hx.o test_lx.o test_llx.o \
 			test_hhxx.o test_hxx.o test_lxx.o test_llxx.o \
 			test_f.o test_fs.o test_fr.o test_Lf.o test_ff.o test_Lff.o
+PATH_T=./test/
+PATH_TST= $(patsubst %.o, $(PATH_S)%.o, $(TST))
+
+# https://www.gnu.org/software/make/manual/html_node/Text-Functions.html
 
 all: $(LIBNAME)
 
-tst: $(NAME) clean
+tst: $(NAME)
 	sh ./z_check.sh
 
 tstc: $(NAME) clean
@@ -71,141 +79,148 @@ rndl: $(RNDL) clean
 	./roundnig_long
 	@rm -f $(RNDL) $(LIBNAME);
 
+rrr: $(SRC)
+	echo $(OBJS)
+
 $(LIBNAME): $(SRC)
-	ar rc $(LIBNAME) $(SRC)
+	ar rc $(LIBNAME) $(PATH_SRC)
 
 $(NAME): $(SRC) $(TST)
-	@$(CC) $(FLAGS) $(SRC) $(TST) test_run.c -o $(NAME)
+	@$(CC) $(FLAGS) $(PATH_SRC) $(PATH_TST) $(PATH_T)main_test.c -o $(NAME) -I./
 
 $(RND): $(SRC) $(TST)
-	@$(CC) $(FLAGS) $(SRC) $(TST) test_f_rounding.c -o $(RND)
+	@$(CC) $(FLAGS) $(SRC) $(TST) $(PATH_TST)test_f_rounding.c -o $(RND)
 
 $(RNDL): $(SRC) $(TST)
-	@$(CC) $(FLAGS) $(SRC) $(TST) test_Lf_rounding.c -o $(RNDL)
+	@$(CC) $(FLAGS) $(SRC) $(TST) $(PATH_TST)test_Lf_rounding.c -o $(RNDL)
 
-1_mat_precision_1.o:
-	$(CC) $(CFLAGS) 1_mat_precision_1.c
-2_mat_precision_2.o:
-	$(CC) $(CFLAGS) 2_mat_precision_2.c
-3_mat_precision_print.o:
-	$(CC) $(CFLAGS) 3_mat_precision_print.c
-ft_atoi.o:
-	$(CC) $(CFLAGS) ft_atoi.c
-ft_make_c.o:
-	$(CC) $(CFLAGS) ft_make_c.c
-ft_make_d.o:
-	$(CC) $(CFLAGS) ft_make_d.c
-ft_make_p.o:
-	$(CC) $(CFLAGS) ft_make_p.c
-ft_make_s.o:
-	$(CC) $(CFLAGS) ft_make_s.c
-ft_make_o.o:
-	$(CC) $(CFLAGS) ft_make_o.c
-ft_make_u.o:
-	$(CC) $(CFLAGS) ft_make_u.c
-ft_make_x.o:
-	$(CC) $(CFLAGS) ft_make_x.c
-ft_make_f.o:
-	$(CC) $(CFLAGS) ft_make_f.c
-ft_printf.o:
-	$(CC) $(CFLAGS) ft_printf.c
-ft_printf_helper.o:
-	$(CC) $(CFLAGS) ft_printf_helper.c
-ft_printf_task.o:
-	$(CC) $(CFLAGS) ft_printf_task.c
-ft_put.o:
-	$(CC) $(CFLAGS) ft_put.c
+1_mat_precision_1.o: 1_mat_precision_1.c
+	$(CC) $(CFLAGS) 1_mat_precision_1.c $(FLAG_PATH_OBJ)
+2_mat_precision_2.o: 2_mat_precision_2.c
+	$(CC) $(CFLAGS) 2_mat_precision_2.c $(FLAG_PATH_OBJ)
+3_mat_precision_print.o: 3_mat_precision_print.c
+	$(CC) $(CFLAGS) 3_mat_precision_print.c $(FLAG_PATH_OBJ)
+ft_atoi.o: ft_atoi.c
+	$(CC) $(CFLAGS) ft_atoi.c $(FLAG_PATH_OBJ)
+ft_make_c.o: ft_make_c.c
+	$(CC) $(CFLAGS) ft_make_c.c $(FLAG_PATH_OBJ)
+ft_make_d.o: ft_make_d.c
+	$(CC) $(CFLAGS) ft_make_d.c $(FLAG_PATH_OBJ)
+ft_make_f.o: ft_make_f.c
+	$(CC) $(CFLAGS) ft_make_f.c $(FLAG_PATH_OBJ)
+ft_make_o.o: ft_make_o.c
+	$(CC) $(CFLAGS) ft_make_o.c $(FLAG_PATH_OBJ)
+ft_make_p.o: ft_make_p.c
+	$(CC) $(CFLAGS) ft_make_p.c $(FLAG_PATH_OBJ)
+ft_make_s.o: ft_make_s.c
+	$(CC) $(CFLAGS) ft_make_s.c $(FLAG_PATH_OBJ)
+ft_make_u.o: ft_make_u.c
+	$(CC) $(CFLAGS) ft_make_u.c $(FLAG_PATH_OBJ)
+ft_make_x.o: ft_make_x.c
+	$(CC) $(CFLAGS) ft_make_x.c $(FLAG_PATH_OBJ)
+ft_printf.o: ft_printf.c
+	$(CC) $(CFLAGS) ft_printf.c $(FLAG_PATH_OBJ)
+ft_printf_helper.o: ft_printf_helper.c
+	$(CC) $(CFLAGS) ft_printf_helper.c $(FLAG_PATH_OBJ)
+ft_printf_task.o: ft_printf_task.c
+	$(CC) $(CFLAGS) ft_printf_task.c $(FLAG_PATH_OBJ)
+ft_put.o: ft_put.c
+	$(CC) $(CFLAGS) ft_put.c $(FLAG_PATH_OBJ)
 
-test_c.o:
-	$(CC) $(CFLAGS) test_c.c
-test_cp.o:
-	$(CC) $(CFLAGS) test_cp.c
-test_c_utf8.o:
-	$(CC) $(CFLAGS) test_c_utf8.c
-test_d.o:
-	$(CC) $(CFLAGS) test_d.c
-test_d_small.o:
-	$(CC) $(CFLAGS) test_d_small.c
-test_i.o:
-	$(CC) $(CFLAGS) test_i.c
-test_p.o:
-	$(CC) $(CFLAGS) test_p.c
-test_s.o:
-	$(CC) $(CFLAGS) test_s.c
-test_s_small.o:
-	$(CC) $(CFLAGS) test_s_small.c
-test_o.o:
-	$(CC) $(CFLAGS) test_o.c
-test_u.o:
-	$(CC) $(CFLAGS) test_u.c
-test_x.o:
-	$(CC) $(CFLAGS) test_x.c
-test_xx.o:
-	$(CC) $(CFLAGS) test_xx.c
-test_hhd.o:
-	$(CC) $(CFLAGS) test_hhd.c
-test_hd.o:
-	$(CC) $(CFLAGS) test_hd.c
-test_ld.o:
-	$(CC) $(CFLAGS) test_ld.c
-test_lld.o:
-	$(CC) $(CFLAGS) test_lld.c
-test_hhi.o:
-	$(CC) $(CFLAGS) test_hhi.c
-test_hi.o:
-	$(CC) $(CFLAGS) test_hi.c
-test_li.o:
-	$(CC) $(CFLAGS) test_li.c
-test_lli.o:
-	$(CC) $(CFLAGS) test_lli.c
-test_hho.o:
-	$(CC) $(CFLAGS) test_hho.c
-test_ho.o:
-	$(CC) $(CFLAGS) test_ho.c
-test_lo.o:
-	$(CC) $(CFLAGS) test_lo.c
-test_llo.o:
-	$(CC) $(CFLAGS) test_llo.c
-test_hhu.o:
-	$(CC) $(CFLAGS) test_hhu.c
-test_hu.o:
-	$(CC) $(CFLAGS) test_hu.c
-test_lu.o:
-	$(CC) $(CFLAGS) test_lu.c
-test_llu.o:
-	$(CC) $(CFLAGS) test_llu.c
-test_hhx.o:
-	$(CC) $(CFLAGS) test_hhx.c
-test_hx.o:
-	$(CC) $(CFLAGS) test_hx.c
-test_lx.o:
-	$(CC) $(CFLAGS) test_lx.c
-test_llx.o:
-	$(CC) $(CFLAGS) test_llx.c
-test_hhxx.o:
-	$(CC) $(CFLAGS) test_hhxx.c
-test_hxx.o:
-	$(CC) $(CFLAGS) test_hxx.c
-test_lxx.o:
-	$(CC) $(CFLAGS) test_lxx.c
-test_llxx.o:
-	$(CC) $(CFLAGS) test_llxx.c
-test_f.o:
-	$(CC) $(CFLAGS) test_f.c
-test_fs.o:
-	$(CC) $(CFLAGS) test_fs.c
-test_fr.o:
-	$(CC) $(CFLAGS) test_fr.c
-test_Lf.o:
-		$(CC) $(CFLAGS) test_Lf.c
-test_ff.o:
-	$(CC) $(CFLAGS) test_ff.c
-test_Lff.o:
-	$(CC) $(CFLAGS) test_Lff.c
 
+test_c.o: $(PATH_T)test_c.c
+	$(CC) $(CFLAGS) $(PATH_T)test_c.c $(FLAG_PATH_OBJ)
+test_c_utf8.o: $(PATH_T)test_c_utf8.c
+	$(CC) $(CFLAGS) $(PATH_T)test_c_utf8.c $(FLAG_PATH_OBJ)
+test_cp.o: $(PATH_T)test_cp.c
+	$(CC) $(CFLAGS) $(PATH_T)test_cp.c $(FLAG_PATH_OBJ)
+test_d.o: $(PATH_T)test_d.c
+	$(CC) $(CFLAGS) $(PATH_T)test_d.c $(FLAG_PATH_OBJ)
+test_d_small.o: $(PATH_T)test_d_small.c
+	$(CC) $(CFLAGS) $(PATH_T)test_d_small.c $(FLAG_PATH_OBJ)
+test_f.o: $(PATH_T)test_f.c
+	$(CC) $(CFLAGS) $(PATH_T)test_f.c $(FLAG_PATH_OBJ)
+test_ff.o: $(PATH_T)test_ff.c
+	$(CC) $(CFLAGS) $(PATH_T)test_ff.c $(FLAG_PATH_OBJ)
+test_fr.o: $(PATH_T)test_fr.c
+	$(CC) $(CFLAGS) $(PATH_T)test_fr.c $(FLAG_PATH_OBJ) -I./
+test_fs.o: $(PATH_T)test_fs.c
+	$(CC) $(CFLAGS) $(PATH_T)test_fs.c $(FLAG_PATH_OBJ)
+test_hd.o: $(PATH_T)test_hd.c
+	$(CC) $(CFLAGS) $(PATH_T)test_hd.c $(FLAG_PATH_OBJ)
+test_hhd.o: $(PATH_T)test_hhd.c
+	$(CC) $(CFLAGS) $(PATH_T)test_hhd.c $(FLAG_PATH_OBJ)
+test_hhi.o: $(PATH_T)test_hhi.c
+	$(CC) $(CFLAGS) $(PATH_T)test_hhi.c $(FLAG_PATH_OBJ)
+test_hho.o: $(PATH_T)test_hho.c
+	$(CC) $(CFLAGS) $(PATH_T)test_hho.c $(FLAG_PATH_OBJ)
+test_hhu.o: $(PATH_T)test_hhu.c
+	$(CC) $(CFLAGS) $(PATH_T)test_hhu.c $(FLAG_PATH_OBJ)
+test_hhx.o: $(PATH_T)test_hhx.c
+	$(CC) $(CFLAGS) $(PATH_T)test_hhx.c $(FLAG_PATH_OBJ)
+test_hhxx.o: $(PATH_T)test_hhxx.c
+	$(CC) $(CFLAGS) $(PATH_T)test_hhxx.c $(FLAG_PATH_OBJ)
+test_hi.o: $(PATH_T)test_hi.c
+	$(CC) $(CFLAGS) $(PATH_T)test_hi.c $(FLAG_PATH_OBJ)
+test_ho.o: $(PATH_T)test_ho.c
+	$(CC) $(CFLAGS) $(PATH_T)test_ho.c $(FLAG_PATH_OBJ)
+test_hu.o: $(PATH_T)test_hu.c
+	$(CC) $(CFLAGS) $(PATH_T)test_hu.c $(FLAG_PATH_OBJ)
+test_hx.o: $(PATH_T)test_hx.c
+	$(CC) $(CFLAGS) $(PATH_T)test_hx.c $(FLAG_PATH_OBJ)
+test_hxx.o: $(PATH_T)test_hxx.c
+	$(CC) $(CFLAGS) $(PATH_T)test_hxx.c $(FLAG_PATH_OBJ)
+test_i.o: $(PATH_T)test_i.c
+	$(CC) $(CFLAGS) $(PATH_T)test_i.c $(FLAG_PATH_OBJ)
+test_ld.o: $(PATH_T)test_ld.c
+	$(CC) $(CFLAGS) $(PATH_T)test_ld.c $(FLAG_PATH_OBJ)
+test_Lf.o: $(PATH_T)test_Lf.c
+	$(CC) $(CFLAGS) $(PATH_T)test_Lf.c $(FLAG_PATH_OBJ)
+test_Lff.o: $(PATH_T)test_Lff.c
+	$(CC) $(CFLAGS) $(PATH_T)test_Lff.c $(FLAG_PATH_OBJ)
+test_li.o: $(PATH_T)test_li.c
+	$(CC) $(CFLAGS) $(PATH_T)test_li.c $(FLAG_PATH_OBJ)
+test_lld.o: $(PATH_T)test_lld.c
+	$(CC) $(CFLAGS) $(PATH_T)test_lld.c $(FLAG_PATH_OBJ)
+test_lli.o: $(PATH_T)test_lli.c
+	$(CC) $(CFLAGS) $(PATH_T)test_lli.c $(FLAG_PATH_OBJ)
+test_llo.o: $(PATH_T)test_llo.c
+	$(CC) $(CFLAGS) $(PATH_T)test_llo.c $(FLAG_PATH_OBJ)
+test_llu.o: $(PATH_T)test_llu.c
+	$(CC) $(CFLAGS) $(PATH_T)test_llu.c $(FLAG_PATH_OBJ)
+test_llx.o: $(PATH_T)test_llx.c
+	$(CC) $(CFLAGS) $(PATH_T)test_llx.c $(FLAG_PATH_OBJ)
+test_llxx.o: $(PATH_T)test_llxx.c
+	$(CC) $(CFLAGS) $(PATH_T)test_llxx.c $(FLAG_PATH_OBJ)
+test_lo.o: $(PATH_T)test_lo.c
+	$(CC) $(CFLAGS) $(PATH_T)test_lo.c $(FLAG_PATH_OBJ)
+test_longd.o: $(PATH_T)test_longd.c
+	$(CC) $(CFLAGS) $(PATH_T)test_longd.c $(FLAG_PATH_OBJ)
+test_lu.o: $(PATH_T)test_lu.c
+	$(CC) $(CFLAGS) $(PATH_T)test_lu.c $(FLAG_PATH_OBJ)
+test_lx.o: $(PATH_T)test_lx.c
+	$(CC) $(CFLAGS) $(PATH_T)test_lx.c $(FLAG_PATH_OBJ)
+test_lxx.o: $(PATH_T)test_lxx.c
+	$(CC) $(CFLAGS) $(PATH_T)test_lxx.c $(FLAG_PATH_OBJ)
+test_o.o: $(PATH_T)test_o.c
+	$(CC) $(CFLAGS) $(PATH_T)test_o.c $(FLAG_PATH_OBJ)
+test_p.o: $(PATH_T)test_p.c
+	$(CC) $(CFLAGS) $(PATH_T)test_p.c $(FLAG_PATH_OBJ)
+test_run.o: $(PATH_T)test_run.c
+	$(CC) $(CFLAGS) $(PATH_T)test_run.c $(FLAG_PATH_OBJ)
+test_s.o: $(PATH_T)test_s.c
+	$(CC) $(CFLAGS) $(PATH_T)test_s.c $(FLAG_PATH_OBJ)
+test_s_small.o: $(PATH_T)test_s_small.c
+	$(CC) $(CFLAGS) $(PATH_T)test_s_small.c $(FLAG_PATH_OBJ)
+test_u.o: $(PATH_T)test_u.c
+	$(CC) $(CFLAGS) $(PATH_T)test_u.c $(FLAG_PATH_OBJ)
+test_x.o: $(PATH_T)test_x.c
+	$(CC) $(CFLAGS) $(PATH_T)test_x.c $(FLAG_PATH_OBJ)
+test_xx.o: $(PATH_T)test_xx.c
+	$(CC) $(CFLAGS) $(PATH_T)test_xx.c $(FLAG_PATH_OBJ)
 
 clean:
-	@rm -f $(SRC) $(TST)
+	@rm -f $(PATH_SRC) $(PATH_TST)
 
 fclean: clean
 	@rm -f $(NAME) $(LIBNAME);
