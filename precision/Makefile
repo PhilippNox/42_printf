@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/11 00:32:12 by wgorold          ###   ########.fr        #
+#    Updated: 2019/06/11 02:54:05 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ TST=	test_c.o test_cp.o test_c_utf8.o test_d.o test_d_small.o test_i.o \
 			test_hhu.o test_hu.o test_lu.o test_llu.o \
 			test_hhx.o test_hx.o test_lx.o test_llx.o \
 			test_hhxx.o test_hxx.o test_lxx.o test_llxx.o \
-			test_f.o test_fs.o test_fr.o test_Lf.o test_ff.o test_Lff.o
+			test_f.o test_fs.o test_fr.o test_Lf.o test_ff.o test_Lff.o test_star.o
 PATH_T=./test/
 PATH_TST= $(patsubst %.o, $(PATH_S)%.o, $(TST))
 
@@ -208,6 +208,8 @@ $(PATH_S)test_x.o: $(PATH_T)test_x.c
 	$(CC) $(CFLAGS) $(PATH_T)test_x.c $(FLAG_PATH_OBJ)
 $(PATH_S)test_xx.o: $(PATH_T)test_xx.c
 	$(CC) $(CFLAGS) $(PATH_T)test_xx.c $(FLAG_PATH_OBJ)
+$(PATH_S)test_star.o: $(PATH_T)test_star.c
+	$(CC) $(CFLAGS) $(PATH_T)test_star.c $(FLAG_PATH_OBJ)
 
 clean:
 	@rm -f $(PATH_SRC) $(PATH_TST)

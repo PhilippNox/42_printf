@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:42:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 01:31:17 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 02:48:02 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,12 @@ int	set_task(t_task *input, char *start, va_list *ap)
 		add_total++;
 		if (val < 0)
 		{
-			input->width = -val;
-			input->minus = 1;
-			input->precision = (*(start + 1) == '*') ? input->precision : 0; //test_s_12
+			if (*(start + 1) != '*')
+			{
+				input->width = -val;
+				input->minus = 1;
+				input->precision = (*(start + 1) == '*') ? input->precision : 0; //test_s_12
+			}
 		}
 		else
 			input->precision = val;
