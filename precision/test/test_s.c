@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/05 15:49:33 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 01:49:15 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,10 +150,12 @@ void test_s(int (*fun)(const char *format, ...))
 	};
 
 	char *tab[] = {
+		"(null)",
+		"(null)",
 		"abcdef",
 		"",
 		"ZIP",
-		NULL
+		NULL,
 	};
 
 	idx = -1;
@@ -162,8 +164,11 @@ void test_s(int (*fun)(const char *format, ...))
 		idxn = -1;
 		while (tab[++idxn])
 		{
-			fun(str[idx], tab[idxn]);
-			fun("\t\t\t\t//\tprintf(\"%s\", %s); // RUN THIS CODE FOR DEBUG\n", str[idx], tab[idxn]);
+			if (!idx)
+				fun(str[idx], NULL);
+			else
+				fun(str[idx], tab[idxn]);
+			fun("\n");
 		}
 	}
 }
