@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/10 23:47:54 by wgorold          ###   ########.fr        #
+#    Updated: 2019/06/10 23:51:36 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ run: $(NAME)
 $(LIBNAME): $(SRC)
 	ar rc $(LIBNAME) $(PATH_SRC)
 
-$(NAME): $(PATH_SRC) $(PATH_TST)
+$(NAME): $(PATH_SRC) $(PATH_TST) $(PATH_T)main_test.c
 	@$(CC) $(FLAGS) $(PATH_SRC) $(PATH_TST) $(PATH_T)main_test.c -o $(NAME) -I./
 
 
