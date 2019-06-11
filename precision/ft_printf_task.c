@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:42:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 02:48:02 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 03:11:32 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	set_task(t_task *input, char *start, va_list *ap)
 	int val;
 
 	add_total = 1;
-	if (isOneOf(*start, "cspdiouxXgfF%"))
+	if (isOneOf(*start, "cspdioOuUxXgfF%"))
 	{
 		input->type = *start;
 		if ((input->type == 'f' || input->type == 'F') && input->precision == -1)
@@ -137,9 +137,9 @@ int	make_task(t_task *input, va_list *ap)
 		return make_p(input, ap);
 	if (input->type == 'd' || input->type == 'i')
 		return make_d(input, ap);
-	if (input->type == 'o')
+	if (input->type == 'o' || input->type == 'O')
 		return make_o(input, ap);
-	if (input->type == 'u')
+	if (input->type == 'u' || input->type == 'U')
 		return make_u(input, ap);
 	if (input->type == 'x' || input->type == 'X')
 		return make_x(input, ap);

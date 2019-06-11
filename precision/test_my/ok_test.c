@@ -6,14 +6,15 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 00:26:54 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 02:53:04 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 03:15:38 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tests.h"
 #include "longd.h"
+#include <limits.h>
 
-void test_star(int (*fun)(const char *format, ...))
+void test(int (*fun)(const char *format, ...))
 {
 	//fun("@moulitest: %#.1x", 2, 0);
 	//fun("@moulitest: %#.1x", 1, 0);
@@ -30,9 +31,14 @@ void test_star(int (*fun)(const char *format, ...))
 	//fun("@moulitest: %.d %.0d", 0, 0);
 	//fun("%.u, %.0u", 0, 0);
 
-	fun("{%05.*d}", 15, 42);
-	fun("{%05.*d}", -15, 42);
+	//fun("{%05.*d}", 15, 42);
+	//fun("{%05.*d}", -15, 42);
 
+	//fun("%o", LONG_MIN);
+	//fun("%O", LONG_MIN);
+	//fun("%lo", LONG_MIN);
+	fun("%c", 130);
+	fun("%c", 200);
 }
 
 
