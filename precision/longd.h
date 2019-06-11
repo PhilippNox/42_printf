@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 21:03:41 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 21:49:03 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int		set_task(t_task *input, char *start, va_list *ap);
 int		make_task(t_task *input, va_list *ap);
 
 int		make_c(t_task *input, va_list *ap);
+int		make_bc(t_task *input, va_list *ap);
 int		make_s(t_task *input, va_list *ap);
 int		make_bs(t_task *input, va_list *ap);
 int		make_p(t_task *input, va_list *ap);

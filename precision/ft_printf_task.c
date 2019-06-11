@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:42:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 21:43:32 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 22:09:11 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ int	set_task(t_task *input, char *start, va_list *ap)
 	int val;
 
 	add_total = 1;
-	if (*start == '\0' || !isOneOf(*start, "csSpdDioOuUxXgfF%-+ #.0123456789*hl"))
+	if (*start == '\0' || !isOneOf(*start, "cCsSpdDioOuUxXgfF%-+ #.0123456789*hl"))
 		return (0);
-	if (isOneOf(*start, "csSpdDioOuUxXgfF%"))
+	if (isOneOf(*start, "cCsSpdDioOuUxXgfF%"))
 	{
 		input->type = *start;
 		if (input->precision == -1)
@@ -134,12 +134,14 @@ int	set_task(t_task *input, char *start, va_list *ap)
 
 int	make_task(t_task *input, va_list *ap)
 {
+	if (input->type == 'C' || (input->type == 'c' && input->length == 'l'))
+		return make_bc(input, ap);
 	if (input->type == 'c' || input->type == '%')
 		return make_c(input, ap);
+	if (input->type == 'S' || (input->type == 's' && input->length == 'l'))
+		return make_bs(input, ap);
 	if (input->type == 's')
 		return make_s(input, ap);
-	if (input->type == 'S')
-		return make_bs(input, ap);
 	if (input->type == 'p')
 		return make_p(input, ap);
 	if (input->type == 'd' || input->type == 'i' || input->type == 'D')

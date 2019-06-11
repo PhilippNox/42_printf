@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/11 20:56:24 by wgorold          ###   ########.fr        #
+#    Updated: 2019/06/11 21:55:00 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ SRC=	1_mat_precision_1.o 2_mat_precision_2.o 3_mat_precision_print.o \
 			ft_atoi.o ft_make_c.o \
 			ft_make_d.o ft_make_p.o ft_make_s.o ft_printf.o ft_printf_helper.o \
 			ft_printf_task.o ft_put.o ft_make_o.o ft_make_u.o ft_make_x.o \
-			ft_make_f.o ft_make_bs.o
+			ft_make_f.o ft_make_bs.o ft_make_bc.o
 PATH_S=./obj/
 PATH_SRC= $(patsubst %.o, $(PATH_S)%.o, $(SRC))
 FLAG_PATH_OBJ= -o $@
@@ -95,6 +95,8 @@ $(PATH_S)ft_atoi.o: ft_atoi.c
 	$(CC) $(CFLAGS) ft_atoi.c $(FLAG_PATH_OBJ)
 $(PATH_S)ft_make_c.o: ft_make_c.c
 	$(CC) $(CFLAGS) ft_make_c.c $(FLAG_PATH_OBJ)
+$(PATH_S)ft_make_bc.o: ft_make_bc.c
+	$(CC) $(CFLAGS) ft_make_bc.c $(FLAG_PATH_OBJ)
 $(PATH_S)ft_make_d.o: ft_make_d.c
 	$(CC) $(CFLAGS) ft_make_d.c $(FLAG_PATH_OBJ)
 $(PATH_S)ft_make_f.o: ft_make_f.c
