@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 00:26:54 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 03:15:38 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 15:58:30 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,11 @@ void test(int (*fun)(const char *format, ...))
 	//fun("%o", LONG_MIN);
 	//fun("%O", LONG_MIN);
 	//fun("%lo", LONG_MIN);
-	fun("%c", 130);
-	fun("%c", 200);
+
+	//fun("%c", 130);
+	//fun("%c", 200);
+	fun("%.p", 0);
+	fun("%.0p", 0);
 }
 
 

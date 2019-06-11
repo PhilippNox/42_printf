@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:42:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 03:11:32 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 16:06:28 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,11 @@ int	set_task(t_task *input, char *start, va_list *ap)
 	if (isOneOf(*start, "cspdioOuUxXgfF%"))
 	{
 		input->type = *start;
-		if ((input->type == 'f' || input->type == 'F') && input->precision == -1)
-			input->precision = 6;
+		if (input->precision == -1)
+		{
+			if (input->type == 'f' || input->type == 'F')
+				input->precision = 6;
+		}
 		return (1);
 	}
 	if (*start == '-')

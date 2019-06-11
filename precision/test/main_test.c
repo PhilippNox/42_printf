@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 02:54:25 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 15:10:17 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int main ()
 	{
 		//&test_c, &test_cp,
 		//&test_c_utf8, &test_s_small, &test_s, &test_p, &test_d_small, &test_d, &test_i,
+		&test_p,
 		//&test_s,
 		//&test_o,
 		//&test_u,
@@ -54,7 +55,7 @@ int main ()
 		//&test_f, &test_Lf,
 		//&test_ff, &test_Lff,
 		//&test_f,
-		&test_star,
+		//&test_star,
 		NULL
 	};
 
