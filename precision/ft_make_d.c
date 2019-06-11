@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 02:20:31 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 21:44:06 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ int	make_d(t_task *input, va_list *ap)
 	int len;
 	int len_num;
 
-	if (input->length == 'i')
+	if (input->type == 'D')
+		target = (long)va_arg(*ap, long);
+	else if (input->length == 'i')
 		target = (char)va_arg(*ap, int);
 	else if (input->length == 'h')
 		target = (short)va_arg(*ap, int);
