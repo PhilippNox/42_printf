@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:42:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 16:06:28 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 17:00:55 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_task(t_task *input)
 	input->width = -1;
 	input->precision = -1;
 	input->length = 'n';
-	input->type = 'n';
+	input->type = '0';
 }
 
 void	print_task(t_task *input)
@@ -60,6 +60,8 @@ int	set_task(t_task *input, char *start, va_list *ap)
 	int val;
 
 	add_total = 1;
+	if (*start == '\0' || !isOneOf(*start, "cspdioOuUxXgfF%-+ #.0123456789*hl"))
+		return (0);
 	if (isOneOf(*start, "cspdioOuUxXgfF%"))
 	{
 		input->type = *start;
@@ -148,5 +150,7 @@ int	make_task(t_task *input, va_list *ap)
 		return make_x(input, ap);
 	if (input->type == 'f' || input->type == 'F')
 		return make_f(input, ap);
+	if (input->type == '0')
+		return (0);
 	return (0);
 }
