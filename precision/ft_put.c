@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 02:41:09 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/06 20:48:07 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 21:40:21 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,21 @@
 // clear && gcc -Wall -Wextra ft_put.c  && ./a.out
 
 #include "longd.h"
+
+int unicodestep(wchar_t tmp)
+{
+	int out;
+
+	if (tmp < 128)
+		out = 1;
+	else if (tmp < 2048)
+		out = 2;
+	else if (tmp < 65536)
+		out = 3;
+	else
+		out = 4;
+	return (out);
+}
 
 int	ft_utf8step(char const *s)
 {
@@ -65,7 +80,7 @@ int	ft_putstr(char const *s)
 		idx += ft_pututf8(s + idx);
 		printed++;
 	}
-	return (printed);
+	return (UTF8COUNT) ? (printed) : idx;
 }
 
 int	ft_putstrn(char const *s, int len)
@@ -82,8 +97,60 @@ int	ft_putstrn(char const *s, int len)
 	{
 		idx += ft_pututf8(s + idx);
 		printed++;
+		if (!UTF8COUNT)
+			printed = idx;
 	}
 	return (printed);
+}
+
+int unicode2utf8(wchar_t tmp)
+{
+	int idx;
+	char toPrint[5];
+
+	idx = -1;
+	while (++idx < 5)
+		toPrint[idx] = 0;
+
+	if (tmp < 128)
+		toPrint[0] = tmp & 0x7F;
+	else if (tmp < 2048)
+	{
+		toPrint[1] = 0x80 | (tmp & 0x3F);
+		toPrint[0] = 0xC0 | ((tmp >> 6) & 0x1F);
+	}
+	else if (tmp < 65536)
+	{
+		toPrint[2] = 0x80 | (tmp & 0x3F);
+		toPrint[1] = 0x80 | ((tmp >> 6) & 0x3F);
+		toPrint[0] = 0xE0 | ((tmp >> 12) & 0xF);
+	}
+	else
+	{
+		toPrint[3] = 0x80 | (tmp & 0x3F);
+		toPrint[2] = 0x80 | ((tmp >> 6) & 0x3F);
+		toPrint[1] = 0x80 | ((tmp >> 12) & 0x3F);
+		toPrint[0] = 0xF0 | ((tmp >> 18) & 0x7);
+	}
+	return (ft_putstr(toPrint));
+}
+
+int	ft_putunicode(wchar_t *s, int len)
+{
+	int idx;
+	int printed;
+
+	if (!s)
+		return (0);
+
+	printed = 0;
+	idx = 0;
+	while (*(s + idx) && printed < len)
+	{
+		printed += unicode2utf8(*(s + idx));
+		++idx;
+	}
+	return (!UTF8COUNT) ? (printed) : idx;
 }
 
 static void	ft_putnbr_rec(int n, char is_neg)

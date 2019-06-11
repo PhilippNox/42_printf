@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_make_s.c                                        :+:      :+:    :+:   */
+/*   ft_make_bs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 20:50:58 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 21:05:11 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "longd.h"
 
-int	make_s(t_task *input, va_list *ap)
+int	make_bs(t_task *input, va_list *ap)
 {
-	char *str;
+	wchar_t *str;
 	int len;
 
-	str = va_arg(*ap, char *);
+	str = va_arg(*ap, wchar_t *);
 	if (!str)
-		str = "(null)";
-	len = length_utf8(str);
+		str = L"(null)";
+	len = length_unicode(str);
 	if (input->precision != -1 && input->precision < len)
 		len = input->precision;
 
@@ -28,16 +28,16 @@ int	make_s(t_task *input, va_list *ap)
 	{
 		if (input->minus)
 		{
-			ft_putstrn(str, len);
+			ft_putunicode(str, len);
 			fill(' ', input->width - len);
 		}
 		else
 		{
 			fill(input->zero, input->width - len);
-			ft_putstrn(str, len);
+			ft_putunicode(str, len);
 		}
 	}
 	else
-		ft_putstrn(str, len);
+		ft_putunicode(str, len);
 	return (input->width > len) ? input->width : len;
 }

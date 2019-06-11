@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 01:10:40 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 21:03:41 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@
 # define DEBUG_FRC_ADD 0
 # define DEBUG_ROUNDING 0
 # define SHOW_LAST_TASK 0
+# define UTF8COUNT 0
 
 # include <stdio.h>
 # include <string.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <wchar.h>
 
 typedef union u_longd {
 	long double	ld;
@@ -93,6 +95,7 @@ int		make_task(t_task *input, va_list *ap);
 
 int		make_c(t_task *input, va_list *ap);
 int		make_s(t_task *input, va_list *ap);
+int		make_bs(t_task *input, va_list *ap);
 int		make_p(t_task *input, va_list *ap);
 int		make_d(t_task *input, va_list *ap);
 int		make_o(t_task *input, va_list *ap);
@@ -104,7 +107,9 @@ int		ft_atoi(const char *str, int *add_total);
 void	fill(char fill, int len);
 int		isOneOf(char target, char * str);
 int		length_utf8(char *str);
+int		length_unicode(wchar_t *);
 
+int		unicodestep(wchar_t tmp);
 int		ft_utf8step(char const *s);
 int		ft_pututf8(char const *s);
 int		ft_putchar(int c);
@@ -115,6 +120,8 @@ void	print_arr(short *list, int size);
 void	ft_putunbr(unsigned long n);
 void	ft_baseitoa(char *out, unsigned long long target, unsigned char base, char big);
 void	ft_baseitoasign(char *out, long long target, unsigned char base);
+int		unicode2utf8(wchar_t tmp);
+int		ft_putunicode(wchar_t *s, int len);
 
 void	init_t_str_f(t_str_f *input);
 void	init_t_str_f_ent(t_str_f *input);

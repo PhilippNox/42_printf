@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ok_test.c                                          :+:      :+:    :+:   */
+/*   ok_test_wchar_t.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 00:26:54 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 21:39:09 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/11 20:28:08 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,31 +48,83 @@ void test(int (*fun)(const char *format, ...))
 	//ft_putnbr(fun("%"));
 	//fun("%");
 
-	//wchar_t tmp[] = L"a";
-	//wchar_t tmp[] = L"ø";
-	//wchar_t tmp[] = L"米";
-	//wchar_t tmp[] = L"𝛀";
-	//fun("%S", L"米212𝛀");
+	fun("%S", "米");
+	fun("%S", (char *)L"米");
 
-	fun("%S", L"Α α");
+}
 
+#include <wchar.h>
+/*
+typedef union u_wchar {
+	wchar_t	tmp;
+	char bit[4];
+} t_wchar;
+
+t_wchar tt;
+tt.tmp = tmp[0];
+tt.bit[0] ? ft_putchar(tt.bit[0]) : ft_putchar('0');
+tt.bit[1] ? ft_putchar(tt.bit[1]) : ft_putchar('0');
+tt.bit[2] ? ft_putchar(tt.bit[2]) : ft_putchar('0');
+tt.bit[3] ? ft_putchar(tt.bit[3]) : ft_putchar('0');
+return 0;
+*/
+
+// 248 	       0x11111000  0x11111000
+// 			0x110_00011 0x10_111000
+
+// https://www.fileformat.info/info/unicode/utf8.htm
+// https://unicodelookup.com/#latin/2
+// http://www.binaryconvert.com/
+
+int unicode2utf8(unsigned int tmp)
+{
+	int idx;
+	char toPrint[5];
+
+	idx = -1;
+	while (++idx < 5)
+		toPrint[idx] = 0;
+
+	if (tmp < 128)
+		toPrint[0] = tmp & 0x7F;
+	else if (tmp < 2048)
+	{
+		toPrint[1] = 0x80 | (tmp & 0x3F);
+		toPrint[0] = 0xC0 | ((tmp >> 6) & 0x1F);
+	}
+	else if (tmp < 65536)
+	{
+		toPrint[2] = 0x80 | (tmp & 0x3F);
+		toPrint[1] = 0x80 | ((tmp >> 6) & 0x3F);
+		toPrint[0] = 0xE0 | ((tmp >> 12) & 0xF);
+	}
+	else
+	{
+		toPrint[3] = 0x80 | (tmp & 0x3F);
+		toPrint[2] = 0x80 | ((tmp >> 6) & 0x3F);
+		toPrint[1] = 0x80 | ((tmp >> 12) & 0x3F);
+		toPrint[0] = 0xF0 | ((tmp >> 18) & 0x7);
+	}
+	return (ft_putstr(toPrint));
 }
 
 int main (void)
 {
 	int out;
-	//wchar_t tmp[] = L"米212𝛀";
+	//wchar_t tmp[] = L"a";
+	//wchar_t tmp[] = L"ø";
 	//wchar_t tmp[] = L"米";
-	wchar_t tmp[] = L"Α α";
+	wchar_t tmp[] = L"𝛀";
 
-	ft_putnbr(length_unicode(tmp)); ft_putstr("\n");
+	//ft_putnbr(tmp[0]); ft_putstr("\n");
 
-	out = ft_putunicode(tmp, 20); ft_putstr("\t");
-	ft_putnbr(out);ft_putstr("\n");
+	out = unicode2utf8(tmp[0]);
+	ft_putstr("\n");
+	ft_putnbr(out);
+
 
 	return 0;
 	test(&ft_printf);
 	ft_putstr("\n");
 	test(&printf);
-	ft_putstr("\n");
 }
