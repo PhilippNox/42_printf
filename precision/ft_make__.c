@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/13 16:06:26 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/13 16:22:24 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ int	make__(t_task *input)
 	c = input->type;
 	if (input->width < 2)
 	{
+		if (c == '\0')
+			return (0);
 		ft_putchar(c);
-		return (c == '\0') ? (0) : (1);
+		return (1);
 	}
 	if (input->minus)
 	{

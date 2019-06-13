@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 00:26:54 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/13 16:13:56 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/13 16:21:12 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void test(int (*fun)(const char *format, ...))
 
 	//fun("%S", L"Α α");
 	//ft_putnbr(fun("%"));
-	fun("test_x_127 %#.0");
+	//ft_putnbr(fun("test_x_127 %#.0"));
+	fun("test_x_127[]%#.0");
 }
 
 int main (void)
