@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 00:26:54 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 21:39:09 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/13 16:13:56 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,23 +54,13 @@ void test(int (*fun)(const char *format, ...))
 	//wchar_t tmp[] = L"𝛀";
 	//fun("%S", L"米212𝛀");
 
-	fun("%S", L"Α α");
-
+	//fun("%S", L"Α α");
+	//ft_putnbr(fun("%"));
+	fun("test_x_127 %#.0");
 }
 
 int main (void)
 {
-	int out;
-	//wchar_t tmp[] = L"米212𝛀";
-	//wchar_t tmp[] = L"米";
-	wchar_t tmp[] = L"Α α";
-
-	ft_putnbr(length_unicode(tmp)); ft_putstr("\n");
-
-	out = ft_putunicode(tmp, 20); ft_putstr("\t");
-	ft_putnbr(out);ft_putstr("\n");
-
-	return 0;
 	test(&ft_printf);
 	ft_putstr("\n");
 	test(&printf);

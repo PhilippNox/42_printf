@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 20:51:18 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/13 16:11:15 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,11 @@ int main ()
 		//&test_c, &test_cp,
 		//&test_c_utf8, &test_s_small, &test_s, &test_p, &test_d_small, &test_d, &test_i,
 		//&test_p,
-		&test_s,
+		//&test_s,
 		//&test_o,
 		//&test_u,
 		//&test_d,
+		&test__, //weird
 		//&test_x, &test_X,
 		//&test_hhd, &test_hd, &test_ld, &test_lld,
 		//&test_hhi, &test_hi, &test_li, &test_lli,
@@ -62,7 +63,6 @@ int main ()
 	idx = -1;
 	while (tests2run[++idx])
 		tests2run[idx](&ft_printf);
-
 	if (idx == 0)
 		puts("no_tests");
 	puts("next_origin_printf");

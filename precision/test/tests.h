@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 02:53:16 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/13 15:05:42 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	test_Lf(int (*fun)(const char *format, ...));
 void	test_ff(int (*fun)(const char *format, ...));
 void	test_Lff(int (*fun)(const char *format, ...));
 void	test_star(int (*fun)(const char *format, ...));
+void	test__(int (*fun)(const char *format, ...));
 
 
 #endif

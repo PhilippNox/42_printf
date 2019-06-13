@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/11 21:55:00 by wgorold          ###   ########.fr        #
+#    Updated: 2019/06/13 15:13:22 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ SRC=	1_mat_precision_1.o 2_mat_precision_2.o 3_mat_precision_print.o \
 			ft_atoi.o ft_make_c.o \
 			ft_make_d.o ft_make_p.o ft_make_s.o ft_printf.o ft_printf_helper.o \
 			ft_printf_task.o ft_put.o ft_make_o.o ft_make_u.o ft_make_x.o \
-			ft_make_f.o ft_make_bs.o ft_make_bc.o
+			ft_make_f.o ft_make_bs.o ft_make_bc.o ft_make__.o
 PATH_S=./obj/
 PATH_SRC= $(patsubst %.o, $(PATH_S)%.o, $(SRC))
 FLAG_PATH_OBJ= -o $@
@@ -52,7 +52,8 @@ TST=	test_c.o test_cp.o test_c_utf8.o test_d.o test_d_small.o test_i.o \
 			test_hhu.o test_hu.o test_lu.o test_llu.o \
 			test_hhx.o test_hx.o test_lx.o test_llx.o \
 			test_hhxx.o test_hxx.o test_lxx.o test_llxx.o \
-			test_f.o test_fs.o test_fr.o test_Lf.o test_ff.o test_Lff.o test_star.o
+			test_f.o test_fs.o test_fr.o test_Lf.o test_ff.o test_Lff.o test_star.o \
+			test__.o
 PATH_T=./test/
 PATH_TST= $(patsubst %.o, $(PATH_S)%.o, $(TST))
 
@@ -113,6 +114,8 @@ $(PATH_S)ft_make_u.o: ft_make_u.c
 	$(CC) $(CFLAGS) ft_make_u.c $(FLAG_PATH_OBJ)
 $(PATH_S)ft_make_x.o: ft_make_x.c
 	$(CC) $(CFLAGS) ft_make_x.c $(FLAG_PATH_OBJ)
+$(PATH_S)ft_make__.o: ft_make__.c
+	$(CC) $(CFLAGS) ft_make__.c $(FLAG_PATH_OBJ)
 $(PATH_S)ft_printf.o: ft_printf.c
 	$(CC) $(CFLAGS) ft_printf.c $(FLAG_PATH_OBJ)
 $(PATH_S)ft_printf_helper.o: ft_printf_helper.c
@@ -212,6 +215,8 @@ $(PATH_S)test_x.o: $(PATH_T)test_x.c
 	$(CC) $(CFLAGS) $(PATH_T)test_x.c $(FLAG_PATH_OBJ)
 $(PATH_S)test_xx.o: $(PATH_T)test_xx.c
 	$(CC) $(CFLAGS) $(PATH_T)test_xx.c $(FLAG_PATH_OBJ)
+$(PATH_S)test__.o: $(PATH_T)test__.c
+	$(CC) $(CFLAGS) $(PATH_T)test__.c $(FLAG_PATH_OBJ)
 $(PATH_S)test_star.o: $(PATH_T)test_star.c
 	$(CC) $(CFLAGS) $(PATH_T)test_star.c $(FLAG_PATH_OBJ)
 

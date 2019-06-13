@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:42:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 22:09:11 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/13 16:08:18 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,10 @@ int	set_task(t_task *input, char *start, va_list *ap)
 
 	add_total = 1;
 	if (*start == '\0' || !isOneOf(*start, "cCsSpdDioOuUxXgfF%-+ #.0123456789*hl"))
-		return (0);
+	{
+		input->type = *start;
+		return (*start == '\0') ? (0) : (1);
+	}
 	if (isOneOf(*start, "cCsSpdDioOuUxXgfF%"))
 	{
 		input->type = *start;
@@ -154,7 +157,7 @@ int	make_task(t_task *input, va_list *ap)
 		return make_x(input, ap);
 	if (input->type == 'f' || input->type == 'F')
 		return make_f(input, ap);
-	if (input->type == '0')
-		return (0);
+	if (input->type != '0') // 0 is a part of flags and values so can't be a last char
+		return make__(input);
 	return (0);
 }
