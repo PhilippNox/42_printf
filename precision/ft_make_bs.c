@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 21:05:11 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/19 16:56:23 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,21 @@ int	make_bs(t_task *input, va_list *ap)
 		str = L"(null)";
 	len = length_unicode(str);
 	if (input->precision != -1 && input->precision < len)
-		len = input->precision;
+	{
+		int idx;
+		int tmp;
+		int tmp_old;
+		tmp_old = 0;
+		len = 0;
+		idx = 0;
+		while (tmp_old != (tmp = len_unicode_by_symbole(str ,++idx)))
+		{
+			if (tmp > input->precision)
+				break;
+			len = tmp;
+			tmp_old = tmp;
+		}
+	}
 
 	if (input->width > len)
 	{

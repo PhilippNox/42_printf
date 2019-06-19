@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/19 16:21:20 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/19 16:48:59 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ void	fill(char fill, int len);
 int		isOneOf(char target, char * str);
 int		length_utf8(char *str);
 int		length_unicode(wchar_t *);
+int		len_unicode_by_symbole(wchar_t *str, int top);
 
 int		unicodestep(wchar_t tmp);
 int		ft_utf8step(char const *s);

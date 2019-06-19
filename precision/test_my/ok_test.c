@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 00:26:54 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/13 16:57:57 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/19 16:52:20 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,11 @@ void test(int (*fun)(const char *format, ...))
 	//fun("test_x_127[]%#.0");
 	//ft_putnbr(fun("%hhC, %hhC", 0, L'米'));
 	//fun("{% C}", 0);
-	fun("%c", 200);
-	ft_putnbr(fun("%c", 200));
+	//fun("%c", 200);
+	//ft_putnbr(fun("%c", 200));
+
+	//fun("%.4S", L"我是一只猫。");
+	fun("%4.S", L"我是一只猫。");
 }
 #include <locale.h>
 int main (void)

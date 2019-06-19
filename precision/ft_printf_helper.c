@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:38:52 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 21:31:38 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/19 16:35:35 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,19 @@ int	length_unicode(wchar_t *str)
 		idx++;
 	}
 	return (UTF8COUNT) ? (idx) : out;
+}
+
+int	len_unicode_by_symbole(wchar_t *str, int top)
+{
+	int idx;
+	int out;
+
+	idx = 0;
+	out = 0;
+	while (str[idx] && idx < top)
+	{
+		out += unicodestep(str[idx]);
+		idx++;
+	}
+	return out;
 }
