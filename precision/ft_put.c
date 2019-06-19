@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 02:41:09 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 21:59:52 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/19 16:13:39 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,9 @@ int unicode2utf8(wchar_t tmp)
 {
 	int idx;
 	char toPrint[5];
+
+	if (tmp == 0)
+		return (ft_putchar(0));
 
 	idx = -1;
 	while (++idx < 5)
