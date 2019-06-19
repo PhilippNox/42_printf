@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 00:26:54 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/19 17:13:10 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/19 17:31:49 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,9 @@ void test(int (*fun)(const char *format, ...))
 
 	//fun("%.4S", L"我是一只猫。");
 	//fun("%4.S", L"我是一只猫。");
-	fun("%zu, %zu", 0, ULLONG_MAX);
+	//fun("%zu, %zu", 0, ULLONG_MAX);
+
+	fun("%zhd", 4294967296);
 }
 #include <locale.h>
 int main (void)

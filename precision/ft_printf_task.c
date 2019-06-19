@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:42:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/19 17:27:17 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/19 17:44:32 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	init_task(t_task *input)
 
 	input->width = -1;
 	input->precision = -1;
-	input->length = 'n';
+	input->length = '.';
 	input->type = '0';
 }
 
@@ -127,11 +127,12 @@ int	set_task(t_task *input, char *start, va_list *ap)
 		|| *start == 'z' || *start == 'j')
 	{
 		if (*start == 'l' && *(start + 1) == 'l')
-			input->length = 'l' + add_total++;
+			val = 'l' + add_total++;
 		else if (*start == 'h' && *(start + 1) == 'h')
-			input->length = 'h' + add_total++;
+			val = 'h' + add_total++;
 		else
-			input->length = *start;
+			val = *start;
+		input->length = (input->length < val) ? val : input->length;
 	}
 	return set_task(input, start + add_total, ap) + add_total;
 }
