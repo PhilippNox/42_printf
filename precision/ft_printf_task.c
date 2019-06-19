@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:42:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/19 17:01:29 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/19 17:13:53 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	set_task(t_task *input, char *start, va_list *ap)
 	int val;
 
 	add_total = 1;
-	if (*start == '\0' || !isOneOf(*start, "cCsSpdDioOuUxXgfF%-+ #.0123456789*hlL"))
+	if (*start == '\0' || !isOneOf(*start, "cCsSpdDioOuUxXgfF%-+ #.0123456789*hlLz"))
 	{
 		input->type = *start;
 		return (*start == '\0') ? (0) : (1);
@@ -123,7 +123,7 @@ int	set_task(t_task *input, char *start, va_list *ap)
 	}
 	else if (*start > 48 && *start < 58)
 		input->width = ft_atoi(start, &add_total);
-	else if (*start == 'h' || *start == 'l' || *start == 'L')
+	else if (*start == 'h' || *start == 'l' || *start == 'L' || *start == 'z')
 	{
 		if (*start == 'l' && *(start + 1) == 'l')
 			input->length = 'l' + add_total++;

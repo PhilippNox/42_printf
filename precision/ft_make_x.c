@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 01:35:33 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/19 17:15:40 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	make_x(t_task *input, va_list *ap)
 		target = (unsigned long)va_arg(*ap, long);
 	else if (input->length == 'm')
 		target = (unsigned long long)va_arg(*ap, long long);
+	else if (input->length == 'z')
+		target = (size_t)va_arg(*ap, long long);
 	else
 		target = (unsigned int)va_arg(*ap, int);
 	ft_baseitoa(str, target, 16, (input->type == 'x') ? 0 : 1);
