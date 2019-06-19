@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:42:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/13 16:08:18 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/19 17:01:29 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	set_task(t_task *input, char *start, va_list *ap)
 	int val;
 
 	add_total = 1;
-	if (*start == '\0' || !isOneOf(*start, "cCsSpdDioOuUxXgfF%-+ #.0123456789*hl"))
+	if (*start == '\0' || !isOneOf(*start, "cCsSpdDioOuUxXgfF%-+ #.0123456789*hlL"))
 	{
 		input->type = *start;
 		return (*start == '\0') ? (0) : (1);
