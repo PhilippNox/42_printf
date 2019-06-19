@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/13 16:09:04 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/19 16:21:20 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ int		unicodestep(wchar_t tmp);
 int		ft_utf8step(char const *s);
 int		ft_pututf8(char const *s);
 int		ft_putchar(int c);
+int		ft_putchar_simple(char c);
 void	ft_putnbr(int n);
 int		ft_putstr(char const *s);
 int		ft_putstrn(char const *s, int len);

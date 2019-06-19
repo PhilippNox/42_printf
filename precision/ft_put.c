@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 02:41:09 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/19 16:13:39 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/19 16:20:53 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ int	ft_pututf8(char const *s)
 
 	write(1, s, idx);
 	return (idx);
+}
+
+int	ft_putchar_simple(char c)
+{
+	return (write(1, &c, 1));
 }
 
 int	ft_putchar(int c)
