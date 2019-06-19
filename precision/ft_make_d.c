@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/19 17:10:39 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/19 17:27:45 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	make_d(t_task *input, va_list *ap)
 		target = (long long)va_arg(*ap, long long);
 	else if (input->length == 'z')
 		target = (size_t)va_arg(*ap, long long);
+	else if (input->length == 'j')
+		target = (intmax_t)va_arg(*ap, long long);
 	else
 		target = va_arg(*ap, int);
 	ft_baseitoasign(str, target, 10);
