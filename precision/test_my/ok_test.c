@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 00:26:54 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/21 18:16:36 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/21 21:41:17 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,21 @@ void test(int (*fun)(const char *format, ...))
 
 
 	//fun("%Lf", LDBL_MAX);
+	/*
 	fun("%Lf", 1.7E1334L);
-
 	fun("%Lf", 5.6E2558L);
 	fun("%Lf", 5.9E3732L);
 	fun("%Lf", 7.6E4349L);
 	fun("%Lf", 8.3E4653L);
 	fun("%Lf", LDBL_MAX);
-	
+	*/
+	fun("%.5000Lf", 9.6E-1334L);
+	fun("%.10000Lf", 5.6E-2558L);
+	fun("%.10000Lf", 5.9E-3732L);
+	fun("%.15000Lf", 7.6E-4349L);
+	fun("%.15000Lf", 8.3E-4653L);
+	fun("%.15000Lf", LDBL_MIN);
+
 }
 #include <locale.h>
 int main (void)

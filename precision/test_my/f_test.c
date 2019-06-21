@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 00:26:54 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/21 17:58:39 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/21 21:36:42 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int main (void)
 
 	//get_precision_longd(&tmp, 16383);
 
-	set_power_tab(power_tab, 0, 15360, 0x4000000000000000);
+	set_power_tab(power_tab, 0, -15360, 0x4000000000000000);
 	mat_for_precision(&tmp, power_tab, 0);
 
 
