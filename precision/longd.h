@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/21 21:49:05 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/21 21:54:51 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define SHOW_LAST_TASK 0
 # define UTF8COUNT 0
 # define BUFF 1024
-# define BOOST_ON 0
+# define BOOST_ON 1
 
 # include <stdio.h>
 # include <string.h>
