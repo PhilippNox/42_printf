@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 16:43:44 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/21 20:05:11 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/21 20:23:10 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	*boost15360_part3(void)
 	"3527160988807570538603637973324971644537976229755415042211018166");
 }
 
-void boost15360_(t_str_f *input)
+void	boost15360(t_str_f *input)
 {
 	int		idx;
 	char	*boost;
@@ -97,16 +97,13 @@ void boost15360_(t_str_f *input)
 	idx = -1;
 	while (boost[++idx])
 		input->ent[input->idx_ent++] = boost[idx] - 48;
-
 	boost = boost15360_part2();
 	idx = -1;
 	while (boost[++idx])
 		input->ent[input->idx_ent++] = boost[idx] - 48;
-
 	boost = boost15360_part3();
 	idx = -1;
 	while (boost[++idx])
 		input->ent[input->idx_ent++] = boost[idx] - 48;
-
 	input->exp_ent = input->idx_ent - 1;
 }
