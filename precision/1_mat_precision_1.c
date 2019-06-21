@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:45:12 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/09 21:29:40 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/21 17:28:56 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,10 +160,13 @@ void	power2form(t_str_f *input, int pwr, int curr)
 
 	if (pwr == 0 || (pwr > 0 && curr == 0))
 	{
+		/*
 		init_t_str_f(input);
 		input->ent[0] = 1;
 		input->idx_ent = 1;
 		input->exp_ent = 0;
+		*/
+		boost_pos(input, pwr, &curr);
 	}
 	if (pwr == -1 || (pwr < 0 && curr == 0))
 	{

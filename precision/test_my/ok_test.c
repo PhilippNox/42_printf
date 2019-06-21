@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 00:26:54 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/21 16:19:45 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/21 18:16:36 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,30 @@ void test(int (*fun)(const char *format, ...))
 	//fun("%4.S", L"我是一只猫。");
 	//fun("%zu, %zu", 0, ULLONG_MAX);
 
-	fun("%zhd", 4294967296);
+	//fun("%zhd", 4294967296);
+	/*
+	make okc  1.40s user 0.03s system 96% cpu 1.473 total
+	LDBL_MIN	LDBL_MAX
+	*/
+
+
+	//fun("%Lf", LDBL_MAX);
+	fun("%Lf", 1.7E1334L);
+
+	fun("%Lf", 5.6E2558L);
+	fun("%Lf", 5.9E3732L);
+	fun("%Lf", 7.6E4349L);
+	fun("%Lf", 8.3E4653L);
+	fun("%Lf", LDBL_MAX);
+	
 }
 #include <locale.h>
 int main (void)
 {
 	setlocale(LC_ALL, "");
 	test(&ft_printf);
-	ft_putstr("\n"); write_boost(" ", 1);
+	ft_putstr("\n\n"); write_boost(" ", 1);
 	test(&printf);
-	ft_putstr("\n"); write_boost(" ", 1);
+	//ft_putstr("\n"); write_boost(" ", 1);
+	printf("\n");
 }

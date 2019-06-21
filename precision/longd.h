@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/21 16:36:01 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/21 19:27:34 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,8 @@ int		unicode2utf8(wchar_t tmp);
 int		ft_putunicode(wchar_t *s, int len);
 
 int		write_boost(char const *s, int end);
+void	boost_pos(t_str_f *input, int pwr, int *curr);
+void	boost15360_(t_str_f *input);
 
 void	init_t_str_f(t_str_f *input);
 void	init_t_str_f_ent(t_str_f *input);
