@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/21 15:39:16 by wgorold          ###   ########.fr        #
+#    Updated: 2019/06/21 16:33:46 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,13 @@ all: $(NAME)
 
 ok: $(PATH_SRC) $(PATH_TST) ./test_my/ok_test.c
 	@$(CC) $(FLAGS) $(PATH_SRC) $(PATH_TST) ./test_my/ok_test.c -o ok -I./ -I./test
+
+f: $(PATH_SRC) $(PATH_TST) ./test_my/f_test.c
+	@$(CC) $(FLAGS) $(PATH_SRC) $(PATH_TST) ./test_my/f_test.c -o ok -I./ -I./test
+
+fc: f
+	./ok
+	@rm -f ok
 
 okc: ok
 	./ok

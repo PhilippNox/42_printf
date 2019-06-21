@@ -6,13 +6,11 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 14:15:17 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/21 15:34:39 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/21 16:01:52 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "longd.h"
-#define BUFF 1024
-
 
 int write_boost(char const *s, int end)
 {
