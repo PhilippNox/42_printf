@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/19 17:26:57 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/21 15:34:39 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,8 @@ void	ft_baseitoa(char *out, unsigned long long target, unsigned char base, char 
 void	ft_baseitoasign(char *out, long long target, unsigned char base);
 int		unicode2utf8(wchar_t tmp);
 int		ft_putunicode(wchar_t *s, int len);
+
+int		write_boost(char const *s, int end);
 
 void	init_t_str_f(t_str_f *input);
 void	init_t_str_f_ent(t_str_f *input);

@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 00:26:54 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/19 17:31:49 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/21 15:34:39 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int main (void)
 {
 	setlocale(LC_ALL, "");
 	test(&ft_printf);
-	ft_putstr("\n");
+	ft_putstr("\n"); write_boost(" ", 1);
 	test(&printf);
-	ft_putstr("\n");
+	ft_putstr("\n"); write_boost(" ", 1);
 }

@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/13 16:07:05 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/21 15:34:39 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	ft_printf(const char *format, ...)
 		last = &task;
 	}
 	va_end(ap);
+	write_boost(" ", 1);
 	//print_task(last);
 	return (total);
 }

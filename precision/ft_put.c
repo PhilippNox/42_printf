@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 02:41:09 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/19 16:20:53 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/21 15:34:39 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	ft_utf8step(char const *s)
 int	ft_pututf8(char const *s)
 {
 	int idx;
+	int tmp;
 
 	idx = 1;
 	if ((*s & 0xC0) == 0xC0)
@@ -56,13 +57,17 @@ int	ft_pututf8(char const *s)
 	if ((*s & 0xF0) == 0xF0)
 		idx = 4;
 
-	write(1, s, idx);
+	//write(1, s, idx);
+	tmp = 0;
+	while(tmp < idx)
+		write_boost(s + tmp++, 0);
 	return (idx);
 }
 
 int	ft_putchar_simple(char c)
 {
-	return (write(1, &c, 1));
+	//return (write(1, &c, 1));
+	return write_boost(&c, 0);
 }
 
 int	ft_putchar(int c)
