@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 16:43:44 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/21 20:23:01 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/27 01:46:41 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,21 +85,14 @@ char	*boost14336_part3(void)
 
 void	boost14336(t_str_f *input)
 {
-	int		idx;
-	char	*boost;
+	char	*(*boost_fun[7])(void);
 
-	input->idx_ent = 0;
-	boost = boost14336_part1();
-	idx = -1;
-	while (boost[++idx])
-		input->ent[input->idx_ent++] = boost[idx] - 48;
-	boost = boost14336_part2();
-	idx = -1;
-	while (boost[++idx])
-		input->ent[input->idx_ent++] = boost[idx] - 48;
-	boost = boost14336_part3();
-	idx = -1;
-	while (boost[++idx])
-		input->ent[input->idx_ent++] = boost[idx] - 48;
-	input->exp_ent = input->idx_ent - 1;
+	boost_fun[0] = &boost14336_part1;
+	boost_fun[1] = &boost14336_part2;
+	boost_fun[2] = &boost14336_part3;
+	boost_fun[3] = NULL;
+	boost_fun[4] = NULL;
+	boost_fun[5] = NULL;
+	boost_fun[6] = NULL;
+	boost_pos_do(input, boost_fun);
 }

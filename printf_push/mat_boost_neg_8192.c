@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 16:43:44 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/21 21:27:29 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/27 01:39:11 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,24 +108,14 @@ char	*boost_neg_8192_part4(void)
 
 void	boost_neg_8192(t_str_f *input)
 {
-	int		idx;
-	char	*boost;
+	char	*(*boost_fun[7])(void);
 
-	input->idf = 0;
-	boost = boost_neg_8192_part1();
-	idx = -1;
-	while (boost[++idx])
-		input->frc[input->idf++] = boost[idx] - 48;
-	boost = boost_neg_8192_part2();
-	idx = -1;
-	while (boost[++idx])
-		input->frc[input->idf++] = boost[idx] - 48;
-	boost = boost_neg_8192_part3();
-	idx = -1;
-	while (boost[++idx])
-		input->frc[input->idf++] = boost[idx] - 48;
-	boost = boost_neg_8192_part4();
-	idx = -1;
-	while (boost[++idx])
-		input->frc[input->idf++] = boost[idx] - 48;
+	boost_fun[0] = &boost_neg_8192_part1;
+	boost_fun[1] = &boost_neg_8192_part2;
+	boost_fun[2] = &boost_neg_8192_part3;
+	boost_fun[3] = &boost_neg_8192_part4;
+	boost_fun[4] = NULL;
+	boost_fun[5] = NULL;
+	boost_fun[6] = NULL;
+	boost_neg_do(input, boost_fun);
 }

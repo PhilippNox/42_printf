@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/27 00:07:40 by wgorold          ###   ########.fr        #
+#    Updated: 2019/06/27 02:01:21 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,11 +46,13 @@ SRC=	mat_precision_0_init.o mat_precision_1_print.o mat_precision_2_power.o \
 			ft_put.o ft_put_itoa.o ft_put_num.o ft_put_str.o ft_put_unicode.o \
 			ft_make_o.o ft_make_u.o ft_make_x.o \
 			ft_make_f.o ft_make_bs.o ft_make_bc.o ft_make__.o ft_boost_write.o \
-			mat_boost.o \
+			mat_boost.o mat_boost_do.o \
 			mat_boost_pos_15360.o mat_boost_pos_14336.o \
 			mat_boost_pos_12288.o mat_boost_pos_8192.o mat_boost_pos_4096.o \
-			mat_boost_neg_15360.o mat_boost_neg_14336.o \
-			mat_boost_neg_12288.o mat_boost_neg_8192.o mat_boost_neg_4096.o
+			mat_boost_neg_15360.o mat_boost_neg_15360_1.o \
+			mat_boost_neg_14336.o mat_boost_neg_14336_1.o\
+			mat_boost_neg_12288.o mat_boost_neg_12288_1.o \
+			mat_boost_neg_8192.o mat_boost_neg_4096.o
 PATH_S=./obj/
 PATH_SRC= $(patsubst %.o, $(PATH_S)%.o, $(SRC))
 FLAG_PATH_OBJ= -o $@
@@ -172,6 +174,8 @@ $(PATH_S)ft_boost_write.o: ft_boost_write.c
 	$(CC) $(CFLAGS) ft_boost_write.c $(FLAG_PATH_OBJ)
 $(PATH_S)mat_boost.o: mat_boost.c
 	$(CC) $(CFLAGS) mat_boost.c $(FLAG_PATH_OBJ)
+$(PATH_S)mat_boost_do.o: mat_boost_do.c
+	$(CC) $(CFLAGS) mat_boost_do.c $(FLAG_PATH_OBJ)
 $(PATH_S)mat_boost_pos_15360.o: mat_boost_pos_15360.c
 	$(CC) $(CFLAGS) mat_boost_pos_15360.c $(FLAG_PATH_OBJ)
 $(PATH_S)mat_boost_pos_14336.o: mat_boost_pos_14336.c
@@ -184,10 +188,16 @@ $(PATH_S)mat_boost_pos_4096.o: mat_boost_pos_4096.c
 	$(CC) $(CFLAGS) mat_boost_pos_4096.c $(FLAG_PATH_OBJ)
 $(PATH_S)mat_boost_neg_15360.o: mat_boost_neg_15360.c
 	$(CC) $(CFLAGS) mat_boost_neg_15360.c $(FLAG_PATH_OBJ)
+$(PATH_S)mat_boost_neg_15360_1.o: mat_boost_neg_15360_1.c
+	$(CC) $(CFLAGS) mat_boost_neg_15360_1.c $(FLAG_PATH_OBJ)
 $(PATH_S)mat_boost_neg_14336.o: mat_boost_neg_14336.c
 	$(CC) $(CFLAGS) mat_boost_neg_14336.c $(FLAG_PATH_OBJ)
+$(PATH_S)mat_boost_neg_14336_1.o: mat_boost_neg_14336_1.c
+	$(CC) $(CFLAGS) mat_boost_neg_14336_1.c $(FLAG_PATH_OBJ)
 $(PATH_S)mat_boost_neg_12288.o: mat_boost_neg_12288.c
 	$(CC) $(CFLAGS) mat_boost_neg_12288.c $(FLAG_PATH_OBJ)
+$(PATH_S)mat_boost_neg_12288_1.o: mat_boost_neg_12288_1.c
+	$(CC) $(CFLAGS) mat_boost_neg_12288_1.c $(FLAG_PATH_OBJ)
 $(PATH_S)mat_boost_neg_8192.o: mat_boost_neg_8192.c
 	$(CC) $(CFLAGS) mat_boost_neg_8192.c $(FLAG_PATH_OBJ)
 $(PATH_S)mat_boost_neg_4096.o: mat_boost_neg_4096.c
