@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/11 22:02:29 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/26 17:05:35 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	make_bc(t_task *input, va_list *ap)
 {
-	wchar_t c;
-	int len;
+	wchar_t	c;
+	int		len;
 
 	c = va_arg(*ap, wchar_t);
 	len = unicodestep(c);

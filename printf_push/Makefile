@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/24 17:26:42 by wgorold          ###   ########.fr        #
+#    Updated: 2019/06/26 18:22:22 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,8 +37,10 @@ CFLAGS= -c $(FLAGS)
 
 SRC=	mat_precision_0_init.o mat_precision_1_print.o mat_precision_2_power.o \
 			mat_precision_3_sum_frc.o mat_precision_4_sum_ent.o \
-			2_mat_precision_2.o 3_mat_precision_print.o \
-			ft_atoi.o ft_make_c.o \
+			mat_precision_1_print_2.o mat_precision_5_power_tab.o \
+			mat_precision_6_get_calc.o mat_precision_7_get_run.o \
+			mat_precision_8_round.o \
+			ft_atoi.o ft_make_c.o ft_make_d1.o \
 			ft_make_d.o ft_make_p.o ft_make_s.o ft_printf.o ft_printf_helper.o \
 			ft_printf_task.o ft_put.o ft_make_o.o ft_make_u.o ft_make_x.o \
 			ft_make_f.o ft_make_bs.o ft_make_bc.o ft_make__.o ft_boost_write.o \
@@ -110,10 +112,16 @@ $(PATH_S)mat_precision_3_sum_frc.o: mat_precision_3_sum_frc.c
 	$(CC) $(CFLAGS) mat_precision_3_sum_frc.c $(FLAG_PATH_OBJ)
 $(PATH_S)mat_precision_4_sum_ent.o: mat_precision_4_sum_ent.c
 	$(CC) $(CFLAGS) mat_precision_4_sum_ent.c $(FLAG_PATH_OBJ)
-$(PATH_S)2_mat_precision_2.o: 2_mat_precision_2.c
-	$(CC) $(CFLAGS) 2_mat_precision_2.c $(FLAG_PATH_OBJ)
-$(PATH_S)3_mat_precision_print.o: 3_mat_precision_print.c
-	$(CC) $(CFLAGS) 3_mat_precision_print.c $(FLAG_PATH_OBJ)
+$(PATH_S)mat_precision_1_print_2.o: mat_precision_1_print_2.c
+	$(CC) $(CFLAGS) mat_precision_1_print_2.c $(FLAG_PATH_OBJ)
+$(PATH_S)mat_precision_5_power_tab.o: mat_precision_5_power_tab.c
+	$(CC) $(CFLAGS) mat_precision_5_power_tab.c $(FLAG_PATH_OBJ)
+$(PATH_S)mat_precision_6_get_calc.o: mat_precision_6_get_calc.c
+	$(CC) $(CFLAGS) mat_precision_6_get_calc.c $(FLAG_PATH_OBJ)
+$(PATH_S)mat_precision_7_get_run.o: mat_precision_7_get_run.c
+	$(CC) $(CFLAGS) mat_precision_7_get_run.c $(FLAG_PATH_OBJ)
+$(PATH_S)mat_precision_8_round.o: mat_precision_8_round.c
+	$(CC) $(CFLAGS) mat_precision_8_round.c $(FLAG_PATH_OBJ)
 $(PATH_S)ft_atoi.o: ft_atoi.c
 	$(CC) $(CFLAGS) ft_atoi.c $(FLAG_PATH_OBJ)
 $(PATH_S)ft_make_c.o: ft_make_c.c
@@ -122,6 +130,8 @@ $(PATH_S)ft_make_bc.o: ft_make_bc.c
 	$(CC) $(CFLAGS) ft_make_bc.c $(FLAG_PATH_OBJ)
 $(PATH_S)ft_make_d.o: ft_make_d.c
 	$(CC) $(CFLAGS) ft_make_d.c $(FLAG_PATH_OBJ)
+$(PATH_S)ft_make_d1.o: ft_make_d1.c
+	$(CC) $(CFLAGS) ft_make_d1.c $(FLAG_PATH_OBJ)
 $(PATH_S)ft_make_f.o: ft_make_f.c
 	$(CC) $(CFLAGS) ft_make_f.c $(FLAG_PATH_OBJ)
 $(PATH_S)ft_make_o.o: ft_make_o.c

@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/24 17:46:23 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/26 18:27:29 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int		make_bc(t_task *input, va_list *ap);
 int		make_s(t_task *input, va_list *ap);
 int		make_bs(t_task *input, va_list *ap);
 int		make_p(t_task *input, va_list *ap);
+void	make_d_job(t_task *input, int len, int len_num, long long target);
 int		make_d(t_task *input, va_list *ap);
 int		make_o(t_task *input, va_list *ap);
 int		make_u(t_task *input, va_list *ap);
