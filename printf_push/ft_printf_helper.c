@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:38:52 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/19 16:35:35 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/26 20:24:38 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	fill(char fill, int len)
 		ft_putchar(fill);
 }
 
-int	isOneOf(char target, char * str)
+int	is_one_of(char target, char *str)
 {
 	int idx;
 
@@ -74,5 +74,5 @@ int	len_unicode_by_symbole(wchar_t *str, int top)
 		out += unicodestep(str[idx]);
 		idx++;
 	}
-	return out;
+	return (out);
 }

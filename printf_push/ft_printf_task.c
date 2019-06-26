@@ -60,12 +60,12 @@ int	set_task(t_task *input, char *start, va_list *ap)
 	int val;
 
 	add_total = 1;
-	if (*start == '\0' || !isOneOf(*start, "cCsSpdDioOuUxXgfF%-+ #.0123456789*hlLzj"))
+	if (*start == '\0' || !is_one_of(*start, "cCsSpdDioOuUxXgfF%-+ #.0123456789*hlLzj"))
 	{
 		input->type = *start;
 		return (*start == '\0') ? (0) : (1);
 	}
-	if (isOneOf(*start, "cCsSpdDioOuUxXgfF%"))
+	if (is_one_of(*start, "cCsSpdDioOuUxXgfF%"))
 	{
 		input->type = *start;
 		if (input->precision == -1)

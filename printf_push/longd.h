@@ -110,7 +110,7 @@ int		make__(t_task *input);
 
 int		ft_atoi(const char *str, int *add_total);
 void	fill(char fill, int len);
-int		isOneOf(char target, char * str);
+int		is_one_of(char target, char * str);
 int		length_utf8(char *str);
 int		length_unicode(wchar_t *);
 int		len_unicode_by_symbole(wchar_t *str, int top);

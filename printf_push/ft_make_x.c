@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/19 17:29:14 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/26 20:27:13 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,24 @@ static void	putpreci(t_task *input, int len, int len_num, unsigned long long tar
 	fill('0', len - len_num);
 	if (input->precision != 0 || target != 0)
 		ft_putstr(input->tmp);
+}
+
+static void	set_length(t_task *input, va_list *ap, unsigned long long *target)
+{
+	if (input->length == 'i')
+		*target = (unsigned char)va_arg(*ap, int);
+	else if (input->length == 'h')
+		*target = (unsigned short)va_arg(*ap, int);
+	else if (input->length == 'l')
+		*target = (unsigned long)va_arg(*ap, long);
+	else if (input->length == 'm')
+		*target = (unsigned long long)va_arg(*ap, long long);
+	else if (input->length == 'z')
+		*target = (size_t)va_arg(*ap, long long);
+	else if (input->length == 'j')
+		*target = (intmax_t)va_arg(*ap, long long);
+	else
+		*target = (unsigned int)va_arg(*ap, int);
 }
 
 static void	puthash(t_task *input, unsigned long long target)
@@ -32,20 +50,7 @@ int	make_x(t_task *input, va_list *ap)
 	int len;
 	int len_num;
 
-	if (input->length == 'i')
-		target = (unsigned char)va_arg(*ap, int);
-	else if (input->length == 'h')
-		target = (unsigned short)va_arg(*ap, int);
-	else if (input->length == 'l')
-		target = (unsigned long)va_arg(*ap, long);
-	else if (input->length == 'm')
-		target = (unsigned long long)va_arg(*ap, long long);
-	else if (input->length == 'z')
-		target = (size_t)va_arg(*ap, long long);
-	else if (input->length == 'j')
-		target = (intmax_t)va_arg(*ap, long long);
-	else
-		target = (unsigned int)va_arg(*ap, int);
+	set_length(input, ap, &target);
 	ft_baseitoa(str, target, 16, (input->type == 'x') ? 0 : 1);
 	input->tmp = str;
 

@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/09 23:12:48 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/26 20:23:20 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,11 @@ static void	putdouble(t_task *input, t_str_f *target)
 		else if (target->ent[0] == 'i')
 			ft_putstr("inf");
 		else if (target->ent[0] == 'n' && input->type == 'F')
-				ft_putstr("NAN");
+			ft_putstr("NAN");
 		else if (target->ent[0] == 'n')
 			ft_putstr("nan");
 		return ;
 	}
-
 	t_str_f_round(target, input->precision);
 	t_str_f_print_ent(target);
 	if (input->precision > 0 || input->hash)
@@ -46,28 +45,29 @@ static void	putdouble(t_task *input, t_str_f *target)
 	t_str_f_print_frc(target, input->precision);
 }
 
-static void	withminus(t_task *input, t_str_f *target, int idxo)
+static void	job_f(t_task *input, t_str_f *target, int idxo, char type)
 {
-	putsign(input, target);
-	putdouble(input, target);
-	fill(' ', input->width - idxo);
+	if (type == '-')
+	{
+		fill(' ', input->width - idxo);
+		putsign(input, target);
+		putdouble(input, target);
+	}
+	else if (type == '0')
+	{
+		putsign(input, target);
+		fill(input->zero, input->width - idxo);
+		putdouble(input, target);
+	}
+	else if (type == ' ')
+	{
+		fill(' ', input->width - idxo);
+		putsign(input, target);
+		putdouble(input, target);
+	}
 }
 
-static void	withzeros(t_task *input, t_str_f *target, int idxo)
-{
-	putsign(input, target);
-	fill(input->zero, input->width - idxo);
-	putdouble(input, target);
-}
-
-static void	withnormal(t_task *input, t_str_f *target, int idxo)
-{
-	fill(' ', input->width - idxo);
-	putsign(input, target);
-	putdouble(input, target);
-}
-
-static int countlen(t_task *input, t_str_f *target)
+static int	countlen(t_task *input, t_str_f *target)
 {
 	int idxo;
 
@@ -86,24 +86,21 @@ static int countlen(t_task *input, t_str_f *target)
 	return (idxo);
 }
 
-int	make_f(t_task *input, va_list *ap)
+int			make_f(t_task *input, va_list *ap)
 {
-	int idxo;
-	t_str_f target;
+	int		idxo;
+	t_str_f	target;
 
 	if (input->length == 'L')
 		get_precision_longd(&target, va_arg(*ap, long double));
 	else
 		get_precision_d(&target, va_arg(*ap, double));
-
 	idxo = countlen(input, &target);
-
 	if (input->minus)
-		withminus(input, &target, idxo);
+		job_f(input, &target, idxo, '-');
 	else if (input->zero != ' ' && !(target.idx_ent && target.ent[0] > 9))
-		withzeros(input, &target, idxo);
+		job_f(input, &target, idxo, '0');
 	else
-		withnormal(input, &target, idxo);
-
+		job_f(input, &target, idxo, ' ');
 	return (input->width > idxo) ? input->width : idxo;
 }
