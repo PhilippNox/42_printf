@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/26 18:22:22 by wgorold          ###   ########.fr        #
+#    Updated: 2019/06/27 00:07:40 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,9 @@ SRC=	mat_precision_0_init.o mat_precision_1_print.o mat_precision_2_power.o \
 			mat_precision_8_round.o \
 			ft_atoi.o ft_make_c.o ft_make_d1.o \
 			ft_make_d.o ft_make_p.o ft_make_s.o ft_printf.o ft_printf_helper.o \
-			ft_printf_task.o ft_put.o ft_make_o.o ft_make_u.o ft_make_x.o \
+			ft_printf_task.o ft_printf_task_helper.o \
+			ft_put.o ft_put_itoa.o ft_put_num.o ft_put_str.o ft_put_unicode.o \
+			ft_make_o.o ft_make_u.o ft_make_x.o \
 			ft_make_f.o ft_make_bs.o ft_make_bc.o ft_make__.o ft_boost_write.o \
 			mat_boost.o \
 			mat_boost_pos_15360.o mat_boost_pos_14336.o \
@@ -154,8 +156,18 @@ $(PATH_S)ft_printf_helper.o: ft_printf_helper.c
 	$(CC) $(CFLAGS) ft_printf_helper.c $(FLAG_PATH_OBJ)
 $(PATH_S)ft_printf_task.o: ft_printf_task.c
 	$(CC) $(CFLAGS) ft_printf_task.c $(FLAG_PATH_OBJ)
+$(PATH_S)ft_printf_task_helper.o: ft_printf_task_helper.c
+	$(CC) $(CFLAGS) ft_printf_task_helper.c $(FLAG_PATH_OBJ)
 $(PATH_S)ft_put.o: ft_put.c
 	$(CC) $(CFLAGS) ft_put.c $(FLAG_PATH_OBJ)
+$(PATH_S)ft_put_itoa.o: ft_put_itoa.c
+	$(CC) $(CFLAGS) ft_put_itoa.c $(FLAG_PATH_OBJ)
+$(PATH_S)ft_put_num.o: ft_put_num.c
+	$(CC) $(CFLAGS) ft_put_num.c $(FLAG_PATH_OBJ)
+$(PATH_S)ft_put_str.o: ft_put_str.c
+	$(CC) $(CFLAGS) ft_put_str.c $(FLAG_PATH_OBJ)
+$(PATH_S)ft_put_unicode.o: ft_put_unicode.c
+	$(CC) $(CFLAGS) ft_put_unicode.c $(FLAG_PATH_OBJ)
 $(PATH_S)ft_boost_write.o: ft_boost_write.c
 	$(CC) $(CFLAGS) ft_boost_write.c $(FLAG_PATH_OBJ)
 $(PATH_S)mat_boost.o: mat_boost.c

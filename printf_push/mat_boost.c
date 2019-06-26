@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 16:43:44 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/21 21:45:51 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/26 23:54:49 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	init_pos(int num[5], void (*boost_pos_fun[5])(t_str_f *input))
 	boost_pos_fun[4] = &boost4096;
 }
 
-void	boost_pos(t_str_f *input, int pwr, int *curr)
+void		boost_pos(t_str_f *input, int pwr, int *curr)
 {
 	int		idx_boost;
 	int		num[5];
@@ -67,7 +67,7 @@ static void	init_neg(int num[5], void (*boost_fun[5])(t_str_f *input))
 	boost_fun[4] = &boost_neg_4096;
 }
 
-void	boost_neg(t_str_f *input, int pwr, int *curr)
+void		boost_neg(t_str_f *input, int pwr, int *curr)
 {
 	int		idx_boost;
 	int		num[5];

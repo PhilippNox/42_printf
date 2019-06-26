@@ -1,55 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put.c                                           :+:      :+:    :+:   */
+/*   ft_put_str.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 02:41:09 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/27 00:16:02 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/27 00:16:13 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "longd.h"
 
-int	ft_utf8step(char const *s)
+int	ft_putstr(char const *s)
 {
 	int idx;
+	int printed;
 
-	idx = 1;
-	if ((*s & 0xC0) == 0xC0)
-		idx = 2;
-	if ((*s & 0xE0) == 0xE0)
-		idx = 3;
-	if ((*s & 0xF0) == 0xF0)
-		idx = 4;
-	return (idx);
+	if (!s)
+		return (0);
+	printed = 0;
+	idx = 0;
+	while (*(s + idx))
+	{
+		idx += ft_pututf8(s + idx);
+		printed++;
+	}
+	return (UTF8COUNT) ? (printed) : idx;
 }
 
-int	ft_pututf8(char const *s)
+int	ft_putstrn(char const *s, int len)
 {
 	int idx;
-	int tmp;
+	int printed;
 
-	idx = 1;
-	if ((*s & 0xC0) == 0xC0)
-		idx = 2;
-	if ((*s & 0xE0) == 0xE0)
-		idx = 3;
-	if ((*s & 0xF0) == 0xF0)
-		idx = 4;
-	tmp = 0;
-	while (tmp < idx)
-		write_boost(s + tmp++, 0);
-	return (idx);
-}
-
-int	ft_putchar_simple(char c)
-{
-	return (write_boost(&c, 0));
-}
-
-int	ft_putchar(int c)
-{
-	return (ft_pututf8((char *)&c));
+	if (!s)
+		return (0);
+	printed = 0;
+	idx = 0;
+	while (*(s + idx) && printed < len)
+	{
+		idx += ft_pututf8(s + idx);
+		printed++;
+		if (!UTF8COUNT)
+			printed = idx;
+	}
+	return (printed);
 }
