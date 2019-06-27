@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/27 02:22:34 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/06/27 02:58:31 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # define BUFF 1024
 # define BOOST_ON 1
 
-# include <stdio.h>
 # include <string.h>
 # include <unistd.h>
 # include <stdarg.h>

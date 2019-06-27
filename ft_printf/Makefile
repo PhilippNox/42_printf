@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/27 02:01:21 by wgorold          ###   ########.fr        #
+#    Updated: 2019/06/27 02:51:30 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,18 +20,11 @@
 # 	| tr '\n' ' '
 #
 
-TSTNAME=run_test
-
-RND=roundnig
-
-RNDL=roundnig_long
-
 NAME=libftprintf.a
 
 CC=gcc
 
-#FLAGS= -Wall -Wextra -Werror
-FLAGS= -Wall -Wextra
+FLAGS= -Wall -Wextra -Werror
 
 CFLAGS= -c $(FLAGS)
 
@@ -70,41 +63,10 @@ TST=	test_c.o test_cp.o test_c_utf8.o test_d.o test_d_small.o test_i.o \
 PATH_T=./test/
 PATH_TST= $(patsubst %.o, $(PATH_S)%.o, $(TST))
 
-# https://www.gnu.org/software/make/manual/html_node/Text-Functions.html
-
 all: $(NAME)
-
-ok: $(PATH_SRC) $(PATH_TST) ./test_my/ok_test.c
-	@$(CC) $(FLAGS) $(PATH_SRC) $(PATH_TST) ./test_my/ok_test.c -o ok -I./ -I./test
-
-f: $(PATH_SRC) $(PATH_TST) ./test_my/f_test.c
-	@$(CC) $(FLAGS) $(PATH_SRC) $(PATH_TST) ./test_my/f_test.c -o ok -I./ -I./test
-
-fc: f
-	./ok
-	@rm -f ok
-
-okc: ok
-	./ok
-	@rm -f ok
-
-tst: $(TSTNAME)
-	sh ./z_check.sh
-
-tstc: $(TSTNAME) clean
-	sh ./z_check.sh -d;
-	@rm -f $(TSTNAME) $(NAME);
-
-run: $(TSTNAME)
-	./run_test
-	@rm -f $(TSTNAME) $(NAME);
 
 $(NAME): $(PATH_SRC)
 	ar rc $(NAME) $(PATH_SRC)
-
-$(TSTNAME): $(PATH_SRC) $(PATH_TST) $(PATH_T)main_test.c
-	@$(CC) $(FLAGS) $(PATH_SRC) $(PATH_TST) $(PATH_T)main_test.c -o $(TSTNAME) -I./
-
 
 $(PATH_S)mat_precision_0_init.o: mat_precision_0_init.c
 	$(CC) $(CFLAGS) mat_precision_0_init.c $(FLAG_PATH_OBJ)
@@ -203,105 +165,10 @@ $(PATH_S)mat_boost_neg_8192.o: mat_boost_neg_8192.c
 $(PATH_S)mat_boost_neg_4096.o: mat_boost_neg_4096.c
 	$(CC) $(CFLAGS) mat_boost_neg_4096.c $(FLAG_PATH_OBJ)
 
-$(PATH_S)main_test.o: $(PATH_T)main_test.c
-	$(CC) $(CFLAGS) $(PATH_T)main_test.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_c.o: $(PATH_T)test_c.c
-	$(CC) $(CFLAGS) $(PATH_T)test_c.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_c_utf8.o: $(PATH_T)test_c_utf8.c
-	$(CC) $(CFLAGS) $(PATH_T)test_c_utf8.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_cp.o: $(PATH_T)test_cp.c
-	$(CC) $(CFLAGS) $(PATH_T)test_cp.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_d.o: $(PATH_T)test_d.c
-	$(CC) $(CFLAGS) $(PATH_T)test_d.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_d_small.o: $(PATH_T)test_d_small.c
-	$(CC) $(CFLAGS) $(PATH_T)test_d_small.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_f.o: $(PATH_T)test_f.c
-	$(CC) $(CFLAGS) $(PATH_T)test_f.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_ff.o: $(PATH_T)test_ff.c
-	$(CC) $(CFLAGS) $(PATH_T)test_ff.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_fr.o: $(PATH_T)test_fr.c
-	$(CC) $(CFLAGS) $(PATH_T)test_fr.c $(FLAG_PATH_OBJ) -I./
-$(PATH_S)test_fs.o: $(PATH_T)test_fs.c
-	$(CC) $(CFLAGS) $(PATH_T)test_fs.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_hd.o: $(PATH_T)test_hd.c
-	$(CC) $(CFLAGS) $(PATH_T)test_hd.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_hhd.o: $(PATH_T)test_hhd.c
-	$(CC) $(CFLAGS) $(PATH_T)test_hhd.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_hhi.o: $(PATH_T)test_hhi.c
-	$(CC) $(CFLAGS) $(PATH_T)test_hhi.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_hho.o: $(PATH_T)test_hho.c
-	$(CC) $(CFLAGS) $(PATH_T)test_hho.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_hhu.o: $(PATH_T)test_hhu.c
-	$(CC) $(CFLAGS) $(PATH_T)test_hhu.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_hhx.o: $(PATH_T)test_hhx.c
-	$(CC) $(CFLAGS) $(PATH_T)test_hhx.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_hhxx.o: $(PATH_T)test_hhxx.c
-	$(CC) $(CFLAGS) $(PATH_T)test_hhxx.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_hi.o: $(PATH_T)test_hi.c
-	$(CC) $(CFLAGS) $(PATH_T)test_hi.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_ho.o: $(PATH_T)test_ho.c
-	$(CC) $(CFLAGS) $(PATH_T)test_ho.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_hu.o: $(PATH_T)test_hu.c
-	$(CC) $(CFLAGS) $(PATH_T)test_hu.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_hx.o: $(PATH_T)test_hx.c
-	$(CC) $(CFLAGS) $(PATH_T)test_hx.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_hxx.o: $(PATH_T)test_hxx.c
-	$(CC) $(CFLAGS) $(PATH_T)test_hxx.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_i.o: $(PATH_T)test_i.c
-	$(CC) $(CFLAGS) $(PATH_T)test_i.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_ld.o: $(PATH_T)test_ld.c
-	$(CC) $(CFLAGS) $(PATH_T)test_ld.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_Lf.o: $(PATH_T)test_Lf.c
-	$(CC) $(CFLAGS) $(PATH_T)test_Lf.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_Lff.o: $(PATH_T)test_Lff.c
-	$(CC) $(CFLAGS) $(PATH_T)test_Lff.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_li.o: $(PATH_T)test_li.c
-	$(CC) $(CFLAGS) $(PATH_T)test_li.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_lld.o: $(PATH_T)test_lld.c
-	$(CC) $(CFLAGS) $(PATH_T)test_lld.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_lli.o: $(PATH_T)test_lli.c
-	$(CC) $(CFLAGS) $(PATH_T)test_lli.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_llo.o: $(PATH_T)test_llo.c
-	$(CC) $(CFLAGS) $(PATH_T)test_llo.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_llu.o: $(PATH_T)test_llu.c
-	$(CC) $(CFLAGS) $(PATH_T)test_llu.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_llx.o: $(PATH_T)test_llx.c
-	$(CC) $(CFLAGS) $(PATH_T)test_llx.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_llxx.o: $(PATH_T)test_llxx.c
-	$(CC) $(CFLAGS) $(PATH_T)test_llxx.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_lo.o: $(PATH_T)test_lo.c
-	$(CC) $(CFLAGS) $(PATH_T)test_lo.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_longd.o: $(PATH_T)test_longd.c
-	$(CC) $(CFLAGS) $(PATH_T)test_longd.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_lu.o: $(PATH_T)test_lu.c
-	$(CC) $(CFLAGS) $(PATH_T)test_lu.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_lx.o: $(PATH_T)test_lx.c
-	$(CC) $(CFLAGS) $(PATH_T)test_lx.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_lxx.o: $(PATH_T)test_lxx.c
-	$(CC) $(CFLAGS) $(PATH_T)test_lxx.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_o.o: $(PATH_T)test_o.c
-	$(CC) $(CFLAGS) $(PATH_T)test_o.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_p.o: $(PATH_T)test_p.c
-	$(CC) $(CFLAGS) $(PATH_T)test_p.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_s.o: $(PATH_T)test_s.c
-	$(CC) $(CFLAGS) $(PATH_T)test_s.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_s_small.o: $(PATH_T)test_s_small.c
-	$(CC) $(CFLAGS) $(PATH_T)test_s_small.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_u.o: $(PATH_T)test_u.c
-	$(CC) $(CFLAGS) $(PATH_T)test_u.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_x.o: $(PATH_T)test_x.c
-	$(CC) $(CFLAGS) $(PATH_T)test_x.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_xx.o: $(PATH_T)test_xx.c
-	$(CC) $(CFLAGS) $(PATH_T)test_xx.c $(FLAG_PATH_OBJ)
-$(PATH_S)test__.o: $(PATH_T)test__.c
-	$(CC) $(CFLAGS) $(PATH_T)test__.c $(FLAG_PATH_OBJ)
-$(PATH_S)test_star.o: $(PATH_T)test_star.c
-	$(CC) $(CFLAGS) $(PATH_T)test_star.c $(FLAG_PATH_OBJ)
-
 clean:
 	@rm -f $(PATH_SRC) $(PATH_TST)
 
 fclean: clean
-	@rm -f $(TSTNAME) $(NAME);
+	@rm -f $(NAME);
 
 re: fclean all
