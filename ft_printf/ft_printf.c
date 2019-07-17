@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 02:14:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/07/17 17:41:50 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/07/17 18:16:20 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int			ft_printf(const char *format, ...)
 	int			idx;
 	int			total;
 	t_task		task;
-	t_task		*last;
 
 	if (!format)
 		return (0);
@@ -45,7 +44,6 @@ int			ft_printf(const char *format, ...)
 		total += make_task(&task, &ap);
 		if (SHOW_LAST_TASK)
 			print_task(&task);
-		last = &task;
 	}
 	return (end(&ap, total));
 }

@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 02:41:09 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/27 03:41:36 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/07/17 18:16:38 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_pututf8(char const *s)
 	int idx;
 	int tmp;
 
-	if(UTF8COUNT == 0)
+	if (UTF8COUNT == 0)
 	{
 		write_boost(s, 0);
 		return (1);

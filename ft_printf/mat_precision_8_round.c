@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 13:45:06 by wgorold           #+#    #+#             */
-/*   Updated: 2019/07/17 12:37:00 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/07/17 18:17:13 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	up_rounding(t_str_f *input, unsigned int pos)
 	sum_t_str_f_ent(input, &tmp, &add);
 }
 
-void t_str_f_round_zero(t_str_f *input, unsigned int pos)
+void	t_str_f_round_zero(t_str_f *input, unsigned int pos)
 {
 	if (input->idf == 0 || input->exp_frc != input->idf)
 		return ;

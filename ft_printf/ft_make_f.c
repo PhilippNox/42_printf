@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/07/17 11:53:07 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/07/17 18:29:32 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ static int	countlen(t_task *input, t_str_f *target)
 
 	idxo = 0;
 	if ((input->plus || input->space || target->sign == '-')
-		&& !(target->idx_ent && target->ent[0] == 'n')) // or 'i'
+		&& !(target->idx_ent
+			&& (target->ent[0] == 'n')))
 		idxo++;
 	idxo += (target->idx_ent) ? target->idx_ent : 1;
 	if (target->idx_ent && target->ent[0] > 9)

@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:42:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/07/17 17:40:07 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/07/17 18:11:22 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	set_precision(t_task *input, char *s, va_list *ap,
 		(*add_total)--;
 	}
 	(*add_total)++;
-	input->precision = val;
+	input->precision = (val < 0) ? -1 : val;
 }
 
 static void	set_width_star(t_task *input, va_list *ap)
