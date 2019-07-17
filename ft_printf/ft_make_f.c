@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:36:58 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/26 20:23:20 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/07/17 11:53:07 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static void	putdouble(t_task *input, t_str_f *target)
 			ft_putstr("nan");
 		return ;
 	}
-	t_str_f_round(target, input->precision);
 	t_str_f_print_ent(target);
 	if (input->precision > 0 || input->hash)
 		ft_putchar('.');
@@ -49,9 +48,9 @@ static void	job_f(t_task *input, t_str_f *target, int idxo, char type)
 {
 	if (type == '-')
 	{
-		fill(' ', input->width - idxo);
 		putsign(input, target);
 		putdouble(input, target);
+		fill(' ', input->width - idxo);
 	}
 	else if (type == '0')
 	{
@@ -73,7 +72,7 @@ static int	countlen(t_task *input, t_str_f *target)
 
 	idxo = 0;
 	if ((input->plus || input->space || target->sign == '-')
-		&& !(target->idx_ent && target->ent[0] == 'n'))
+		&& !(target->idx_ent && target->ent[0] == 'n')) // or 'i'
 		idxo++;
 	idxo += (target->idx_ent) ? target->idx_ent : 1;
 	if (target->idx_ent && target->ent[0] > 9)
@@ -95,6 +94,7 @@ int			make_f(t_task *input, va_list *ap)
 		get_precision_longd(&target, va_arg(*ap, long double));
 	else
 		get_precision_d(&target, va_arg(*ap, double));
+	t_str_f_round(&target, input->precision);
 	idxo = countlen(input, &target);
 	if (input->minus)
 		job_f(input, &target, idxo, '-');
