@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/07/17 19:35:06 by wgorold          ###   ########.fr        #
+#    Updated: 2019/07/17 19:54:00 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,7 @@ TSTNAME=run_test
 
 CC=gcc
 
-#FLAGS= -Wall -Wextra -Werror
-FLAGS= -Wall -Wextra
+FLAGS= -Wall -Wextra -Werror
 
 CFLAGS= -c $(FLAGS)
 
@@ -48,7 +47,7 @@ PATH_TST= $(patsubst %.o, $(PATH_S)%.o, $(TST))
 # https://www.gnu.org/software/make/manual/html_node/Text-Functions.html
 
 all: $(PATH_TST)
-	$(CC) $(CFLAGS) main_test.c ./obj/* -o run_test -I${args} -L${args} -lftprintf
+	$(CC) $(FLAGS) main_test.c ./obj/* -o run_test -I${args} -L${args} -lftprintf
 
 $(PATH_S)test_c.o: $(PATH_T)test_c.c
 	$(CC) $(CFLAGS) $(PATH_T)test_c.c $(FLAG_PATH_OBJ)
