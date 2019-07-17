@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 13:45:06 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/26 16:35:51 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/07/17 15:15:51 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	set_power_tab(short power_tab[FRAC_FLOAT], unsigned long vals,
 	int idx;
 
 	idx = 0;
-	power_tab[idx] = exp;
+	if (power_tab[idx] == STOP_SHORT)
+		exp++;
 	while (++idx < FRAC_FLOAT)
 		power_tab[idx] =
 			(vals & (mask >> (idx - 1))) ? (exp - idx) : STOP_SHORT;

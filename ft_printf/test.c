@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 03:21:01 by wgorold           #+#    #+#             */
-/*   Updated: 2019/07/17 12:03:06 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/07/17 16:41:06 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,17 @@
 
 void test(int (*fun)(const char *format, ...))
 {
-	printf("\nout=%d\n", fun("%.f|%.f|%.f|%.f|%.f", 44.5, 44.4, 44.6, 44.50001, 44.5 + 1e-52));
-	//printf("%d\n", fun("%.f|%.f|%.f|%.f|%.f", 44.5, 44.4, 44.6, 44.50001, 44.5 + 1e-52));
-	//printf("%d\n", fun("%15.f|%15.1f|%15.2f|%15.5f|%15.12f", 999.99999, 999.99999, 999.99999, 999.99999, 999.99999));
+	//printf("\nout=%d\n", fun("%.1150f|%.1150f|%.1150f|%.1150f", 0x1p-1074, 0x1.ffffffffffffep-1023, 0x1.4e46p-1058, 0x1.59a8b0c3dp-1037));
+	/*
+	printf("\nout=%d\n", fun("%.100f", 0x1p1));
+	printf("\nout=%d\n", fun("%.100f", 0x3p1));
+	printf("\nout=%d\n", fun("%.100f", 0x3p2));
+	printf("\nout=%d\n", fun("%.100f", 0x3.1p2));
+	*/
+	printf("\nout=%d\n", fun("%.1150f", 0x1p-1022));
+	printf("\nout=%d\n", fun("%.1150f", 0x1p-1023));
+	printf("\nout=%d\n", fun("%f|%-f|%+f|% f|%#f|%0f", 0., 0., 0., 0., 0., 0.));
+	//printf("\nout=%d\n", fun("%.1150f", 0x1p-1074));
 }
 
 int main (void)

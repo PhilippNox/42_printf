@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/06/27 02:58:31 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/07/17 15:32:50 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,7 @@ char					*boost_neg_15360_part4(void);
 char					*boost_neg_15360_part5(void);
 
 void					init_t_str_f(t_str_f *input);
+void					init_t_str_f_sign(t_str_f *input, unsigned int sign);
 void					init_t_str_f_ent(t_str_f *input);
 void					init_t_str_f_frc(t_str_f *input);
 void					print_t_str_f(t_str_f *input);
