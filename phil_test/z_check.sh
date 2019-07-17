@@ -5,6 +5,7 @@
 # sh z_check.sh [-d]
 
 d_flag=''
+path2libftprintf=../ft_printf
 
 while getopts 'd' flag; do
 	case "${flag}" in
@@ -12,6 +13,8 @@ while getopts 'd' flag; do
 	esac
 done
 
+make -C $path2libftprintf
+make args=$path2libftprintf
 ./run_test > z_result;
 csplit -s z_result /next_origin_printf/;
 tail -n +2 xx01 > xx_origin_printf;
@@ -28,4 +31,6 @@ fi
 
 if [ "$d_flag" = "true" ]; then
 	rm xx_diff xx00 xx_origin_printf z_result;
+	make fclean -C $path2libftprintf
+	make fclean
 fi
