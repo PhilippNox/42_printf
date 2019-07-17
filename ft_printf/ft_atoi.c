@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 23:01:05 by wgorold           #+#    #+#             */
-/*   Updated: 2019/05/31 17:05:06 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/07/17 17:07:00 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static long	ft_atoi_rec(const char *str, int count, long *order, char *red_flag)
 		return (0);
 	}
 	out = ft_atoi_rec((char *)str + 1, count + 1, order, red_flag);
-	if (9223372036854775807 - out - ((*str - 48) * ten_pow(*order - count)) < 0)
+	if (2147483648 - out - ((*str - 48) * ten_pow(*order - count)) < 0)
 		*red_flag = 't';
 	out += (*str - 48) * ten_pow(*order - count);
 	return (out);
@@ -61,6 +61,6 @@ int			ft_atoi(const char *str, int *add_total)
 		return (0);
 	*add_total = (*work == '-') ? tmp + 2 : tmp + 1;
 	if (red_flag == 't')
-		return (*work == '-') ? 0 : -1;
+		return (-1);
 	return (*work == '-') ? (-(int)out) : ((int)out);
 }
