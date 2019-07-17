@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 03:21:01 by wgorold           #+#    #+#             */
-/*   Updated: 2019/07/17 18:30:00 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/07/17 20:08:07 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ void test(int (*fun)(const char *format, ...))
 	//printf("\nout=%d\n", fun("%.1150f", 0x1p-1074));
 	//fun("{%.*s}", -5, "42");
 	//fun("{%05.*d}", -15, 42);
-	printf("\nout=%d\n",fun("%f|%-f|%+f|% f|%#f|%0f", NAN, NAN, NAN, NAN, NAN, NAN));
+	char *str;
+	str = "test_c_6 🦑 [%+# *.-7Lc]ok👈\n";
+	fun(str, 2, 'A');
 }
 
 int main (void)
