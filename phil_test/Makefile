@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/07/17 19:54:00 by wgorold          ###   ########.fr        #
+#    Updated: 2019/07/17 19:58:02 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ $(PATH_S)test_f.o: $(PATH_T)test_f.c
 $(PATH_S)test_ff.o: $(PATH_T)test_ff.c
 	$(CC) $(CFLAGS) $(PATH_T)test_ff.c $(FLAG_PATH_OBJ)
 $(PATH_S)test_fr.o: $(PATH_T)test_fr.c
-	$(CC) $(CFLAGS) $(PATH_T)test_fr.c $(FLAG_PATH_OBJ) -I../ft_printf
+	$(CC) $(CFLAGS) $(PATH_T)test_fr.c $(FLAG_PATH_OBJ) -I${args}
 $(PATH_S)test_fs.o: $(PATH_T)test_fs.c
 	$(CC) $(CFLAGS) $(PATH_T)test_fs.c $(FLAG_PATH_OBJ)
 $(PATH_S)test_hd.o: $(PATH_T)test_hd.c

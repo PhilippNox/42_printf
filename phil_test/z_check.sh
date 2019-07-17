@@ -4,8 +4,8 @@
 
 # sh z_check.sh [-d]
 
-d_flag=''
 path2libftprintf=../ft_printf
+d_flag=''
 
 while getopts 'd' flag; do
 	case "${flag}" in
