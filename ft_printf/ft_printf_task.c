@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:42:31 by wgorold           #+#    #+#             */
-/*   Updated: 2019/07/17 18:11:22 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/07/19 18:02:05 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	set_precision(t_task *input, char *s, va_list *ap,
 
 	if (*(s + 1) == '*')
 		val = va_arg(*ap, int);
-	else if (*(s + 1) == '-' || (*(s + 1) == '+')
+	else if ((*(s + 1) == '+')
 			|| (*(s + 1) > 47 && *(s + 1) < 58))
 		val = ft_atoi(s + 1, add_total);
 	else

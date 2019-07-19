@@ -1,0 +1,2 @@
+fun("%s", -1);
+make -C ./ft_printf && gcc -Wall -Wextra test.c -I./ft_printf -L./ft_printf -lftprintf && ./a.out

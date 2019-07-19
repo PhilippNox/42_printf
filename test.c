@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 03:21:01 by wgorold           #+#    #+#             */
-/*   Updated: 2019/07/17 20:08:07 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/07/19 21:16:44 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ void test(int (*fun)(const char *format, ...))
 	//fun("{%05.*d}", -15, 42);
 	char *str;
 	str = "test_c_6 🦑 [%+# *.-7Lc]ok👈\n";
-	fun(str, 2, 'A');
+	fun("%s", -1);
 }
 
 int main (void)
 {
 	setlocale(LC_ALL, "");
 	test(&ft_printf);
-	printf("\n\n");
+	//printf("\n\n");
 	test(&printf);
-	//ft_putstr("\n"); write_boost(" ", 1);
+	ft_putstr("\n"); write_boost(" ", 1);
 	printf("\n");
 }

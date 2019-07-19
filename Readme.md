@@ -28,9 +28,8 @@
 	### RUN target tests
 
 	cd /Users/wgorold/d04_printf_gitlab/
-	make -C ./ft_printf
 
-	gcc -Wall -Wextra test.c -I./ft_printf -L./ft_printf -lftprintf && ./a.out
+	make -C ./ft_printf && gcc -Wall -Wextra test.c -I./ft_printf -L./ft_printf -lftprintf && ./a.out
 
 	make fclean -C ./ft_printf && rm a.out
 }
