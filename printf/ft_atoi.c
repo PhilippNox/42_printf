@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "longd.h"
+#include "ft_printf.h"
 
 static long	ten_pow(int n)
 {

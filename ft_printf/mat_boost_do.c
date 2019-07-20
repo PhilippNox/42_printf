@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "longd.h"
+#include "ft_printf.h"
 
 static void	boost_do(t_str_f *input, char *(*boost_fun[7])(void), char type)
 {

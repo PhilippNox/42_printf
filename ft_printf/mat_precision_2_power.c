@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "longd.h"
+#include "ft_printf.h"
 
 void	power_pos(t_str_f *input)
 {

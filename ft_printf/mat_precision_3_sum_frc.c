@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "longd.h"
+#include "ft_printf.h"
 
 static void	go2ent(t_str_f *rst)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "longd.h"
+#include "ft_printf.h"
 
 void	int_power_tab(short power_tab[FRAC_FLOAT])
 {

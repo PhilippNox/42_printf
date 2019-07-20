@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "longd.h"
+#include "ft_printf.h"
 
 static void	init_pos(int num[5], void (*boost_pos_fun[5])(t_str_f *input))
 {

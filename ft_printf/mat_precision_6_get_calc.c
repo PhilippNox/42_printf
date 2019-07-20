@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "longd.h"
+#include "ft_printf.h"
 
 void	get_fractionnaire(t_str_f *frc, short power_tab[FRAC_FLOAT])
 {

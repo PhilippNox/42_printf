@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "longd.h"
+#include "ft_printf.h"
 
 void	mat_for_precision(t_str_f *output, short power_tab[FRAC_FLOAT],
 	unsigned int sign)

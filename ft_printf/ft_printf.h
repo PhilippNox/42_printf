@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   longd.h                                            :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 18:19:18 by wgorold           #+#    #+#             */
-/*   Updated: 2019/07/17 18:13:19 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/07/20 13:53:16 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LONGD_H
-# define LONGD_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 # define LEN_STR_FRC 16500
 # define LEN_STR_ENT 5000
 # define STOP_SHORT 30000
