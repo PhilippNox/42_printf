@@ -6,7 +6,7 @@
 /*   By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 03:21:01 by wgorold           #+#    #+#             */
-/*   Updated: 2019/07/19 21:16:44 by wgorold          ###   ########.fr       */
+/*   Updated: 2019/07/20 13:28:41 by wgorold          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,13 @@
 #include <locale.h>
 #include <math.h>
 
-// gcc -Wall -Wextra -Werror test.c -I./ft_printf -L./ft_printf -lftprintf && ./a.out
+// make -C ./ft_printf && gcc -Wall -Wextra test.c -I./ft_printf -L./ft_printf -lftprintf && ./a.out
 
 void test(int (*fun)(const char *format, ...))
 {
-	//printf("\nout=%d\n", fun("%.1150f|%.1150f|%.1150f|%.1150f", 0x1p-1074, 0x1.ffffffffffffep-1023, 0x1.4e46p-1058, 0x1.59a8b0c3dp-1037));
-	//printf("\nout=%d\n", fun("%f|%2147483649f", 1.0, 1.0));
-	//printf("\nout=%d\n", fun("%.2147483649f|%2147483649f", 1.0, 1.0));
 	//printf("\nout=%d\n", fun("%.1150f", 0x1p-1074));
-	//fun("{%.*s}", -5, "42");
-	//fun("{%05.*d}", -15, 42);
-	char *str;
-	str = "test_c_6 🦑 [%+# *.-7Lc]ok👈\n";
-	fun("%s", -1);
+	fun("{%.*s}", -5, "42");
+	//fun("%s", 3);
 }
 
 int main (void)

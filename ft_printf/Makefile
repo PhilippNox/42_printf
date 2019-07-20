@@ -6,7 +6,7 @@
 #    By: wgorold <wgorold@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 13:35:31 by wgorold           #+#    #+#              #
-#    Updated: 2019/06/27 02:51:30 by wgorold          ###   ########.fr        #
+#    Updated: 2019/07/20 13:27:55 by wgorold          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,19 +49,6 @@ SRC=	mat_precision_0_init.o mat_precision_1_print.o mat_precision_2_power.o \
 PATH_S=./obj/
 PATH_SRC= $(patsubst %.o, $(PATH_S)%.o, $(SRC))
 FLAG_PATH_OBJ= -o $@
-
-TST=	test_c.o test_cp.o test_c_utf8.o test_d.o test_d_small.o test_i.o \
-			test_p.o test_s.o test_s_small.o test_o.o test_u.o test_x.o test_xx.o \
-			test_hhd.o test_hd.o test_ld.o test_lld.o \
-			test_hhi.o test_hi.o test_li.o test_lli.o \
-			test_hho.o test_ho.o test_lo.o test_llo.o \
-			test_hhu.o test_hu.o test_lu.o test_llu.o \
-			test_hhx.o test_hx.o test_lx.o test_llx.o \
-			test_hhxx.o test_hxx.o test_lxx.o test_llxx.o \
-			test_f.o test_fs.o test_fr.o test_Lf.o test_ff.o test_Lff.o test_star.o \
-			test__.o
-PATH_T=./test/
-PATH_TST= $(patsubst %.o, $(PATH_S)%.o, $(TST))
 
 all: $(NAME)
 
@@ -166,7 +153,7 @@ $(PATH_S)mat_boost_neg_4096.o: mat_boost_neg_4096.c
 	$(CC) $(CFLAGS) mat_boost_neg_4096.c $(FLAG_PATH_OBJ)
 
 clean:
-	@rm -f $(PATH_SRC) $(PATH_TST)
+	@rm -f $(PATH_SRC)
 
 fclean: clean
 	@rm -f $(NAME);
